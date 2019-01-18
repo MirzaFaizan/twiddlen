@@ -52,8 +52,11 @@ class AdminLogin extends React.Component {
                 //     })
                 // }
                 const data = {email: this.state.email, password: this.state.password};
+                var token = 'abc';
                // JSON.stringify(data);
-                axios.post('http://localhost:8000/api' , data )
+                axios.post('http://localhost:8000/api' , data ,
+                {headers: {'authorization': `Bearer ${token}`}}
+                     )
                 .then(res => {
                  console.log(res.data);
                 })
