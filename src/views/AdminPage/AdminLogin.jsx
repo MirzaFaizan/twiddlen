@@ -41,7 +41,7 @@ class AdminLogin extends React.Component {
                 });
             };
             buttonClick = () => {
-                    if(this.state.email==='abc')
+                    if(this.state.email==='abc' && this.state.password==='123')
                     {
                         (this.props.onUpdateAdmin(true))
                                 this.setState({
