@@ -5,20 +5,20 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import axios from 'axios';
+
 // import { Redirect } from 'react-router';
 import { connect } from 'react-redux'
 // import AdminPage from './AdminPage.jsx'
 
 import { updateAdmin } from '../../actions/admin-action.js'
-import { bindActionCreators } from 'redux'; 
+import { bindActionCreators } from 'redux';
 
 class AdminLogin extends React.Component {
     
     
     constructor(props){
         super(props);
-        
+    
         this.state={
             // redirect:false,
             email:'',
@@ -26,6 +26,10 @@ class AdminLogin extends React.Component {
             error:false
         }
     }
+
+            adminLoginResponse = () => { 
+          
+            };
             handleEmailChange = event => {
                 this.setState({
                 email:event.target.value,
@@ -37,30 +41,18 @@ class AdminLogin extends React.Component {
                 });
             };
             buttonClick = () => {
-                // console.log(this.props.loggedIn)
-                
-                // if(this.state.email==='abc' && this.state.password==='123'){
-                //     (this.props.onUpdateAdmin(true))
-                //     this.setState({
-                //         error:false,
-                //         // redirect:true
-                //     })
-                // }
-                // else{
-                //     this.setState({
-                //         error:true
-                //     })
-                // }
-                const data = {email: this.state.email, password: this.state.password};
-                var token = 'abc';
-               // JSON.stringify(data);
-                axios.post('http://localhost:8000/api' , data ,
-                {headers: {'authorization': `Bearer ${token}`}}
-                     )
-                .then(res => {
-                 console.log(res.data);
-                })
-
+                    if(this.state.email==='abc')
+                    {
+                        (this.props.onUpdateAdmin(true))
+                                this.setState({
+                                error:false,
+                            })
+                    }
+                    else{
+                        this.setState({
+                                error:true
+                                    })
+                    }
             }
 
             render() { 
@@ -70,7 +62,7 @@ class AdminLogin extends React.Component {
             const itemsAlign = {
                     position: 'absolute', left: '50%', top: '50%',
                     transform: 'translate(-50%, -50%)'
-                            }       
+                            }
             
                 // if(this.state.redirect){
                 //     return (<Redirect to='/admin-page' Component={AdminPage}/>)

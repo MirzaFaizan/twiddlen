@@ -36,27 +36,52 @@ function Transition(props) {
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isAuthenticated: false, user: null, token: ''};
+    this.state = { isAuthenticated: false, user: null, token: '',
+    cardAnimaton: "cardHidden",
+    modal:false,
+
+    userName:'',
+    email:'',
+    password:''};
     // we use this to make the card to appear after the page has been rendered
-    this.state = {
-      cardAnimaton: "cardHidden",
-      modal:false,
+   
+  }
+
+    handleClickOpen(modal) {
+      var x = [];
+      x[modal] = true;
+      this.setState(x);
+    }
+
+    handleClose(modal) {
+      var x = [];
+      x[modal] = false;
+      this.setState(x);
+    }
+
+    handleUserNameChange = event => {
+      this.setState({
+      userName:event.target.value,
+      });
     };
-  }
 
-  handleClickOpen(modal) {
-    var x = [];
-    x[modal] = true;
-    this.setState(x);
-  }
+    handleEmailChange = event => {
+    this.setState({
+    email:event.target.value,
+      });
+    };
 
-  handleClose(modal) {
-    var x = [];
-    x[modal] = false;
-    this.setState(x);
-  }
+    handlePasswordChange = event => {
+    this.setState({
+    password:event.target.value,
+      });
+    };
 
-
+    registerHandleClick = () => {
+      console.log(this.state.userName);
+      console.log(this.state.email);
+      console.log(this.state.password);
+    }
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
@@ -179,15 +204,17 @@ class LoginPage extends React.Component {
                     /> */}
                       </div>
                     </CardHeader>
-                    <p className={classes.divider}>Or Be Classical</p>
+                    <p className={classes.divider}>Register</p>
                     <CardBody>
                       <CustomInput
-                        labelText="First Name..."
-                        id="first"
+                       
+                        labelText="User Name..."
+                        id="username"
                         formControlProps={{
                           fullWidth: true
                         }}
                         inputProps={{
+                          onChange: e=>{this.handleUserNameChange(e)},
                           type: "text",
                           endAdornment: (
                             <InputAdornment position="end">
@@ -195,6 +222,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
+                        
                       />
                       <CustomInput
                         labelText="Email..."
@@ -203,6 +231,7 @@ class LoginPage extends React.Component {
                           fullWidth: true
                         }}
                         inputProps={{
+                          onChange:e=>{this.handleEmailChange(e)},
                           type: "email",
                           endAdornment: (
                             <InputAdornment position="end">
@@ -210,36 +239,8 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
+                        
                       />
-                      <CustomInput
-                        labelText="Email..."
-                        id="email"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "email",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <Email className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          )
-                        }}
-                      /><CustomInput
-                      labelText="Email..."
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        type: "email",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <Email className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
                       <CustomInput
                         labelText="Password"
                         id="pass"
@@ -247,6 +248,7 @@ class LoginPage extends React.Component {
                           fullWidth: true
                         }}
                         inputProps={{
+                          onChange:e=>{this.handlePasswordChange(e)},
                           type: "password",
                           endAdornment: (
                             <InputAdornment position="end">
@@ -256,10 +258,11 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
+                        
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
+                      <Button simple color="primary" size="lg" onClick={()=>this.registerHandleClick()}>
                         Register
                       </Button>
                     </CardFooter>

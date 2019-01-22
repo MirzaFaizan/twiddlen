@@ -28,20 +28,12 @@ class ProductSection extends React.Component {
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>Explore the Events in your Area</h2>
-            {/*
-              <h5 className={classes.description}>
-              This is the paragraph where you can write more details about your
-              product. Keep you user engaged by providing meaningful
-              information. Remember that by this time, the user is curious,
-              otherwise he wouldn't scroll to get here. Add a button if you want
-              the user to see more.
-            </h5>
-            */}
           </GridItem>
         </GridContainer>
         <div>
           <GridContainer>
             <GridItem xs={12} sm={12} md={3}>
+              <div onClick={()=>console.log('conference & seminars')}>
               <InfoArea
                 title="Conferene & Seminars"
                 description=""
@@ -49,8 +41,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+              </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('socail gatherings')}>
               <InfoArea
                 title="Social Gatherings"
                 description=""
@@ -58,8 +52,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+                </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('real estate')}>
               <InfoArea
                 title="Real Estate | Buy/Sell"
                 description=""
@@ -67,8 +63,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               /> 
+                </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('music')}>
               <InfoArea
                 title="Music"
                 description=""
@@ -76,8 +74,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+                </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('arts')}>
               <InfoArea
                 title="Art & Culture"
                 description=""
@@ -85,8 +85,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+                </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('sports')}>
               <InfoArea
                 title="Sports"
                 description=""
@@ -94,8 +96,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+                </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('games')}>
               <InfoArea
                 title="Fun & Games"
                 description=""
@@ -103,8 +107,10 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+                </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
+            <div onClick={()=>console.log('education')}>
               <InfoArea
                 title="Education"
                 description=""
@@ -112,6 +118,7 @@ class ProductSection extends React.Component {
                 iconColor="gray"
                 vertical
               />
+              </div>
             </GridItem>
           </GridContainer>
         </div>

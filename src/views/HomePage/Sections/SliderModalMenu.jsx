@@ -1,74 +1,65 @@
 import React from 'react';
 // import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
 
-const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel',
+import TextField from '@material-ui/core/TextField';
+
+const currencies = [
+  {
+    value: 'USD',
+    label: '$',
+  },
+  {
+    value: 'EUR',
+    label: '€',
+  },
+  {
+    value: 'BTC',
+    label: '฿',
+  },
+  {
+    value: 'JPY',
+    label: '¥',
+  },
 ];
 
-const ITEM_HEIGHT = 48;
 
 class LongMenu extends React.Component {
+
   state = {
-    anchorEl: null,
+    currency:'EUR'
+  }
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
   };
 
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
 
   render() {
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
 
     return (
       <div>
-        <Button
-          aria-label="More"
-          aria-owns={open ? 'long-menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          Choose your Category
-        </Button>
-        <Menu
-          id="long-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={this.handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: 200,
-            },
+        <TextField
+          id="outlined-select-currency-native"
+          select
+          label="Choose a Category"
+          value={this.state.currency}
+          onChange={this.handleChange('currency')}
+          SelectProps={{
+            native: true,
           }}
+          helperText="Please select your category"
+          margin="dense"
+          variant="outlined"
+          fullWidth={true}
         >
-          {options.map(option => (
-            <MenuItem key={option} selected={option === 'Pyxis'} onClick={this.handleClose}>
-              {option}
-            </MenuItem>
+          {currencies.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
           ))}
-        </Menu>
+          </TextField>
       </div>
     );
   }

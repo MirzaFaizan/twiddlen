@@ -13,8 +13,8 @@ class Sliders extends React.Component {
   render(){
     return (
       <div>
-        <div className="slider-warning" ref="slider1" />
-        <p>0-100</p>
+        <div><div className="slider-warning" ref="slider1" /></div>
+        0-100
         <br />
       </div>
     );

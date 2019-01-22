@@ -12,7 +12,12 @@ import Slider from './Slider.jsx';
 import Grid from '@material-ui/core/Grid';
 import SliderModalMenu from './SliderModalMenu.jsx'
 
+import Divider from '@material-ui/core/Divider'
+
+import Hidden from '@material-ui/core/Hidden'
+
 class ResponsiveDialog extends React.Component {
+
   state = {
     open: false,
   };
@@ -40,14 +45,19 @@ class ResponsiveDialog extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title">
           <DialogContent>
-            <Grid container spacing={0}>
+            <Grid container spacing={16}>
             <Grid item xs={12} sm={12} md={6}>
               <SliderModalMenu/>
             </Grid>
+            <Hidden smUp>
+            <Grid item xs={12}>
+            <Divider/>
+            </Grid>
+            </Hidden>
             <Grid item xs={12} sm={12} md={6}>
             <DialogContentText>
-              <p>Choose your Radius</p>
-              <Slider/>
+              Choose your Radius
+             <div><Slider/></div> 
             </DialogContentText>
             </Grid>
             </Grid>

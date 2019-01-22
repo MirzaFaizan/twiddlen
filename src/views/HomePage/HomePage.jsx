@@ -51,6 +51,13 @@ class LandingPage extends React.Component {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         position: 'relative',
+        
+        // borderLeft: '150px solid transparent',
+        // borderRight: '150px solid transparent', 
+        // borderTop:'100px solid transparent'
+        // width: 0, 
+        // height: 0,
+        
     }
     const divText = {
       textAlign: 'center',
@@ -60,6 +67,7 @@ class LandingPage extends React.Component {
       transform: 'translate(-50%, -50%)',
       color: 'white'
     }
+    
     // const divaText = {
     //   textAlign: 'center',
     //   position: 'absolute',
@@ -84,6 +92,7 @@ class LandingPage extends React.Component {
           }}
           {...rest}
         />
+       
         <div style={divBackground}>
         <GridContainer style={divText} spacing={0} className={classes.container}>
           <GridItem style={divText} xs={12} sm={12} md={6}>
@@ -93,17 +102,13 @@ class LandingPage extends React.Component {
         </div>
         <div>
           <div className={classes.container}>
-          {/*
-            <ProductSection />
-            <TeamSection />
-            <WorkSection /> 
-          */}
           <ProductSection />  
           
           </div>
         </div>
         {/*<Footer />*/}
       </div>
+        
     );
   }
 }

@@ -5,7 +5,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
+// import People from "@material-ui/icons/People";
 // core components
 //import Header from "components/Header/Header.jsx";
 //import HeaderLinks from "components/Header/HeaderLinks.jsx";
@@ -36,12 +36,31 @@ function Transition(props) {
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isAuthenticated: false, user: null, token: ''};
+    this.state = { isAuthenticated: false, user: null, token: '',
+    cardAnimaton: "cardHidden",
+    modal:false,
+    
+    email:'',
+    password:''
+  };
     // we use this to make the card to appear after the page has been rendered
-    this.state = {
-      cardAnimaton: "cardHidden",
-      modal:false,
+  }
+
+  handleEmailChange = event => {
+    this.setState({
+    email:event.target.value,
+      });
     };
+
+    handlePasswordChange = event => {
+    this.setState({
+    password:event.target.value,
+      });
+    };
+
+  loginHandleClick = () => {
+    console.log(this.state.email);
+    console.log(this.state.password);
   }
 
   handleClickOpen(modal) {
@@ -181,13 +200,14 @@ class LoginPage extends React.Component {
                     </CardHeader>
                     <p className={classes.divider}>Or Be Classical</p>
                     <CardBody>
-                      <CustomInput
+                      {/* <CustomInput
                         labelText="First Name..."
                         id="first"
                         formControlProps={{
                           fullWidth: true
                         }}
                         inputProps={{
+                          
                           type: "text",
                           endAdornment: (
                             <InputAdornment position="end">
@@ -195,7 +215,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
-                      />
+                      /> */}
                       <CustomInput
                         labelText="Email..."
                         id="email"
@@ -203,6 +223,7 @@ class LoginPage extends React.Component {
                           fullWidth: true
                         }}
                         inputProps={{
+                          onChange:e=>{this.handleEmailChange(e)},
                           type: "email",
                           endAdornment: (
                             <InputAdornment position="end">
@@ -218,6 +239,7 @@ class LoginPage extends React.Component {
                           fullWidth: true
                         }}
                         inputProps={{
+                          onChange:e=>{this.handlePasswordChange(e)},
                           type: "password",
                           endAdornment: (
                             <InputAdornment position="end">
@@ -231,7 +253,7 @@ class LoginPage extends React.Component {
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
                       <Button simple color="primary" size="lg">
-                        Get started
+                        LOG IN
                       </Button>
                     </CardFooter>
                   </form>
