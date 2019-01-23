@@ -23,11 +23,10 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 //import  GoogleLogin from 'react-google-login';
 //import image2 from "assets/img/bg7.jpg";
 import image2 from "assets/img/twiddlen-bg-final.jpg";
-
+import axios from "axios";
 import Slide from "@material-ui/core/Slide";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -36,7 +35,8 @@ function Transition(props) {
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isAuthenticated: false, user: null, token: '',
+    this.state = { 
+    isAuthenticated: false, user: null, token: '',
     cardAnimaton: "cardHidden",
     modal:false,
 
@@ -81,6 +81,29 @@ class LoginPage extends React.Component {
       console.log(this.state.userName);
       console.log(this.state.email);
       console.log(this.state.password);
+      const data = {
+        email: this.state.email,
+        password: this.state.password,
+        username: this.state.userName,
+      }
+      console.log(data);
+      axios.post('http://twiddlen-api.herokuapp.com/api/register', data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+        )
+        .then(res => {
+            //Check if response reture suceess: true or false
+            if(res.data.success === false )
+            {
+            alert(res.data.message);
+            }
+            else
+            {
+              //redirect to login component
+              alert('Succesfully registered');      
+              this.handleClose("modal");
+            }
+
+          });
     }
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
