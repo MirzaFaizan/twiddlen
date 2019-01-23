@@ -18,7 +18,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
-
+import axios from "axios";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 //import  GoogleLogin from 'react-google-login';
 //import image2 from "assets/img/bg7.jpg";
@@ -39,7 +39,6 @@ class LoginPage extends React.Component {
     this.state = { isAuthenticated: false, user: null, token: '',
     cardAnimaton: "cardHidden",
     modal:false,
-    
     email:'',
     password:''
   };
@@ -61,6 +60,30 @@ class LoginPage extends React.Component {
   loginHandleClick = () => {
     console.log(this.state.email);
     console.log(this.state.password);
+    const data = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    axios.post('http://twiddlen-api.herokuapp.com/api/login', data
+      //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+         JSON.stringify(res);
+         console.log(res.data);
+          //Check if response reture suceess: true or false
+          if(res.data.success === false )
+          {
+          alert(res.data.message);
+          }
+          else
+          {
+            //redirect to login component
+            alert('Succesfully Logged in');      
+            this.handleClose("modal");
+          }
+         }).catch(error => {
+          alert('Internal Server error, Server Resopnded with "'+error+'"');
+        });
   }
 
   handleClickOpen(modal) {
@@ -252,7 +275,7 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
+                      <Button simple color="primary" size="lg" onClick={()=>this.loginHandleClick()}>
                         LOG IN
                       </Button>
                     </CardFooter>

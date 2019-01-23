@@ -91,6 +91,7 @@ class LoginPage extends React.Component {
         //, { headers: {"Authorization" : `Bearer ${token}`} }
         )
         .then(res => {
+            JSON.stringify(res);
             //Check if response reture suceess: true or false
             if(res.data.success === false )
             {
@@ -102,8 +103,9 @@ class LoginPage extends React.Component {
               alert('Succesfully registered');      
               this.handleClose("modal");
             }
-
-          });
+          }).catch(error => {
+            alert(error || 'internal Server Error. try Again later');
+         });
     }
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
