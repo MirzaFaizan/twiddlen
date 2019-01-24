@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 
 import LocationOn from '@material-ui/icons/LocationOn';
 import Notification from '@material-ui/icons/NotificationsNone';
@@ -40,14 +40,14 @@ class ImgMediaCard extends React.Component {
           component="img"
           alt={this.props.name}
           className={classes.media}
-          height="255"
+          height="200"
           image={this.props.image}
           title={this.props.name}
         />
         <CardContent className={classes.cardContent}>
           <div>
             <Grid container spacing={8} justify="space-evenly">
-              <Grid item xs={3} sm={3} md={4}>
+              <Grid item xs={4} sm={3} md={4}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -56,7 +56,7 @@ class ImgMediaCard extends React.Component {
                   {this.props.name}
                 </Typography>
               </Grid>
-              <Grid item xs={3} sm={3} md={3}>
+              <Grid item xs={4} sm={3} md={3}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -65,7 +65,7 @@ class ImgMediaCard extends React.Component {
                   {this.props.city}
                 </Typography>
               </Grid>
-              <Grid item xs={6} sm={6} md={4}>
+              <Grid item xs={4} sm={6} md={4}>
                 <Typography variant="body2" component="h6" color="textPrimary">
                   <LocationOn />
                   <Notification />
@@ -119,30 +119,22 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Hidden xsDown>
-                <Grid item xs={12}>
-                  <div style={{ marginTop: '-3%' }}>
-                    <Typography
-                      variant="body2"
-                      component="h5"
-                      color="textPrimary"
-                    >
-                      <b>Description</b>
-                    </Typography>
-                  </div>
-                </Grid>
-                <Grid item xs={12}>
-                  <div style={{ marginTop: '-2%' }}>
-                    <Typography
-                      variant="caption"
-                      component="p"
-                      color="textPrimary"
-                    >
-                      {this.props.description}
-                    </Typography>
-                  </div>
-                </Grid>
-              </Hidden>
+              {/* <Hidden xsDown>
+            <Grid item xs={12}>
+            <div style={{marginTop:'-3%'}}>
+            <Typography variant="body2" component="h5" color='textPrimary'>
+             <b>Description</b>
+            </Typography>
+            </div>
+            </Grid>
+            <Grid item xs={12}>
+            <div style={{marginTop:'-2%'}}>
+            <Typography variant="caption" component="p" color="textPrimary">
+            {this.props.description}
+            </Typography>
+            </div>
+            </Grid>
+            </Hidden> */}
             </Grid>
           </div>
         </CardContent>
