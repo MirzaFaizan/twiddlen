@@ -43,7 +43,7 @@ class AdminLogin extends React.Component {
     };
     axios
       .post(
-        'http://localhost:8000/api/admin/adminlogin',
+        'http://twiddlen-api.herokuapp.com/api/admin/adminlogin',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
@@ -66,17 +66,6 @@ class AdminLogin extends React.Component {
       .catch(error => {
         alert('Internal Server error, Server Resopnded with "' + error + '"');
       });
-
-    if (this.state.email === 'abc' && this.state.password === '123') {
-      this.props.onUpdateAdmin(true);
-      this.setState({
-        error: false
-      });
-    } else {
-      this.setState({
-        error: true
-      });
-    }
   };
 
   render() {
