@@ -26,13 +26,50 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
 import EventCard from './Sections/EventCard/EventCard.jsx';
+import EventCard2 from './Sections/EventCard/EventCard2.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import { Carousel } from '3d-react-carousal';
+import Slider from 'react-slick';
 
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  autoplaySpeed: 1500,
+  adaptiveHeight: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+};
 const dashboardRoutes = [];
-
 const eventsData = {
   event1: {
     image:
@@ -58,6 +95,76 @@ const eventsData = {
     image:
       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
     name: 'Event 3',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event4: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 4',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event5: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 5',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event6: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 6',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event7: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 7',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event8: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 8',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event9: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 9',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event10: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 10',
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
@@ -130,7 +237,7 @@ class LandingPage extends React.Component {
         <div style={divBackground}>
           <GridContainer
             style={divText}
-            spacing={0}
+            spacing={8}
             className={classes.container}
           >
             <GridItem style={divText} xs={12} sm={12} md={6}>
@@ -140,20 +247,22 @@ class LandingPage extends React.Component {
         </div>
         <div>
           <div>
-            <Grid container spacing={0} direction="column">
+            <Grid container spacing={40} direction="column">
               <Grid item xs={12}>
                 <Typography
-                  variant="h3"
-                  component="h3"
+                  variant="display1"
+                  component="h4"
                   gutterBottom={true}
                   align="center"
                 >
-                  Happening Events that are Today
+                  <div style={{ paddingTop: '3%' }}>
+                    <strong>Events Happening Today</strong>
+                  </div>
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} md={12}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Grid container spacing={0} justify="center">
-                  <Grid item xs={12} sm={6} md={6}>
+                  <Grid item xs={12} sm={12} md={8} lg={5}>
                     <Carousel
                       slides={Object.values(eventsData).map((type, key) => {
                         return (
@@ -177,24 +286,68 @@ class LandingPage extends React.Component {
 
               <Grid item xs={12}>
                 <Typography
-                  variant="h3"
+                  variant="display1"
                   component="h3"
                   gutterBottom={true}
                   align="center"
                 >
-                  Happening This Week
+                  <strong>Happening This Week</strong>
                 </Typography>
+              </Grid>
+
+              <Grid item xs={12} md={12}>
+                <Slider {...settings}>
+                  {Object.values(eventsData).map((type, key) => {
+                    return (
+                      <div className={classes.container} key={key}>
+                        <EventCard2
+                          image={type.image}
+                          name={type.name}
+                          city={type.city}
+                          organizerName={type.organizerName}
+                          timeAndDate={type.timeAndDate}
+                          description={type.description}
+                        />
+                        <div
+                          style={{ paddingTop: '10%', paddingBottom: '10%' }}
+                        />
+                      </div>
+                    );
+                  })}
+                </Slider>
               </Grid>
 
               <Grid item xs={12}>
                 <Typography
-                  variant="h3"
+                  variant="display1"
                   component="h3"
                   gutterBottom={true}
                   align="center"
                 >
-                  Happening This Month
+                  <strong>Happening This Month</strong>
                 </Typography>
+              </Grid>
+
+              <Grid item xs={12} md={12}>
+                <Slider {...settings}>
+                  {Object.values(eventsData).map((type, key) => {
+                    return (
+                      <div className={classes.container} key={key}>
+                        <EventCard2
+                          image={type.image}
+                          name={type.name}
+                          city={type.city}
+                          organizerName={type.organizerName}
+                          timeAndDate={type.timeAndDate}
+                          description={type.description}
+                        />
+                        <div
+                          style={{ paddingTop: '10%', paddingBottom: '10%' }}
+                        />
+                      </div>
+                    );
+                  })}
+                </Slider>
               </Grid>
             </Grid>
           </div>
