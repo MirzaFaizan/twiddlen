@@ -246,7 +246,7 @@ class LandingPage extends React.Component {
           </GridContainer>
         </div>
         <div>
-          <div>
+          <div style={{ backgroundColor: 'lightgrey' }}>
             <Grid container spacing={40} direction="column">
               <Grid item xs={12}>
                 <Typography
@@ -358,7 +358,7 @@ class LandingPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
+  // console.log(props);
   return {
     products: state.products,
     user: state.user
@@ -366,7 +366,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapActionsToProps = (dispatch, props) => {
-  console.log(props);
+  // console.log(props);
   return bindActionCreators(
     {
       onUpdateUser: updateUser
