@@ -21,7 +21,7 @@ const styles = {
     overflow: 'auto'
   },
   media: {
-    height: 300
+    height: 350
   }
 };
 

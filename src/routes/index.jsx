@@ -15,7 +15,7 @@ var indexRoutes = [
   { path: '/login-page', name: 'LoginPage', component: LoginPage },
   { path: '/event-page', name: 'EventsView', component: EventsView },
   {
-    path: '/category-page',
+    path: '/category-page/:id',
     name: 'CategoryEventsView',
     component: CategoryView
   },

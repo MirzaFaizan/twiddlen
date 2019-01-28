@@ -43,7 +43,8 @@ const eventsData = {
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+    categoryName: 'sports'
   },
   event2: {
     image:
@@ -53,7 +54,8 @@ const eventsData = {
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+    categoryName: 'sports'
   },
   event3: {
     image:
@@ -63,7 +65,8 @@ const eventsData = {
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+    categoryName: 'sports'
   },
   event4: {
     image:
@@ -72,6 +75,7 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
@@ -82,6 +86,7 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
@@ -92,6 +97,7 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
@@ -102,6 +108,7 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
@@ -112,6 +119,7 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
@@ -122,6 +130,7 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
@@ -132,16 +141,29 @@ const eventsData = {
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'sports',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   },
   event11: {
     image:
       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
-    name: 'Event 10',
+    name: 'Event 11',
     city: 'Kanses City',
     organizerName: 'Big John McCarty.',
     timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'music',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+  },
+  event12: {
+    image:
+      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+    name: 'Event 12',
+    city: 'Kanses City',
+    organizerName: 'Big John McCarty.',
+    timeAndDate: '9AM, 20 July 2020',
+    categoryName: 'music',
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
   }
@@ -151,6 +173,8 @@ class CategoryView extends React.Component {
     super(props);
 
     this.onUpdateUser = this.onUpdateUser.bind(this);
+
+    console.log(this.props.match.params.id);
   }
 
   onUpdateUser = event => {
@@ -181,6 +205,12 @@ class CategoryView extends React.Component {
       left: '50%',
       transform: 'translate(-50%, -50%)',
       color: 'white'
+    };
+
+    const styles = {
+      position: 'absolute',
+      bottom: 100,
+      right: 100
     };
 
     // const divaText = {
@@ -231,41 +261,41 @@ class CategoryView extends React.Component {
                 >
                   <strong>Happening This Week</strong>
                 </Typography>
-
-                <Grid
-                  item
-                  xs={12}
-                  style={{ marginBottom: '-10%', marginRight: '-10%' }}
-                >
-                  <Grid
-                    container
-                    spacing={0}
-                    direction="column"
-                    justify="flex-end"
-                    alignContent="flex-end"
-                    alignItems="flex-end"
-                  >
-                    <Grid item xs={12}>
-                      <FloatingMenu />
-                    </Grid>
-                  </Grid>
-                </Grid>
               </Grid>
 
               {Object.values(eventsData).map((type, key) => {
-                return (
-                  <Grid item xs={12} md={3} key={key}>
-                    <EventCard2
-                      image={type.image}
-                      name={type.name}
-                      city={type.city}
-                      organizerName={type.organizerName}
-                      timeAndDate={type.timeAndDate}
-                      description={type.description}
-                    />
-                  </Grid>
-                );
+                if (type.categoryName === this.props.match.params.id) {
+                  return (
+                    <Grid item xs={12} md={3} key={key}>
+                      <EventCard2
+                        image={type.image}
+                        name={type.name}
+                        city={type.city}
+                        organizerName={type.organizerName}
+                        timeAndDate={type.timeAndDate}
+                        description={type.description}
+                      />
+                    </Grid>
+                  );
+                } else {
+                  return null;
+                }
               })}
+
+              <Grid item xs={12}>
+                <Grid
+                  container
+                  spacing={0}
+                  direction="column"
+                  justify="flex-end"
+                  alignContent="flex-end"
+                  alignItems="flex-end"
+                >
+                  <Grid item xs={12}>
+                    <FloatingMenu style={{ styles }} />
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
           </div>
         </div>
