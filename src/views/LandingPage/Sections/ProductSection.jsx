@@ -31,7 +31,11 @@ class ProductSection extends React.Component {
         <div>
           <GridContainer>
             <GridItem xs={12} sm={12} md={3}>
-              <div onClick={() => this.props.history.push('/category-page')}>
+              <div
+                onClick={() =>
+                  this.props.history.push('/category-page/conference&seminar')
+                }
+              >
                 <InfoArea
                   title="Conferene & Seminars"
                   description=""
@@ -42,7 +46,11 @@ class ProductSection extends React.Component {
               </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div onClick={() => this.props.history.push('/category-page')}>
+              <div
+                onClick={() =>
+                  this.props.history.push('/category-page/socialgatherings')
+                }
+              >
                 <InfoArea
                   title="Social Gatherings"
                   description=""
@@ -53,7 +61,11 @@ class ProductSection extends React.Component {
               </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div onClick={() => this.props.history.push('/category-page')}>
+              <div
+                onClick={() =>
+                  this.props.history.push('/category-page/realstate')
+                }
+              >
                 <InfoArea
                   title="Real Estate | Buy/Sell"
                   description=""
@@ -77,7 +89,11 @@ class ProductSection extends React.Component {
               </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div onClick={() => this.props.history.push('/category-page')}>
+              <div
+                onClick={() =>
+                  this.props.history.push('/category-page/art&culture')
+                }
+              >
                 >
                 <InfoArea
                   title="Art & Culture"
@@ -103,7 +119,9 @@ class ProductSection extends React.Component {
               </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div onClick={() => this.props.history.push('/category-page')}>
+              <div
+                onClick={() => this.props.history.push('/category-page/games')}
+              >
                 >
                 <InfoArea
                   title="Fun & Games"
@@ -115,7 +133,11 @@ class ProductSection extends React.Component {
               </div>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div onClick={() => this.props.history.push('/category-page')}>
+              <div
+                onClick={() =>
+                  this.props.history.push('/category-page/education')
+                }
+              >
                 >
                 <InfoArea
                   title="Education"

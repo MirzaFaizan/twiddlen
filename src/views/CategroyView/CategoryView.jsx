@@ -174,7 +174,7 @@ class CategoryView extends React.Component {
 
     this.onUpdateUser = this.onUpdateUser.bind(this);
 
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
   }
 
   onUpdateUser = event => {
@@ -305,7 +305,7 @@ class CategoryView extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
+  // console.log(props);
   return {
     products: state.products,
     user: state.user

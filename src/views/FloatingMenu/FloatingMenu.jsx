@@ -9,9 +9,9 @@ import MdClose from '@material-ui/icons/Clear';
 import MdFavorite from '@material-ui/icons/Favorite';
 
 const styles = {
-  position: 'absolute'
-  // bottom: 2,
-  // right: 2,
+  position: 'absolute',
+  bottom: 2,
+  right: 2
 };
 
 class FloatingMenuItem extends React.Component {
