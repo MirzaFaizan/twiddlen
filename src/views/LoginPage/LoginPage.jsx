@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
     };
     axios
       .post(
-        'http://twiddlen-api.herokuapp.com/api/login',
+        'http://twiddlen-api.herokuapp.com/user/login',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
@@ -109,20 +109,7 @@ class LoginPage extends React.Component {
     );
   }
   googleResponse = res => {
-    const tokenBlob = new Blob(
-      [JSON.stringify({ access_token: res.accessToken }, null, 2)],
-      { type: 'application/json' }
-    );
-    const options = {
-      method: 'POST',
-      body: tokenBlob
-    };
-    fetch('http://localhost:8000/api', options).then(r => {
-      // const token = r.headers.get('x-auth-token');
-      r.json().then(response => {
-        console.log(response);
-      });
-    });
+    console.log('We are here');
   };
 
   onFailure = error => {
