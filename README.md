@@ -13,5 +13,6 @@ user-signup integrated with API. Provide Credentials click register. if success 
 
 User Login integrated with API. Provide Credentials click login. if success redirect to Landing page. else stay on lohin pop-up page and displays response message in alert-box(not designed yet).
 
-
 admin Login integrated with API. Go to route admin-page Provide Credentials {email: admin@dmt.com, password: dmt1234}click login. if success redirect to admin dashboard. Displays response page in alert box.
+
+admin PostEvent integrated with API. Go to route admin-page, Log in, goto eventposting tab and fill the form. Displays response from API in alert box.

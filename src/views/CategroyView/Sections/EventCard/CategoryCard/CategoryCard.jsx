@@ -5,12 +5,10 @@ import Card from '@material-ui/core/Card';
 
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
-
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 
 import LocationOn from '@material-ui/icons/LocationOn';
 import Notification from '@material-ui/icons/Notifications';
@@ -20,7 +18,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const styles = {
   card: {
-    maxWidth: 'auto',
+    maxWidth: 200,
     maxHeight: 'auto',
     minWidth: 'auto',
     minHeight: 300
@@ -81,34 +79,41 @@ class ImgMediaCard extends React.Component {
       });
     }
   };
+
   render() {
     const { classes } = this.props;
     return (
       <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            alt={this.props.name}
-            className={classes.media}
-            height="255"
-            image={this.props.image}
-            title={this.props.name}
-          />
-        </CardActionArea>
+        <CardMedia
+          component="img"
+          alt={this.props.name}
+          className={classes.media}
+          height="200"
+          image={this.props.image}
+          title={this.props.name}
+        />
         <CardContent className={classes.cardContent}>
           <div>
             <Grid container spacing={8} justify="space-evenly">
-              <Grid item xs={3} sm={3} md={4}>
-                <Typography variant="body2" component="h2" color="textPrimary">
+              <Grid item xs={4} sm={3} md={4}>
+                <Typography
+                  variant="caption"
+                  component="h2"
+                  color="textPrimary"
+                >
                   <strong>{this.props.name}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={3} sm={3} md={3}>
-                <Typography variant="body2" component="h2" color="textPrimary">
+              <Grid item xs={4} sm={3} md={3}>
+                <Typography
+                  variant="caption"
+                  component="h2"
+                  color="textPrimary"
+                >
                   <strong>{this.props.city}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={6} sm={6} md={4}>
+              <Grid item xs={4} sm={6} md={5}>
                 <div style={{ marginTop: '-10%' }}>
                   <Grid
                     container
@@ -192,30 +197,22 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Hidden xsDown>
-                <Grid item xs={12}>
-                  <div style={{ marginTop: '-3%' }}>
-                    <Typography
-                      variant="body2"
-                      component="h5"
-                      color="textPrimary"
-                    >
-                      <b>Description</b>
-                    </Typography>
-                  </div>
-                </Grid>
-                <Grid item xs={12}>
-                  <div style={{ marginTop: '-2%' }}>
-                    <Typography
-                      variant="caption"
-                      component="p"
-                      color="textPrimary"
-                    >
-                      {this.props.description}
-                    </Typography>
-                  </div>
-                </Grid>
-              </Hidden>
+              {/* <Hidden xsDown>
+            <Grid item xs={12}>
+            <div style={{marginTop:'-3%'}}>
+            <Typography variant="body2" component="h5" color='textPrimary'>
+             <b>Description</b>
+            </Typography>
+            </div>
+            </Grid>
+            <Grid item xs={12}>
+            <div style={{marginTop:'-2%'}}>
+            <Typography variant="caption" component="p" color="textPrimary">
+            {this.props.description}
+            </Typography>
+            </div>
+            </Grid>
+            </Hidden> */}
             </Grid>
           </div>
         </CardContent>

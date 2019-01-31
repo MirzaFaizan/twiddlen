@@ -10,13 +10,16 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 
 import LocationOn from '@material-ui/icons/LocationOn';
 import Notification from '@material-ui/icons/Notifications';
 import Favorite from '@material-ui/icons/Favorite';
 
-import IconButton from '@material-ui/core/IconButton';
+import Button from 'components/CustomButtons/Button.jsx';
+// import IconButton from '@material-ui/core/IconButton'
+
+import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
 
 const styles = {
   card: {
@@ -40,44 +43,44 @@ class ImgMediaCard extends React.Component {
     super(props);
 
     this.state = {
-      locationSub: 'default',
-      notificationSub: 'default',
-      heartSub: 'default'
+      locationSub: 'transparent',
+      notificationSub: 'transparent',
+      heartSub: 'transparent'
     };
   }
 
   locationSub = () => {
-    if (this.state.locationSub === 'default') {
+    if (this.state.locationSub === 'transparent') {
       this.setState({
-        locationSub: 'primary'
+        locationSub: 'warning'
       });
     } else {
       this.setState({
-        locationSub: 'default'
+        locationSub: 'transparent'
       });
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'default') {
+    if (this.state.notificationSub === 'transparent') {
       this.setState({
-        notificationSub: 'primary'
+        notificationSub: 'warning'
       });
     } else {
       this.setState({
-        notificationSub: 'default'
+        notificationSub: 'transparent'
       });
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'default') {
+    if (this.state.heartSub === 'transparent') {
       this.setState({
-        heartSub: 'primary'
+        heartSub: 'warning'
       });
     } else {
       this.setState({
-        heartSub: 'default'
+        heartSub: 'transparent'
       });
     }
   };
@@ -103,7 +106,7 @@ class ImgMediaCard extends React.Component {
                   <strong>{this.props.name}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={3} sm={3} md={3}>
+              <Grid item xs={3} sm={3} md={4}>
                 <Typography variant="body2" component="h2" color="textPrimary">
                   <strong>{this.props.city}</strong>
                 </Typography>
@@ -115,32 +118,34 @@ class ImgMediaCard extends React.Component {
                     direction="row"
                     justify="flex-end"
                     alignItems="flex-start"
-                    spacing={0}
+                    spacing={16}
                   >
                     <Grid item xs={4}>
-                      <IconButton
+                      <Button
                         color={this.state.locationSub}
-                        disableRipple={true}
                         onClick={() => this.locationSub()}
+                        justIcon
                       >
                         <LocationOn />
-                      </IconButton>
+                      </Button>
                     </Grid>
                     <Grid item xs={4}>
-                      <IconButton
+                      <Button
                         color={this.state.notificationSub}
                         onClick={() => this.notificationSub()}
+                        justIcon
                       >
                         <Notification />
-                      </IconButton>
+                      </Button>
                     </Grid>
                     <Grid item xs={4}>
-                      <IconButton
+                      <Button
                         color={this.state.heartSub}
                         onClick={() => this.heartSub()}
+                        justIcon
                       >
-                        <Favorite />
-                      </IconButton>
+                        <Favorite fontSize="small" />
+                      </Button>
                     </Grid>
                   </Grid>
                 </div>
@@ -192,30 +197,29 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Hidden xsDown>
-                <Grid item xs={12}>
-                  <div style={{ marginTop: '-3%' }}>
-                    <Typography
+              <Grid item xs={12}>
+                <div>
+                  <ExpandedCard />
+                  {/* <Typography
                       variant="body2"
                       component="h5"
                       color="textPrimary"
                     >
                       <b>Description</b>
-                    </Typography>
-                  </div>
-                </Grid>
-                <Grid item xs={12}>
-                  <div style={{ marginTop: '-2%' }}>
-                    <Typography
+                    </Typography> */}
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <div style={{ marginTop: '-2%' }}>
+                  {/* <Typography
                       variant="caption"
                       component="p"
                       color="textPrimary"
                     >
                       {this.props.description}
-                    </Typography>
-                  </div>
-                </Grid>
-              </Hidden>
+                    </Typography> */}
+                </div>
+              </Grid>
             </Grid>
           </div>
         </CardContent>

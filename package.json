@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "3d-react-carousal": "^2.0.1",
-    "@material-ui/core": "^3.1.1",
+    "@material-ui/core": "^3.9.1",
     "@material-ui/icons": "3.0.1",
     "ajv": "5.0.0",
     "axios": "^0.18.0",
@@ -31,6 +31,8 @@
     "react-datetime": "2.15.0",
     "react-dom": "16.5.2",
     "react-dropzone": "^8.0.3",
+    "react-facebook-login": "^4.1.1",
+    "react-floating-button-menu": "^2.0.1",
     "react-geolocated": "^2.4.0",
     "react-geolocation": "^1.0.4",
     "react-google-location": "^1.2.2",

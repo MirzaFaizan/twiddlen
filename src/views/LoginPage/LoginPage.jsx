@@ -20,7 +20,9 @@ import CardFooter from 'components/Card/CardFooter.jsx';
 import CustomInput from 'components/CustomInput/CustomInput.jsx';
 import axios from 'axios';
 import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
-//import  GoogleLogin from 'react-google-login';
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+
 //import image2 from "assets/img/bg7.jpg";
 import image2 from 'assets/img/twiddlen-bg-final.jpg';
 
@@ -109,9 +111,72 @@ class LoginPage extends React.Component {
     );
   }
   googleResponse = res => {
-    console.log('We are here');
+    if (!res.w3.U3) {
+      alert('Can not authenticte your google account');
+    }
+    const data = {
+      name: res.w3.ig,
+      email: res.w3.U3,
+      provider_id: res.El,
+      provider_pic: res.w3.Paa
+    };
+    // const token= res.Zi.access_token;
+    // console.log(token);
+    axios
+      .post(
+        'http://twiddlen-api.herokuapp.com/user/googleAuth',
+        data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        JSON.stringify(res);
+        //Check if response reture suceess: true or false
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          //redirect to login component
+          console.log(res.data);
+          alert('Succesfully Logged in');
+          this.handleClose('modal');
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
   };
-
+  facebookResponse = res => {
+    if (!res.email) {
+      alert('Can not authenticte your facebook account');
+    }
+    let data = {
+      name: res.name,
+      email: res.email,
+      provider_id: res.id,
+      provider_pic: res.picture.data.url
+    };
+    //console.log(data);
+    axios
+      .post(
+        'http://twiddlen-api.herokuapp.com/user/facebookAuth',
+        data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        JSON.stringify(res);
+        //Check if response reture suceess: true or false
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          //redirect to login component
+          console.log(res.data);
+          alert('Succesfully Logged in');
+          this.handleClose('modal');
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
+  };
   onFailure = error => {
     alert(error);
   };
@@ -194,29 +259,38 @@ class LoginPage extends React.Component {
                             >
                               <i className={'fab fa-twitter'} />
                             </Button>
-                            <Button
-                              justIcon
-                              href="#pablo"
-                              target="_blank"
-                              color="transparent"
-                              onClick={e => e.preventDefault()}
-                            >
-                              <i className={'fab fa-facebook'} />
-                            </Button>
-                            {/* <Button
-                          justIcon
-                          target="_blank"
-                          color="transparent"
-                          onClick={() => this.googleAuthEvent()}
-                        >
-                          <i className={"fab fa-google-plus-g"} />
-                        </Button> */}
-                            {/* <GoogleLogin
-                        clientId={'213753292951-6nqr2q7p0n69sd4a29bvoch2gggedom8.apps.googleusercontent.com'}
-                        //buttonText="Login"
-                        onSuccess={this.googleResponse}
-                        onFailure={this.onFailure}
-                    /> */}
+
+                            {
+                              <FacebookLogin
+                                appId="1693021777466367"
+                                autoLoad={false}
+                                render={renderProps => (
+                                  <i
+                                    onClick={renderProps.onClick}
+                                    className={'fab fa-facebook'}
+                                  />
+                                )}
+                                fields="name,email,picture"
+                                callback={this.facebookResponse}
+                              />
+                            }
+
+                            {
+                              <GoogleLogin
+                                clientId={
+                                  '213753292951-6nqr2q7p0n69sd4a29bvoch2gggedom8.apps.googleusercontent.com'
+                                }
+                                render={renderProps => (
+                                  <i
+                                    style={{ margin: '5%' }}
+                                    onClick={renderProps.onClick}
+                                    className={'fab fa-google-plus-g'}
+                                  />
+                                )}
+                                onSuccess={this.googleResponse}
+                                onFailure={this.onFailure}
+                              />
+                            }
                           </div>
                         </CardHeader>
                         <p className={classes.divider}>Or Be Classical</p>
@@ -228,7 +302,6 @@ class LoginPage extends React.Component {
                           fullWidth: true
                         }}
                         inputProps={{
-                          
                           type: "text",
                           endAdornment: (
                             <InputAdornment position="end">

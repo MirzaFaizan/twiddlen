@@ -34,7 +34,7 @@ const store = createStore(
 var hist = createBrowserHistory();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store} history={hist}>
     <Router history={hist}>
       <Switch>
         {indexRoutes.map((prop, key) => {
