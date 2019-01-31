@@ -27,6 +27,10 @@ import Typography from '@material-ui/core/Typography';
 import { Carousel } from '3d-react-carousal';
 import Slider from 'react-slick';
 
+import Fade from '@material-ui/core/Fade';
+
+import Slide from '@material-ui/core/Slide';
+
 var settings = {
   dots: true,
   focusOnSelect: true,
@@ -246,21 +250,19 @@ class LandingPage extends React.Component {
             alignItems="center"
           >
             <Grid item xs={12}>
-              <SearchBar />
+              <Slide
+                direction="down"
+                timeout={1000}
+                in={true}
+                mountOnEnter
+                unmountOnExit
+              >
+                <SearchBar />
+              </Slide>
             </Grid>
           </Grid>
         </div>
         <div>
-          {/* <GridContainer
-            style={divText}
-            spacing={8}
-            className={classes.container}
-          >
-            <GridItem style={divText} xs={12} sm={12} md={6}>
-              
-            </GridItem>
-          </GridContainer> */}
-
           <div style={{ backgroundColor: 'lightgrey', padding: 12 }}>
             <Grid container spacing={24} direction="column">
               <Grid item xs={12}>
@@ -277,25 +279,27 @@ class LandingPage extends React.Component {
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Grid container spacing={0} justify="center">
-                  <Grid item xs={12} sm={12} md={8} lg={5}>
-                    <Carousel
-                      slides={Object.values(eventsData).map((type, key) => {
-                        return (
-                          <Grid item xs={12}>
-                            <EventCard
-                              key={key}
-                              image={type.image}
-                              name={type.name}
-                              city={type.city}
-                              organizerName={type.organizerName}
-                              timeAndDate={type.timeAndDate}
-                              description={type.description}
-                            />
-                          </Grid>
-                        );
-                      })}
-                    />
-                  </Grid>
+                  <Fade in={true} timeout={0}>
+                    <Grid item xs={12} sm={12} md={8} lg={5}>
+                      <Carousel
+                        slides={Object.values(eventsData).map((type, key) => {
+                          return (
+                            <Grid item xs={12}>
+                              <EventCard
+                                key={key}
+                                image={type.image}
+                                name={type.name}
+                                city={type.city}
+                                organizerName={type.organizerName}
+                                timeAndDate={type.timeAndDate}
+                                description={type.description}
+                              />
+                            </Grid>
+                          );
+                        })}
+                      />
+                    </Grid>
+                  </Fade>
                 </Grid>
               </Grid>
 
@@ -316,22 +320,24 @@ class LandingPage extends React.Component {
                     <Slider {...settings}>
                       {Object.values(eventsData).map((type, key) => {
                         return (
-                          <div className={classes.container} key={key}>
-                            <EventCard2
-                              image={type.image}
-                              name={type.name}
-                              city={type.city}
-                              organizerName={type.organizerName}
-                              timeAndDate={type.timeAndDate}
-                              description={type.description}
-                            />
-                            <div
-                              style={{
-                                paddingTop: '10%',
-                                paddingBottom: '10%'
-                              }}
-                            />
-                          </div>
+                          <Fade in={true} timeout={10000} key={key}>
+                            <div className={classes.container}>
+                              <EventCard2
+                                image={type.image}
+                                name={type.name}
+                                city={type.city}
+                                organizerName={type.organizerName}
+                                timeAndDate={type.timeAndDate}
+                                description={type.description}
+                              />
+                              <div
+                                style={{
+                                  paddingTop: '10%',
+                                  paddingBottom: '10%'
+                                }}
+                              />
+                            </div>
+                          </Fade>
                         );
                       })}
                     </Slider>
@@ -356,22 +362,24 @@ class LandingPage extends React.Component {
                     <Slider {...settings}>
                       {Object.values(eventsData).map((type, key) => {
                         return (
-                          <div className={classes.container} key={key}>
-                            <EventCard2
-                              image={type.image}
-                              name={type.name}
-                              city={type.city}
-                              organizerName={type.organizerName}
-                              timeAndDate={type.timeAndDate}
-                              description={type.description}
-                            />
-                            <div
-                              style={{
-                                paddingTop: '10%',
-                                paddingBottom: '10%'
-                              }}
-                            />
-                          </div>
+                          <Fade in={true} timeout={15000} key={key}>
+                            <div className={classes.container}>
+                              <EventCard2
+                                image={type.image}
+                                name={type.name}
+                                city={type.city}
+                                organizerName={type.organizerName}
+                                timeAndDate={type.timeAndDate}
+                                description={type.description}
+                              />
+                              <div
+                                style={{
+                                  paddingTop: '10%',
+                                  paddingBottom: '10%'
+                                }}
+                              />
+                            </div>
+                          </Fade>
                         );
                       })}
                     </Slider>

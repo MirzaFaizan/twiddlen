@@ -6,9 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
-// import { Redirect } from 'react-router';
+
 import { connect } from 'react-redux';
-// import AdminPage from './AdminPage.jsx'
 
 import { updateAdmin } from '../../actions/admin-action.js';
 import { bindActionCreators } from 'redux';
@@ -78,10 +77,6 @@ class AdminLogin extends React.Component {
       top: '50%',
       transform: 'translate(-50%, -50%)'
     };
-
-    // if(this.state.redirect){
-    //     return (<Redirect to='/admin-page' Component={AdminPage}/>)
-    // }
     return (
       <Grid
         style={itemsAlign}

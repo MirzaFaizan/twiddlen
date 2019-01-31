@@ -25,7 +25,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
-import EventCard2 from './Sections/EventCard/EventCard.jsx';
+import EventCard from './Sections/EventCard/EventCard.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -258,7 +258,7 @@ class CategoryView extends React.Component {
                 if (type.categoryName === this.props.match.params.id) {
                   return (
                     <Grid item xs={12} md={3} key={key}>
-                      <EventCard2
+                      <EventCard
                         image={type.image}
                         name={type.name}
                         city={type.city}

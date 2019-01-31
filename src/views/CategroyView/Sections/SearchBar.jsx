@@ -4,9 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
-// import GpsFixed from '@material-ui/icons/GpsFixed';
-
-// import GetLocation from './GetLocation.jsx';
 
 const styles = {
   root: {
@@ -58,10 +55,6 @@ class CustomizedInputBase extends React.Component {
     return (
       <Paper className={classes.root} elevation={1}>
         <InputBase className={classes.input} placeholder="Search Events" />
-        {/* <IconButton className={classes.iconButton} aria-label="Directions" onClick={()=>console.log('Directions')}>
-        <GpsFixed />
-      </IconButton> */}
-        {/*<Divider className={classes.divider} />*/}
         <IconButton
           className={classes.iconButton2}
           aria-label="Search"
