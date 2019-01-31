@@ -29,7 +29,7 @@ import EventCard2 from './Sections/EventCard/EventCard.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import FloatingMenu from '../FloatingMenu/FloatingMenu.jsx';
+// import FloatingMenu from '../FloatingMenu/FloatingMenu.jsx';
 
 // import Fab from '@material-ui/core/Fab';
 
@@ -207,11 +207,11 @@ class CategoryView extends React.Component {
       color: 'white'
     };
 
-    const styles = {
-      position: 'absolute',
-      bottom: 100,
-      right: 100
-    };
+    // const styles = {
+    //   position: 'absolute',
+    //   bottom: 100,
+    //   right: 100
+    // };
 
     return (
       <div>
@@ -282,9 +282,9 @@ class CategoryView extends React.Component {
                   alignContent="flex-end"
                   alignItems="flex-end"
                 >
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <FloatingMenu style={{ styles }} />
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
             </Grid>
