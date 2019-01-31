@@ -83,7 +83,7 @@ class LandingPage extends React.Component {
           fixed
           changeColorOnScroll={{
             height: 400,
-            color: 'black',
+            color: 'dark',
             brand: '2'
           }}
           {...rest}
@@ -112,7 +112,6 @@ class LandingPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
   return {
     products: state.products,
     user: state.user
@@ -120,7 +119,6 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapActionsToProps = (dispatch, props) => {
-  console.log(props);
   return bindActionCreators(
     {
       onUpdateUser: updateUser

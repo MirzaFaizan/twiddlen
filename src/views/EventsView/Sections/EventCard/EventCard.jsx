@@ -40,44 +40,44 @@ class ImgMediaCard extends React.Component {
     super(props);
 
     this.state = {
-      locationSub: 'default',
-      notificationSub: 'default',
-      heartSub: 'default'
+      locationSub: 'grey',
+      notificationSub: 'grey',
+      heartSub: 'grey'
     };
   }
 
   locationSub = () => {
-    if (this.state.locationSub === 'default') {
+    if (this.state.locationSub === 'grey') {
       this.setState({
-        locationSub: 'primary'
+        locationSub: 'orange'
       });
     } else {
       this.setState({
-        locationSub: 'default'
+        locationSub: 'grey'
       });
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'default') {
+    if (this.state.notificationSub === 'grey') {
       this.setState({
-        notificationSub: 'primary'
+        notificationSub: 'orange'
       });
     } else {
       this.setState({
-        notificationSub: 'default'
+        notificationSub: 'grey'
       });
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'default') {
+    if (this.state.heartSub === 'grey') {
       this.setState({
-        heartSub: 'primary'
+        heartSub: 'orange'
       });
     } else {
       this.setState({
-        heartSub: 'default'
+        heartSub: 'grey'
       });
     }
   };
@@ -119,25 +119,28 @@ class ImgMediaCard extends React.Component {
                   >
                     <Grid item xs={4}>
                       <IconButton
-                        color={this.state.locationSub}
+                        //color={this.state.locationSub}
                         disableRipple={true}
                         onClick={() => this.locationSub()}
+                        style={{ color: this.state.locationSub }}
                       >
                         <LocationOn />
                       </IconButton>
                     </Grid>
                     <Grid item xs={4}>
                       <IconButton
-                        color={this.state.notificationSub}
+                        //color={this.state.notificationSub}
                         onClick={() => this.notificationSub()}
+                        style={{ color: this.state.notificationSub }}
                       >
                         <Notification />
                       </IconButton>
                     </Grid>
                     <Grid item xs={4}>
                       <IconButton
-                        color={this.state.heartSub}
+                        //color={this.state.heartSub}
                         onClick={() => this.heartSub()}
+                        style={{ color: this.state.heartSub }}
                       >
                         <Favorite />
                       </IconButton>

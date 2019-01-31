@@ -186,7 +186,7 @@ class CategoryView extends React.Component {
 
     const divBackground = {
       backgroundImage: `url(http://wallpapers.ae/wp-content/uploads/2015/10/New-year-events-wallpaper.jpg)`,
-      height: '500px',
+      height: '40vh',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
@@ -212,15 +212,6 @@ class CategoryView extends React.Component {
       bottom: 100,
       right: 100
     };
-
-    // const divaText = {
-    //   textAlign: 'center',
-    //   position: 'absolute',
-    //   top: '50%',
-    //   left: '50%',
-    //   transform: 'translate(-50%, -50%)',
-    //   color: 'white'
-    // }
 
     return (
       <div>

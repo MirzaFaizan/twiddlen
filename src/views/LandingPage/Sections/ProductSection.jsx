@@ -94,7 +94,6 @@ class ProductSection extends React.Component {
                   this.props.history.push('/category-page/art&culture')
                 }
               >
-                >
                 <InfoArea
                   title="Art & Culture"
                   description=""
@@ -108,7 +107,6 @@ class ProductSection extends React.Component {
               <div
                 onClick={() => this.props.history.push('/category-page/sports')}
               >
-                >
                 <InfoArea
                   title="Sports"
                   description=""
@@ -122,7 +120,6 @@ class ProductSection extends React.Component {
               <div
                 onClick={() => this.props.history.push('/category-page/games')}
               >
-                >
                 <InfoArea
                   title="Fun & Games"
                   description=""
@@ -138,7 +135,6 @@ class ProductSection extends React.Component {
                   this.props.history.push('/category-page/education')
                 }
               >
-                >
                 <InfoArea
                   title="Education"
                   description=""

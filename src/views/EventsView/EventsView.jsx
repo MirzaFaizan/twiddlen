@@ -8,18 +8,12 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
 import Header from 'components/Header/Header.jsx';
-//import Footer from "components/Footer/Footer.jsx";
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
-// Sections for this page
 
-//import TeamSection from "./Sections/TeamSection.jsx";
-//import WorkSection from "./Sections/WorkSection.jsx";
+// Sections for this page
 import SearchBar from './Sections/SearchBar.jsx';
-//import EventsSection from "./Sections/EventsSection.jsx";
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -76,6 +70,7 @@ var settings = {
     }
   ]
 };
+
 const dashboardRoutes = [];
 const eventsData = {
   event1: {
@@ -193,19 +188,27 @@ class LandingPage extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
 
+    var min = 1;
+    var max = 5;
+    var rand = min + Math.floor(Math.random() * (max - min));
+
+    // console.log(rand)
+    let images = [
+      'http://361degreeevents.com/wp-content/uploads/2016/04/event3.jpg',
+      'https://www.fourthwallevents.com/wp-content/uploads/2016/12/SetWidth1920-A-championship-event10.jpg',
+      'https://www.gevme.com/blog/wp-content/uploads/2016/12/wsi-imageoptim-event-photographer-reportage-documentary-photography-westfest-2012_21-1.jpg',
+      'https://i2.wp.com/somethingdifferentcompanies.com/wp-content/uploads/2016/06/event-image.jpeg',
+      'https://www.eventcombo.com/Images/ECImages/3414eb64-1a48-415a-915d-4823abc68fca.jpg'
+    ];
+    let choosenImage = images[rand];
+
     const divBackground = {
-      backgroundImage: `url(http://wallpapers.ae/wp-content/uploads/2015/10/New-year-events-wallpaper.jpg)`,
-      height: '500px',
+      backgroundImage: `url(${choosenImage})`,
+      height: '40vh',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       position: 'relative'
-
-      // borderLeft: '150px solid transparent',
-      // borderRight: '150px solid transparent',
-      // borderTop:'100px solid transparent'
-      // width: 0,
-      // height: 0,
     };
     const divText = {
       textAlign: 'center',
@@ -215,15 +218,6 @@ class LandingPage extends React.Component {
       transform: 'translate(-50%, -50%)',
       color: 'white'
     };
-
-    // const divaText = {
-    //   textAlign: 'center',
-    //   position: 'absolute',
-    //   top: '50%',
-    //   left: '50%',
-    //   transform: 'translate(-50%, -50%)',
-    //   color: 'white'
-    // }
 
     return (
       <div>
@@ -242,17 +236,31 @@ class LandingPage extends React.Component {
         />
 
         <div style={divBackground}>
-          <GridContainer
+          <Grid
+            style={divText}
+            container
+            spacing={0}
+            direction="column"
+            justify="center"
+            alignContent="center"
+            alignItems="center"
+          >
+            <Grid item xs={12}>
+              <SearchBar />
+            </Grid>
+          </Grid>
+        </div>
+        <div>
+          {/* <GridContainer
             style={divText}
             spacing={8}
             className={classes.container}
           >
             <GridItem style={divText} xs={12} sm={12} md={6}>
-              <SearchBar />
+              
             </GridItem>
-          </GridContainer>
-        </div>
-        <div>
+          </GridContainer> */}
+
           <div style={{ backgroundColor: 'lightgrey', padding: 12 }}>
             <Grid container spacing={24} direction="column">
               <Grid item xs={12}>
@@ -262,7 +270,7 @@ class LandingPage extends React.Component {
                   gutterBottom={true}
                   align="center"
                 >
-                  <div style={{ paddingTop: '3%' }}>
+                  <div style={{ paddingTop: '1%' }}>
                     <strong>Events Happening Today</strong>
                   </div>
                 </Typography>
