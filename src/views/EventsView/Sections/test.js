@@ -7,14 +7,13 @@ import IconButton from '@material-ui/core/IconButton';
 // import GpsFixed from '@material-ui/icons/GpsFixed';
 
 // import GetLocation from './GetLocation.jsx';
-import SliderModal from './SliderModal.jsx';
 
 const styles = {
   root: {
     padding: '0px 0px 1px 0px',
     display: 'flex',
     alignItems: 'center',
-    width: 'auto',
+    width: '100%',
     borderRadius: '25px'
   },
   input: {
@@ -62,7 +61,6 @@ class CustomizedInputBase extends React.Component {
         {/* <IconButton className={classes.iconButton} aria-label="Directions" onClick={()=>console.log('Directions')}>
         <GpsFixed />
       </IconButton> */}
-        <SliderModal />
         {/*<Divider className={classes.divider} />*/}
         <IconButton
           className={classes.iconButton2}

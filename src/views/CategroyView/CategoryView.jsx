@@ -25,11 +25,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
-import EventCard2 from './Sections/EventCard/EventCard.jsx';
+import EventCard from './Sections/EventCard/EventCard.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import FloatingMenu from '../FloatingMenu/FloatingMenu.jsx';
+// import FloatingMenu from '../FloatingMenu/FloatingMenu.jsx';
 
 // import Fab from '@material-ui/core/Fab';
 
@@ -174,7 +174,7 @@ class CategoryView extends React.Component {
 
     this.onUpdateUser = this.onUpdateUser.bind(this);
 
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
   }
 
   onUpdateUser = event => {
@@ -186,7 +186,7 @@ class CategoryView extends React.Component {
 
     const divBackground = {
       backgroundImage: `url(http://wallpapers.ae/wp-content/uploads/2015/10/New-year-events-wallpaper.jpg)`,
-      height: '500px',
+      height: '40vh',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
@@ -207,20 +207,11 @@ class CategoryView extends React.Component {
       color: 'white'
     };
 
-    const styles = {
-      position: 'absolute',
-      bottom: 100,
-      right: 100
-    };
-
-    // const divaText = {
-    //   textAlign: 'center',
+    // const styles = {
     //   position: 'absolute',
-    //   top: '50%',
-    //   left: '50%',
-    //   transform: 'translate(-50%, -50%)',
-    //   color: 'white'
-    // }
+    //   bottom: 100,
+    //   right: 100
+    // };
 
     return (
       <div>
@@ -267,7 +258,7 @@ class CategoryView extends React.Component {
                 if (type.categoryName === this.props.match.params.id) {
                   return (
                     <Grid item xs={12} md={3} key={key}>
-                      <EventCard2
+                      <EventCard
                         image={type.image}
                         name={type.name}
                         city={type.city}
@@ -291,9 +282,9 @@ class CategoryView extends React.Component {
                   alignContent="flex-end"
                   alignItems="flex-end"
                 >
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <FloatingMenu style={{ styles }} />
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
             </Grid>
@@ -305,7 +296,7 @@ class CategoryView extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
+  // console.log(props);
   return {
     products: state.products,
     user: state.user

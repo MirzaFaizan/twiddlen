@@ -8,18 +8,17 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
 import Header from 'components/Header/Header.jsx';
-//import Footer from "components/Footer/Footer.jsx";
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 
+import Typography from '@material-ui/core/Typography';
+
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
 // Sections for this page
 import ProductSection from './Sections/ProductSection.jsx';
-//import TeamSection from "./Sections/TeamSection.jsx";
-//import WorkSection from "./Sections/WorkSection.jsx";
 import SearchBar from './Sections/SearchBar.jsx';
 //import EventsSection from "./Sections/EventsSection.jsx";
 import Notifications from 'react-notify-toast';
@@ -29,6 +28,8 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
 const dashboardRoutes = [];
+
+const dynamicImage = require('assets/img/twiddlen-bg-final.jpg');
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);
@@ -64,7 +65,7 @@ class LandingPage extends React.Component {
         />
 
         <Notifications options={{ zIndex: 200, top: '100px' }} />
-        <Parallax filter image={require('assets/img/twiddlen-bg-final.jpg')}>
+        <Parallax filter image={dynamicImage}>
           <div className={classes.container}>
             <GridContainer
               justify="center"
@@ -72,9 +73,14 @@ class LandingPage extends React.Component {
               direction="column"
             >
               <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classNames(classes.title)}>
+                <Typography
+                  variant="display1"
+                  component="div"
+                  align="center"
+                  color="inherit"
+                >
                   WE FIND EVENTS YOU DO THEM
-                </h1>
+                </Typography>
                 <h4 className={classes.subtitle}>
                   Enter Zip or Location for accurate nearby event search
                 </h4>
@@ -99,22 +105,15 @@ class LandingPage extends React.Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-            {/*
-            <ProductSection />
-            <TeamSection />
-            <WorkSection /> 
-          */}
             <ProductSection history={this.props.history} />
           </div>
         </div>
-        {/*<Footer />*/}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
   return {
     history: props.history,
     products: state.products,
@@ -123,7 +122,6 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapActionsToProps = (dispatch, props) => {
-  // console.log(props)
   return bindActionCreators(
     {
       onUpdateUser: updateUser

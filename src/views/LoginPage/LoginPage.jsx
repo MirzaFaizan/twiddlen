@@ -5,11 +5,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
 // @material-ui/icons
 import Email from '@material-ui/icons/Email';
-// import People from "@material-ui/icons/People";
-// core components
-//import Header from "components/Header/Header.jsx";
-//import HeaderLinks from "components/Header/HeaderLinks.jsx";
-//import Footer from "components/Footer/Footer.jsx";
+
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
@@ -23,7 +19,6 @@ import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
-//import image2 from "assets/img/bg7.jpg";
 import image2 from 'assets/img/twiddlen-bg-final.jpg';
 
 import Slide from '@material-ui/core/Slide';
@@ -184,191 +179,146 @@ class LoginPage extends React.Component {
   render() {
     const { classes } = this.props;
 
-    // const dialogSS={
-    //   width:"25%",
-    //   height:'100%',
-    //   alignSelf:"center"
-    // }
     return (
       <div>
-        {/*
-        <Header
-          absolute
+        <Button
           color="transparent"
-          brand="Material Kit React"
-          rightLinks={<HeaderLinks />}
-          {...rest}
-        />
-        */}
-        <div
-        //   className={classes.pageHeader}
-        //  style={{
-        //    backgroundImage: "url(" + image2 + ")",
-        //    backgroundSize: "cover",
-        //    backgroundPosition: "top center"
-        //   }}
+          simple
+          onClick={() => this.handleClickOpen('modal')}
         >
-          <Button
-            color="transparent"
-            simple
-            onClick={() => this.handleClickOpen('modal')}
-          >
-            Log IN
-          </Button>
-          <Dialog
-            //  style={{
-            //   backgroundImage: "url(" + image2 + ")",
-            //   backgroundSize: "cover",
-            //   backgroundPosition: "top center"
-            //  }}
-            classes={{
-              root: classes.center,
-              paper: classes.modal
-            }}
-            open={this.state.modal}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={() => this.handleClose('modal')}
-            aria-labelledby="modal-slide-title"
-            aria-describedby="modal-slide-description"
-          >
-            <div>
-              <DialogContent
-                style={{
-                  backgroundImage: 'url(' + image2 + ')',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'top center'
-                }}
-              >
-                <GridContainer justify="center">
-                  <GridItem xs={12} sm={10} md={8}>
-                    <Card className={classes[this.state.cardAnimaton]}>
-                      <form className={classes.form}>
-                        <CardHeader
-                          color="warning"
-                          className={classes.cardHeader}
-                        >
-                          <h4>Login</h4>
-                          <div className={classes.socialLine}>
-                            <Button
-                              justIcon
-                              href="#pablo"
-                              target="_blank"
-                              color="transparent"
-                              onClick={e => e.preventDefault()}
-                            >
-                              <i className={'fab fa-twitter'} />
-                            </Button>
-
-                            {
-                              <FacebookLogin
-                                appId="1693021777466367"
-                                autoLoad={false}
-                                render={renderProps => (
-                                  <i
-                                    onClick={renderProps.onClick}
-                                    className={'fab fa-facebook'}
-                                  />
-                                )}
-                                fields="name,email,picture"
-                                callback={this.facebookResponse}
-                              />
-                            }
-
-                            {
-                              <GoogleLogin
-                                clientId={
-                                  '213753292951-6nqr2q7p0n69sd4a29bvoch2gggedom8.apps.googleusercontent.com'
-                                }
-                                render={renderProps => (
-                                  <i
-                                    style={{ margin: '5%' }}
-                                    onClick={renderProps.onClick}
-                                    className={'fab fa-google-plus-g'}
-                                  />
-                                )}
-                                onSuccess={this.googleResponse}
-                                onFailure={this.onFailure}
-                              />
-                            }
-                          </div>
-                        </CardHeader>
-                        <p className={classes.divider}>Or Be Classical</p>
-                        <CardBody>
-                          {/* <CustomInput
-                        labelText="First Name..."
-                        id="first"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "text",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <People className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          )
-                        }}
-                      /> */}
-                          <CustomInput
-                            labelText="Email..."
-                            id="email"
-                            formControlProps={{
-                              fullWidth: true
-                            }}
-                            inputProps={{
-                              onChange: e => {
-                                this.handleEmailChange(e);
-                              },
-                              type: 'email',
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <Email className={classes.inputIconsColor} />
-                                </InputAdornment>
-                              )
-                            }}
-                          />
-                          <CustomInput
-                            labelText="Password"
-                            id="pass"
-                            formControlProps={{
-                              fullWidth: true
-                            }}
-                            inputProps={{
-                              onChange: e => {
-                                this.handlePasswordChange(e);
-                              },
-                              type: 'password',
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <Icon className={classes.inputIconsColor}>
-                                    lock_outline
-                                  </Icon>
-                                </InputAdornment>
-                              )
-                            }}
-                          />
-                        </CardBody>
-                        <CardFooter className={classes.cardFooter}>
+          Log IN
+        </Button>
+        <Dialog
+          classes={{
+            root: classes.center,
+            paper: classes.modal
+          }}
+          open={this.state.modal}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={() => this.handleClose('modal')}
+          aria-labelledby="modal-slide-title"
+          aria-describedby="modal-slide-description"
+        >
+          <div>
+            <DialogContent
+              style={{
+                backgroundImage: 'url(' + image2 + ')',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center'
+              }}
+            >
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={10} md={10}>
+                  <Card className={classes[this.state.cardAnimaton]}>
+                    <form className={classes.form}>
+                      <CardHeader
+                        color="warning"
+                        className={classes.cardHeader}
+                      >
+                        <h4>Login</h4>
+                        <div className={classes.socialLine}>
                           <Button
-                            simple
-                            color="primary"
-                            size="lg"
-                            onClick={() => this.loginHandleClick()}
+                            justIcon
+                            href="#pablo"
+                            target="_blank"
+                            color="transparent"
+                            onClick={e => e.preventDefault()}
                           >
-                            LOG IN
+                            <i className={'fab fa-twitter'} />
                           </Button>
-                        </CardFooter>
-                      </form>
-                    </Card>
-                  </GridItem>
-                </GridContainer>
-              </DialogContent>
-            </div>
-          </Dialog>
-          {/*</div>}
-          {/*<Footer whiteFont />*/}
-        </div>
+
+                          {
+                            <FacebookLogin
+                              appId="1693021777466367"
+                              autoLoad={false}
+                              render={renderProps => (
+                                <i
+                                  onClick={renderProps.onClick}
+                                  className={'fab fa-facebook'}
+                                />
+                              )}
+                              fields="name,email,picture"
+                              callback={this.facebookResponse}
+                            />
+                          }
+
+                          {
+                            <GoogleLogin
+                              clientId={
+                                '213753292951-6nqr2q7p0n69sd4a29bvoch2gggedom8.apps.googleusercontent.com'
+                              }
+                              render={renderProps => (
+                                <i
+                                  style={{ margin: '5%' }}
+                                  onClick={renderProps.onClick}
+                                  className={'fab fa-google-plus-g'}
+                                />
+                              )}
+                              onSuccess={this.googleResponse}
+                              onFailure={this.onFailure}
+                            />
+                          }
+                        </div>
+                      </CardHeader>
+                      <p className={classes.divider}>Or Be Classical</p>
+                      <CardBody>
+                        <CustomInput
+                          labelText="Email..."
+                          id="email"
+                          formControlProps={{
+                            fullWidth: true
+                          }}
+                          inputProps={{
+                            onChange: e => {
+                              this.handleEmailChange(e);
+                            },
+                            type: 'email',
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <Email className={classes.inputIconsColor} />
+                              </InputAdornment>
+                            )
+                          }}
+                        />
+                        <CustomInput
+                          labelText="Password"
+                          id="pass"
+                          formControlProps={{
+                            fullWidth: true
+                          }}
+                          inputProps={{
+                            onChange: e => {
+                              this.handlePasswordChange(e);
+                            },
+                            type: 'password',
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <Icon className={classes.inputIconsColor}>
+                                  lock_outline
+                                </Icon>
+                              </InputAdornment>
+                            )
+                          }}
+                        />
+                      </CardBody>
+                      <CardFooter className={classes.cardFooter}>
+                        <Button
+                          simple
+                          color="primary"
+                          size="lg"
+                          onClick={() => this.loginHandleClick()}
+                        >
+                          LOG IN
+                        </Button>
+                      </CardFooter>
+                    </form>
+                  </Card>
+                </GridItem>
+              </GridContainer>
+            </DialogContent>
+          </div>
+        </Dialog>
       </div>
     );
   }
