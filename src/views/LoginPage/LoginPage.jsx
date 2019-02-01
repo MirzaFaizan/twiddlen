@@ -68,7 +68,7 @@ class LoginPage extends React.Component {
     };
     axios
       .post(
-        'http://twiddlen-api.herokuapp.com/user/login',
+        'https://twiddlen-api.herokuapp.com/user/login',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
@@ -124,7 +124,7 @@ class LoginPage extends React.Component {
     // console.log(token);
     axios
       .post(
-        'http://twiddlen-api.herokuapp.com/user/googleAuth',
+        'https://twiddlen-api.herokuapp.com/user/googleAuth',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
@@ -157,7 +157,7 @@ class LoginPage extends React.Component {
     //console.log(data);
     axios
       .post(
-        'http://twiddlen-api.herokuapp.com/user/facebookAuth',
+        'https://twiddlen-api.herokuapp.com/user/facebookAuth',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
