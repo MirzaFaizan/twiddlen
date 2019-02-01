@@ -91,7 +91,7 @@ class LoginPage extends React.Component {
     console.log(data);
     axios
       .post(
-        'http://twiddlen-api.herokuapp.com/user/register',
+        'https://twiddlen-api.herokuapp.com/user/register',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )

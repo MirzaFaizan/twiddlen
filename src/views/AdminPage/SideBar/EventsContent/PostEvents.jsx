@@ -163,7 +163,7 @@ export default class ApprovedEvents extends React.Component {
     });
 
     axios
-      .post('http://twiddlen-api.herokuapp.com/admin/postEvent', formdata, {
+      .post('https://twiddlen-api.herokuapp.com/admin/postEvent', formdata, {
         headers: {
           //"Authorization" : `Bearer ${token}`
           'content-Type': 'multipart/form-data'

@@ -42,7 +42,7 @@ class AdminLogin extends React.Component {
     };
     axios
       .post(
-        'http://twiddlen-api.herokuapp.com/admin/adminlogin',
+        'https://twiddlen-api.herokuapp.com/admin/adminlogin',
         data
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
