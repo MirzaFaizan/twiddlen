@@ -261,13 +261,21 @@ class ResponsiveDialog extends React.Component {
                     <Grid item xs={4} md={3}>
                       <Chip
                         label={this.props.category[0]}
-                        style={{ backgroundColor: 'orange', color: 'white' }}
+                        style={{
+                          backgroundColor: 'orange',
+                          color: 'white',
+                          marginRight: 5
+                        }}
                       />
                     </Grid>
                     <Grid item xs={4} md={3}>
                       <Chip
                         label={this.props.category[1]}
-                        style={{ backgroundColor: 'orange', color: 'white' }}
+                        style={{
+                          backgroundColor: 'orange',
+                          color: 'white',
+                          marginRight: 5
+                        }}
                       />
                     </Grid>
                     <Grid item xs={4} md={3}>

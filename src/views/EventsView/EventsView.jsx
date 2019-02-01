@@ -33,7 +33,7 @@ import Slide from '@material-ui/core/Slide';
 
 var settings = {
   dots: true,
-  focusOnSelect: true,
+  //focusOnSelect: true,
   infinite: true,
   speed: 500,
   slidesToShow: 5,
