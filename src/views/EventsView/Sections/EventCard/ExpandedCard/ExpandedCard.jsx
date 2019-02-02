@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Button from 'components/CustomButtons/Button.jsx';
 import Dialog from '@material-ui/core/Dialog';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
@@ -56,7 +55,6 @@ class ResponsiveDialog extends React.Component {
   };
 
   render() {
-    // const { fullScreen } = this.props;
     const { classes } = this.props;
 
     return (
@@ -65,7 +63,6 @@ class ResponsiveDialog extends React.Component {
           Category Name
         </Button> */}
         <Dialog
-          // fullScreen={fullScreen}
           open={this.props.open}
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title"
@@ -88,7 +85,7 @@ class ResponsiveDialog extends React.Component {
                   </Grid>
                   <Grid item xs={12}>
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/2000px-Coca-Cola_logo.svg.png"
+                      src={this.props.sponsor}
                       alt="sponsor"
                       width="125"
                       height="75"
@@ -261,13 +258,21 @@ class ResponsiveDialog extends React.Component {
                     <Grid item xs={4} md={3}>
                       <Chip
                         label={this.props.category[0]}
-                        style={{ backgroundColor: 'orange', color: 'white' }}
+                        style={{
+                          backgroundColor: 'orange',
+                          color: 'white',
+                          marginRight: 5
+                        }}
                       />
                     </Grid>
                     <Grid item xs={4} md={3}>
                       <Chip
                         label={this.props.category[1]}
-                        style={{ backgroundColor: 'orange', color: 'white' }}
+                        style={{
+                          backgroundColor: 'orange',
+                          color: 'white',
+                          marginRight: 5
+                        }}
                       />
                     </Grid>
                     <Grid item xs={4} md={3}>

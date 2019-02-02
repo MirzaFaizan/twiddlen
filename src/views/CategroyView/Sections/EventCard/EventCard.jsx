@@ -126,8 +126,8 @@ class ImgMediaCard extends React.Component {
                   <Grid
                     container
                     direction="row"
-                    justify="flex-end"
-                    alignItems="flex-start"
+                    // justify="flex-end"
+                    // alignItems="flex-start"
                     spacing={16}
                   >
                     <Grid item xs={4}>
@@ -220,6 +220,7 @@ class ImgMediaCard extends React.Component {
                     seating="300"
                     price="$700"
                     category={['category1', 'category2']}
+                    sponsor={this.props.sponsor}
                   />
                 </div>
               </Grid>
