@@ -6,67 +6,38 @@ import Card from 'components/Card/Card.jsx';
 import CardHeader from 'components/Card/CardHeader.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 
-import Button from 'components/CustomButtons/Button.jsx';
-import Add from '@material-ui/icons/Add';
+import axios from 'axios';
 
-const data = {
-  data1: [
-    '1',
-    'dakota rice',
-    '36558',
-    'Niger',
-    'City',
-    'Location',
-    <Button justIcon round color="info" aria-label="Add">
-      <Add />
-    </Button>
-  ],
-  data2: [
-    '2',
-    'dakota rice',
-    '36558',
-    'Niger',
-    'City',
-    'Location',
-    <Button justIcon round color="info" aria-label="Add">
-      <Add />
-    </Button>
-  ],
-  data3: [
-    '3',
-    'dakota rice',
-    '36558',
-    'Niger',
-    'City',
-    'Location',
-    <Button justIcon round color="info" aria-label="Add">
-      <Add />
-    </Button>
-  ],
-  data4: [
-    '4',
-    'dakota rice',
-    '36558',
-    'Niger',
-    'City',
-    'Location',
-    <Button justIcon round color="info" aria-label="Add">
-      <Add />
-    </Button>
-  ],
-  data5: [
-    '5',
-    'New item',
-    '1234',
-    'islmd',
-    'pindi',
-    'saddar',
-    <Button justIcon round color="info" aria-label="Add">
-      <Add />
-    </Button>
-  ]
-};
 export default class ApprovedEvents extends React.Component {
+  componentDidMount() {
+    axios
+      .get(
+        'https://twiddlen-api.herokuapp.com/admin/approvedEvents'
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          //console.log(dat);
+          this.setState({
+            data: res.data.events
+          });
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+      //t:this.props.token,
+    };
+  }
+
   render() {
     return (
       <div>
@@ -80,16 +51,25 @@ export default class ApprovedEvents extends React.Component {
                 <Table
                   tableHeaderColor="info"
                   tableHead={[
-                    'ID',
                     'Name',
-                    'Salary',
-                    'Country',
-                    'City',
+                    'Description',
+                    'start-Date',
+                    'end-Date',
                     'Location',
-                    'Add'
+                    'City',
+                    'streetAddress'
                   ]}
-                  tableData={Object.values(data).map((type, key) => {
-                    return type;
+                  tableData={this.state.data.map(type => {
+                    //console.log(type);
+                    return [
+                      type.name,
+                      type.description,
+                      type.Date.startDate,
+                      type.Date.endDate,
+                      type.Address.locationAddress,
+                      type.Address.City,
+                      type.Address.streetAddress
+                    ];
                   })}
                 />
               </CardBody>

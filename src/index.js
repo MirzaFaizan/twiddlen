@@ -6,7 +6,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import indexRoutes from 'routes/index.jsx';
 
 import 'assets/scss/material-kit-react.css?v=1.3.0';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -53,4 +53,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-registerServiceWorker.register();
+//registerServiceWorker.register();
