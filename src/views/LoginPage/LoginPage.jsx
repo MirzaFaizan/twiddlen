@@ -5,7 +5,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
 // @material-ui/icons
 import Email from '@material-ui/icons/Email';
-
+// import People from "@material-ui/icons/People";
+// core components
+//import Header from "components/Header/Header.jsx";
+//import HeaderLinks from "components/Header/HeaderLinks.jsx";
+//import Footer from "components/Footer/Footer.jsx";
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
@@ -18,12 +22,15 @@ import axios from 'axios';
 import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import TwitterLogin from 'react-twitter-auth';
 
+//import image2 from "assets/img/bg7.jpg";
 import image2 from 'assets/img/twiddlen-bg-final.jpg';
 
 import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+//import color from '@material-ui/core/colors/yellow';
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -70,7 +77,7 @@ class LoginPage extends React.Component {
       .then(res => {
         JSON.stringify(res);
         console.log(res.data);
-        //Check if response reture suceess: true or false
+        //Check if response reture success: true or false
         if (res.data.success === false) {
           alert(res.data.message);
         } else {
@@ -117,6 +124,7 @@ class LoginPage extends React.Component {
     };
     // const token= res.Zi.access_token;
     // console.log(token);
+
     axios
       .post(
         'https://twiddlen-api.herokuapp.com/user/googleAuth',
@@ -130,7 +138,7 @@ class LoginPage extends React.Component {
           alert(res.data.message);
         } else {
           //redirect to login component
-          console.log(res.data);
+          //console.log(res.data);
           alert('Succesfully Logged in');
           this.handleClose('modal');
         }
@@ -172,10 +180,27 @@ class LoginPage extends React.Component {
         alert('Internal Server error, Server Resopnded with "' + error + '"');
       });
   };
-  onFailure = error => {
-    alert(error);
+
+  twitterResponse = res => {
+    if (!res.email) {
+      alert('Can not authenticte your twitter account');
+    }
+    // let data = {
+    //   name: res.name,
+    //   email: res.email,
+    //   provider_id: res.id,
+    //   provider_pic: res.picture.data.url
+    // };
   };
 
+  googleFailure = err => {
+    console.log(err);
+    alert('Can not authenticte your Google account');
+  };
+  twitterFailure = err => {
+    console.log(err);
+    alert('Can not authenticte your Twitter account');
+  };
   render() {
     const { classes } = this.props;
 
@@ -209,7 +234,7 @@ class LoginPage extends React.Component {
               }}
             >
               <GridContainer justify="center">
-                <GridItem xs={12} sm={10} md={10}>
+                <GridItem xs={12} sm={10} md={8}>
                   <Card className={classes[this.state.cardAnimaton]}>
                     <form className={classes.form}>
                       <CardHeader
@@ -218,22 +243,24 @@ class LoginPage extends React.Component {
                       >
                         <h4>Login</h4>
                         <div className={classes.socialLine}>
-                          <Button
-                            justIcon
-                            href="#pablo"
-                            target="_blank"
-                            color="transparent"
-                            onClick={e => e.preventDefault()}
-                          >
-                            <i className={'fab fa-twitter'} />
-                          </Button>
-
+                          <TwitterLogin
+                            loginUrl="http://localhost:3000"
+                            onFailure={this.twitterFailure}
+                            onSuccess={this.twitterResponse}
+                            requestTokenUrl="http://localhost:4000/api/v1/auth/twitter/reverse"
+                            tag="icon"
+                            showIcon={false}
+                            style={{ margin: '3.5%' }}
+                            text=""
+                            className="fab fa-twitter"
+                          />
                           {
                             <FacebookLogin
                               appId="1693021777466367"
                               autoLoad={false}
                               render={renderProps => (
                                 <i
+                                  style={{ margin: '3.5%' }}
                                   onClick={renderProps.onClick}
                                   className={'fab fa-facebook'}
                                 />
@@ -250,13 +277,13 @@ class LoginPage extends React.Component {
                               }
                               render={renderProps => (
                                 <i
-                                  style={{ margin: '5%' }}
+                                  style={{ margin: '3.5%' }}
                                   onClick={renderProps.onClick}
                                   className={'fab fa-google-plus-g'}
                                 />
                               )}
                               onSuccess={this.googleResponse}
-                              onFailure={this.onFailure}
+                              onFailure={this.googleFailure}
                             />
                           }
                         </div>
@@ -319,7 +346,10 @@ class LoginPage extends React.Component {
             </DialogContent>
           </div>
         </Dialog>
+        {/*</div>}
+          {/*<Footer whiteFont />*/}
       </div>
+      // </div>
     );
   }
 }
