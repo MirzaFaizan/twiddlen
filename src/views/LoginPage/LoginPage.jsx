@@ -248,7 +248,7 @@ class LoginPage extends React.Component {
                             loginUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter"
                             onFailure={this.twitterFailure}
                             onSuccess={this.twitterResponse}
-                            //requestTokenUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter/reverse"
+                            requestTokenUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter/reverse"
                             tag="icon"
                             showIcon={false}
                             style={{ margin: '3.5%' }}
