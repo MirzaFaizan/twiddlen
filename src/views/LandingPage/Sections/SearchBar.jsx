@@ -14,69 +14,92 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     width: 'auto',
-    borderRadius:'25px'
+    borderRadius: '25px'
   },
   input: {
     marginLeft: 20,
-    flex: 1,
+    flex: 1
   },
   iconButton2: {
     padding: 12,
-    backgroundColor:'orange',
-    fontSize:'1rem'
+    backgroundColor: 'orange',
+    fontSize: '1rem'
   },
   iconButton: {
     padding: 10,
-    fontSize:'1rem',
-    color:"orange" 
+    fontSize: '1rem',
+    color: 'orange'
   },
   divider: {
     width: 1,
     height: 28,
-    margin: 4,
-  },
+    margin: 4
+  }
 };
 
+class CustomizedInputBase extends React.Component {
+  constructor(props) {
+    super(props);
 
-
-
-class CustomizedInputBase extends React.Component  {
-
-
-  componentDidUpdate() {
-    console.log(this.LATITUDE)
+    this.state = {
+      searchValue: ''
+    };
   }
-  render () {
+
+  searchValueChange = e => {
+    this.setState({
+      searchValue: e.target.value
+    });
+    console.log(this.state.searchValue);
+  };
+
+  render() {
     const { classes } = this.props;
     var LATITUDE = 0;
     var LONGITUDE = 0;
-  return (
-    <Paper className={classes.root} elevation={1}>
-      <InputBase className={classes.input} placeholder="ZIP / LOCATION" />
-          <Geolocation 
-             lazy 
-              render={({getCurrentPosition, fetchingPosition,position: { coords: { latitude, longitude } = {} } = {}}) => (
-                <div>
-                    <IconButton className={classes.iconButton} aria-label="Directions" onClick={getCurrentPosition}>
-                    <GpsFixed />
-                    <Hidden xlDown>
-                    {LATITUDE = latitude}
-                    {LONGITUDE = longitude}
-                    </Hidden>
-                  </IconButton>
-                </div>
-                    )}
-          /> 
-      <IconButton className={classes.iconButton2} aria-label="Search" onClick={()=>console.log({LATITUDE,LONGITUDE})}>
-        GO
-      </IconButton>
-    </Paper>
-  );
-}
+    return (
+      <Paper className={classes.root} elevation={1}>
+        <InputBase
+          className={classes.input}
+          placeholder="ZIP / LOCATION"
+          onChange={e => this.searchValueChange(e)}
+        />
+        <Geolocation
+          lazy
+          render={({
+            getCurrentPosition,
+            fetchingPosition,
+            position: { coords: { latitude, longitude } = {} } = {}
+          }) => (
+            <div>
+              <IconButton
+                className={classes.iconButton}
+                aria-label="Directions"
+                onClick={getCurrentPosition}
+              >
+                <GpsFixed />
+                <Hidden xlDown>
+                  {(LATITUDE = latitude)}
+                  {(LONGITUDE = longitude)}
+                </Hidden>
+              </IconButton>
+            </div>
+          )}
+        />
+        <IconButton
+          className={classes.iconButton2}
+          aria-label="Search"
+          onClick={() => console.log({ LATITUDE, LONGITUDE })}
+        >
+          GO
+        </IconButton>
+      </Paper>
+    );
+  }
 }
 
 CustomizedInputBase.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(CustomizedInputBase);

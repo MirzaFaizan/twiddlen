@@ -42,15 +42,16 @@ class CustomizedInputBase extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getInnerRef = this.getInnerRef.bind(this);
-    this.getLocation = this.getLocation.bind(this);
+    this.state = {
+      searchValue: ''
+    };
   }
-  getInnerRef = ref => {
-    this.innerRef = ref;
-  };
 
-  getLocation = () => {
-    this.innerRef && this.innerRef.getLocation();
+  searchValueChange = e => {
+    this.setState({
+      searchValue: e.target.value
+    });
+    console.log(this.state.searchValue);
   };
 
   render() {
@@ -58,12 +59,12 @@ class CustomizedInputBase extends React.Component {
 
     return (
       <Paper className={classes.root} elevation={1}>
-        <InputBase className={classes.input} placeholder="Search Events" />
-        {/* <IconButton className={classes.iconButton} aria-label="Directions" onClick={()=>console.log('Directions')}>
-        <GpsFixed />
-      </IconButton> */}
+        <InputBase
+          className={classes.input}
+          placeholder="Search Events"
+          onChange={e => this.searchValueChange(e)}
+        />
         <SliderModal />
-        {/*<Divider className={classes.divider} />*/}
         <IconButton
           className={classes.iconButton2}
           aria-label="Search"
