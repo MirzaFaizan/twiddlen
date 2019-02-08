@@ -157,6 +157,7 @@ export default class ApprovedEvents extends React.Component {
     formdata.append('longitude', this.state.longitude);
     formdata.append('approval', 1);
     formdata.append('authorType', 'admin');
+    formdata.append('organizer', 'Twiddlen');
 
     this.state.pictures.forEach((curr, index) => {
       formdata.append('image' + index, curr);
