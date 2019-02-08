@@ -13,11 +13,13 @@ import { Provider } from 'react-redux';
 import productsReducer from './reducers/productsReducer.js';
 import usersReducer from './reducers/usersReducer.js';
 import adminReducer from './reducers/adminReducer.js';
+import clientReducer from './reducers/clientReducer.js';
 
 const allReducers = combineReducers({
   products: productsReducer,
   user: usersReducer,
-  admin: adminReducer
+  admin: adminReducer,
+  client: clientReducer
 });
 
 const store = createStore(
@@ -25,7 +27,8 @@ const store = createStore(
   {
     products: [{ name: 'iPhone' }],
     user: 'Michael',
-    admin: false
+    admin: false,
+    client: false
   }
   // window.devToolsExtension && window.devToolsExtension()
 );

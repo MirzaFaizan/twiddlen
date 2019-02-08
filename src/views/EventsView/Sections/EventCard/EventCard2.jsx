@@ -231,7 +231,7 @@ class ImgMediaCard extends React.Component {
                     description={this.props.description}
                     seating="300"
                     price="$700"
-                    category={['category1', 'category2']}
+                    category={[this.props.category]}
                     sponsor={this.props.sponsor}
                   />
                 </div>

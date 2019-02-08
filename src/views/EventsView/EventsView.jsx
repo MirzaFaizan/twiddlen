@@ -31,6 +31,8 @@ import Fade from '@material-ui/core/Fade';
 
 import Slide from '@material-ui/core/Slide';
 
+import axios from 'axios';
+
 var settings = {
   dots: true,
   //focusOnSelect: true,
@@ -200,6 +202,32 @@ class LandingPage extends React.Component {
     super(props);
 
     this.onUpdateUser = this.onUpdateUser.bind(this);
+
+    this.state = {
+      eventsData: {}
+    };
+  }
+
+  componentWillMount() {
+    axios
+      .get(
+        'https://twiddlen-api.herokuapp.com/admin/approvedEvents'
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          //console.log(dat);
+          console.log(res.data);
+          this.setState({
+            eventsData: res.data.events
+          });
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
   }
 
   onUpdateUser = event => {
@@ -296,28 +324,29 @@ class LandingPage extends React.Component {
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Grid container spacing={0} justify="center">
-                  <Fade in={true} timeout={0}>
-                    <Grid item xs={12} sm={12} md={8} lg={5}>
-                      <Carousel
-                        slides={Object.values(eventsData).map((type, key) => {
+                  <Grid item xs={12} sm={12} md={8} lg={5}>
+                    <Carousel
+                      slides={Object.values(this.state.eventsData).map(
+                        (type, key) => {
                           return (
-                            <Grid item xs={12}>
-                              <EventCard
-                                key={key}
-                                image={type.image}
-                                name={type.name}
-                                city={type.city}
-                                organizerName={type.organizerName}
-                                timeAndDate={type.timeAndDate}
-                                description={type.description}
-                                sponsor={type.sponsor}
-                              />
-                            </Grid>
+                            <EventCard
+                              key={key}
+                              image={
+                                'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                              }
+                              name={type.name}
+                              city={type.Address.city}
+                              organizerName={'Twiddlen'}
+                              timeAndDate={type.Date.startDate.slice(0, 10)}
+                              description={type.description}
+                              sponsor={type.sponsor}
+                              category={type.category}
+                            />
                           );
-                        })}
-                      />
-                    </Grid>
-                  </Fade>
+                        }
+                      )}
+                    />
+                  </Grid>
                 </Grid>
               </Grid>
 
@@ -336,18 +365,21 @@ class LandingPage extends React.Component {
                 <Grid container spacing={0}>
                   <Grid item xs={12}>
                     <Slider {...settings}>
-                      {Object.values(eventsData).map((type, key) => {
+                      {Object.values(this.state.eventsData).map((type, key) => {
                         return (
                           <Fade in={true} timeout={10000} key={key}>
                             <div className={classes.container}>
                               <EventCard2
-                                image={type.image}
+                                image={
+                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                                }
                                 name={type.name}
-                                city={type.city}
-                                organizerName={type.organizerName}
-                                timeAndDate={type.timeAndDate}
+                                city={type.Address.City}
+                                organizerName={'Twiddlen'}
+                                timeAndDate={type.Date.startDate.slice(0, 10)}
                                 description={type.description}
                                 sponsor={type.sponsor}
+                                category={type.category}
                               />
                               <div
                                 style={{
@@ -379,18 +411,21 @@ class LandingPage extends React.Component {
                 <Grid container spacing={0}>
                   <Grid item xs={12}>
                     <Slider {...settings}>
-                      {Object.values(eventsData).map((type, key) => {
+                      {Object.values(this.state.eventsData).map((type, key) => {
                         return (
                           <Fade in={true} timeout={15000} key={key}>
                             <div className={classes.container}>
                               <EventCard2
-                                image={type.image}
+                                image={
+                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                                }
                                 name={type.name}
-                                city={type.city}
-                                organizerName={type.organizerName}
-                                timeAndDate={type.timeAndDate}
+                                city={type.Address.City}
+                                organizerName={'Twiddlen'}
+                                timeAndDate={type.Date.startDate.slice(0, 10)}
                                 description={type.description}
                                 sponsor={type.sponsor}
+                                category={type.category}
                               />
                               <div
                                 style={{

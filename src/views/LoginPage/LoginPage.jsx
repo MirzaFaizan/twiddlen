@@ -32,6 +32,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 //import color from '@material-ui/core/colors/yellow';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateClient } from '../../actions/client-action.js';
+
 function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
@@ -98,6 +102,8 @@ class LoginPage extends React.Component {
   }
 
   handleClose(modal) {
+    this.props.onUpdateClient(true);
+    console.log(this.props.client);
     var x = [];
     x[modal] = false;
     this.setState(x);
@@ -353,4 +359,25 @@ class LoginPage extends React.Component {
     );
   }
 }
-export default withStyles(loginPageStyle)(LoginPage);
+
+const mapStateToProps = state => {
+  // console.log(props);
+  return {
+    client: state.client
+  };
+};
+
+const mapActionsToProps = dispatch => {
+  // console.log(props);
+  return bindActionCreators(
+    {
+      onUpdateClient: updateClient
+    },
+    dispatch
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(loginPageStyle)(LoginPage));

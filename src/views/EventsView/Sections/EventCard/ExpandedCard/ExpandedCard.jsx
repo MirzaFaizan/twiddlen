@@ -255,7 +255,7 @@ class ResponsiveDialog extends React.Component {
                     </Typography>
                   </Hidden>
                   <Grid container spacing={16}>
-                    <Grid item xs={4} md={3}>
+                    <Grid item xs={4} md={6}>
                       <Chip
                         label={this.props.category[0]}
                         style={{
@@ -265,7 +265,7 @@ class ResponsiveDialog extends React.Component {
                         }}
                       />
                     </Grid>
-                    <Grid item xs={4} md={3}>
+                    {/* <Grid item xs={4} md={3}>
                       <Chip
                         label={this.props.category[1]}
                         style={{
@@ -274,12 +274,12 @@ class ResponsiveDialog extends React.Component {
                           marginRight: 5
                         }}
                       />
-                    </Grid>
-                    <Grid item xs={4} md={3}>
+                    </Grid> */}
+                    {/* <Grid item xs={4} md={3}>
                       <Typography variant="caption">
                         <small>more</small>
                       </Typography>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                   <Divider />
                 </CardContent>
