@@ -87,6 +87,7 @@ class LoginPage extends React.Component {
         } else {
           //redirect to login component
           alert('Succesfully Logged in');
+          this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
       })
@@ -102,8 +103,6 @@ class LoginPage extends React.Component {
   }
 
   handleClose(modal) {
-    this.props.onUpdateClient(true);
-    console.log(this.props.client);
     var x = [];
     x[modal] = false;
     this.setState(x);
@@ -146,6 +145,7 @@ class LoginPage extends React.Component {
           //redirect to login component
           //console.log(res.data);
           alert('Succesfully Logged in');
+          this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
       })
@@ -179,6 +179,7 @@ class LoginPage extends React.Component {
           //redirect to login component
           console.log(res.data);
           alert('Succesfully Logged in');
+          this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
       })
