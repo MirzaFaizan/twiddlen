@@ -33,6 +33,10 @@ import Slide from '@material-ui/core/Slide';
 
 import axios from 'axios';
 
+import Link from '@material-ui/core/Link';
+
+// let abc = []
+
 var settings = {
   dots: true,
   //focusOnSelect: true,
@@ -204,7 +208,7 @@ class LandingPage extends React.Component {
     this.onUpdateUser = this.onUpdateUser.bind(this);
 
     this.state = {
-      eventsData: {}
+      eventsData: ''
     };
   }
 
@@ -223,12 +227,44 @@ class LandingPage extends React.Component {
           this.setState({
             eventsData: res.data.events
           });
+          this.setSlides();
         }
       })
       .catch(error => {
         alert('Internal Server error, Server Resopnded with "' + error + '"');
       });
   }
+
+  setSlides = () => {
+    console.log('running');
+    //   abc = [<EventCard
+    //     image={
+    //       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+    //     }
+    //     name={this.state.eventsData[0].name}
+    //     city={this.state.eventsData[0].Address.city}
+    //     organizerName={'Twiddlen'}
+    //     timeAndDate={this.state.eventsData[0].Date.startDate.slice(0, 10)}
+    //     description={this.state.eventsData[0].description}
+    //     sponsor={this.state.eventsData[0].sponsor}
+    //     category={this.state.eventsData[0].category}
+    //   />,
+    //   <EventCard
+    //     image={
+    //       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+    //     }
+    //     name={this.state.eventsData[0].name}
+    //     city={this.state.eventsData[0].Address.city}
+    //     organizerName={'Twiddlen'}
+    //     timeAndDate={this.state.eventsData[0].Date.startDate.slice(0, 10)}
+    //     description={this.state.eventsData[0].description}
+    //     sponsor={this.state.eventsData[0].sponsor}
+    //     category={this.state.eventsData[0].category}
+    //   />,
+    //  ]
+
+    //   console.log(this.state.eventsData[0].name)
+  };
 
   onUpdateUser = event => {
     this.props.onUpdateUser(event.target.value);
@@ -318,7 +354,16 @@ class LandingPage extends React.Component {
                   align="center"
                 >
                   <div style={{ paddingTop: '1%' }}>
-                    <strong>Events Happening Today</strong>
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/happening-today')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Events Happening Today</strong>
+                    </Link>
                   </div>
                 </Typography>
               </Grid>
@@ -326,25 +371,23 @@ class LandingPage extends React.Component {
                 <Grid container spacing={0} justify="center">
                   <Grid item xs={12} sm={12} md={8} lg={5}>
                     <Carousel
-                      slides={Object.values(this.state.eventsData).map(
-                        (type, key) => {
-                          return (
-                            <EventCard
-                              key={key}
-                              image={
-                                'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                              }
-                              name={type.name}
-                              city={type.Address.city}
-                              organizerName={'Twiddlen'}
-                              timeAndDate={type.Date.startDate.slice(0, 10)}
-                              description={type.description}
-                              sponsor={type.sponsor}
-                              category={type.category}
-                            />
-                          );
-                        }
-                      )}
+                      slides={Object.values(eventsData).map((type, key) => {
+                        return (
+                          <EventCard
+                            image={
+                              'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                            }
+                            key={key}
+                            name={type.name}
+                            city={type.city}
+                            organizerName={'Twiddlen'}
+                            timeAndDate={type.startDate}
+                            description={type.description}
+                            sponsor={type.sponsor}
+                            category={type.category}
+                          />
+                        );
+                      })}
                     />
                   </Grid>
                 </Grid>
@@ -353,11 +396,20 @@ class LandingPage extends React.Component {
               <Grid item xs={12}>
                 <Typography
                   variant="display1"
-                  component="h3"
+                  component="h4"
                   gutterBottom={true}
                   align="center"
                 >
-                  <strong>Happening This Week</strong>
+                  <Link
+                    component="button"
+                    variant="display1"
+                    onClick={() =>
+                      this.props.history.push('/happening-thisweek')
+                    }
+                    color="inherit"
+                  >
+                    <strong>Happening This Week</strong>
+                  </Link>
                 </Typography>
               </Grid>
 
@@ -399,11 +451,20 @@ class LandingPage extends React.Component {
               <Grid item xs={12}>
                 <Typography
                   variant="display1"
-                  component="h3"
+                  component="h4"
                   gutterBottom={true}
                   align="center"
                 >
-                  <strong>Happening This Month</strong>
+                  <Link
+                    component="button"
+                    variant="display1"
+                    onClick={() =>
+                      this.props.history.push('/happening-thismonth')
+                    }
+                    color="inherit"
+                  >
+                    <strong>Happening This Month</strong>
+                  </Link>
                 </Typography>
               </Grid>
 
