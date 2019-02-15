@@ -7,7 +7,7 @@ import CategoryView from 'views/CategroyView/CategoryView.jsx';
 import Today from 'views/Happening/Today/Today.jsx';
 import Week from 'views/Happening/ThisWeek/ThisWeek.jsx';
 import Month from 'views/Happening/ThisMonth/ThisMonth.jsx';
-
+import MyActivities from 'views/MyActivities/MyActivities.jsx';
 var indexRoutes = [
   { path: '/admin-page', name: 'Admin', component: AdminPage },
   { path: '/profile-page', name: 'ProfilePage', component: ProfilePage },
@@ -16,6 +16,7 @@ var indexRoutes = [
   { path: '/happening-today', name: 'HappeningToday', component: Today },
   { path: '/happening-thisweek', name: 'HappeningWeek', component: Week },
   { path: '/happening-thismonth', name: 'HappeningMonth', component: Month },
+  { path: '/my-activities', name: 'MyActivities', component: MyActivities },
   {
     path: '/category-page/:id',
     name: 'CategoryEventsView',

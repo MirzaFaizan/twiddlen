@@ -65,6 +65,20 @@ class HeaderLinks extends React.Component {
                 this.props.onUpdateClient(false);
               }}
             >
+              My Activities
+            </Button>
+            <Button
+              onClick={() => {
+                this.props.onUpdateClient(false);
+              }}
+            >
+              Settings
+            </Button>
+            <Button
+              onClick={() => {
+                this.props.onUpdateClient(false);
+              }}
+            >
               Log Out
             </Button>
           </ListItem>
