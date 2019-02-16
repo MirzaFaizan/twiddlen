@@ -36,10 +36,11 @@ const styles = theme => ({
     width: '100%'
   },
   tabsRoot: {
-    borderBottom: '1px solid #e8e8e8'
+    borderBottom: '1px solid #e8e8e8',
+    color: 'black'
   },
   tabsIndicator: {
-    backgroundColor: '#1890ff'
+    backgroundColor: 'orange'
   },
   tabRoot: {
     textTransform: 'initial',
@@ -59,15 +60,15 @@ const styles = theme => ({
       '"Segoe UI Symbol"'
     ].join(','),
     '&:hover': {
-      color: '#40a9ff',
+      color: 'black',
       opacity: 1
     },
     '&$tabSelected': {
-      color: '#1890ff',
+      color: 'brown',
       fontWeight: theme.typography.fontWeightMedium
     },
     '&:focus': {
-      color: '#40a9ff'
+      color: 'brown'
     }
   },
   tabSelected: {},
@@ -78,9 +79,11 @@ const styles = theme => ({
     margin: 0,
     position: 'absolute',
     width: '75%',
-    top: '35%',
+    top: '50%',
     left: '50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    height: '500px',
+    overflow: 'auto'
   }
 });
 
@@ -98,72 +101,73 @@ class NavTabs extends React.Component {
     const { value } = this.state;
 
     return (
-      <Paper className={classes.paperRoot}>
-        <Typography
-          variant="display1"
-          color="inherit"
-          component="div"
-          align="center"
-          style={{ padding: '5%' }}
-        >
-          My Activities
-        </Typography>
-        <NoSsr>
-          <div className={classes.root}>
-            {/* <AppBar position="static"> */}
-            <Tabs
-              value={value}
-              onChange={this.handleChange}
-              variant="scrollable"
-              classes={{
-                root: classes.tabsRoot,
-                indicator: classes.tabsIndicator
-              }}
-            >
-              <Tab
-                disableRipple
+      <div style={{ backgrounColor: 'grey' }}>
+        <Paper className={classes.paperRoot}>
+          <Typography
+            variant="display1"
+            component="div"
+            align="center"
+            style={{ padding: '5%', color: 'black' }}
+          >
+            My Activities
+          </Typography>
+          <NoSsr>
+            <div className={classes.root}>
+              {/* <AppBar position="static"> */}
+              <Tabs
+                value={value}
+                onChange={this.handleChange}
+                variant="scrollable"
                 classes={{
-                  root: classes.tabRoot,
-                  selected: classes.tabSelected
+                  root: classes.tabsRoot,
+                  indicator: classes.tabsIndicator
                 }}
-                label="Upcoming Events"
-              />
-              <Tab
-                disableRipple
-                classes={{
-                  root: classes.tabRoot,
-                  selected: classes.tabSelected
-                }}
-                label="Expired Events"
-              />
-              <Tab
-                disableRipple
-                classes={{
-                  root: classes.tabRoot,
-                  selected: classes.tabSelected
-                }}
-                label="My Events"
-              />
-            </Tabs>
-            {/* </AppBar> */}
-            {value === 0 && (
-              <TabContainer>
-                <UpcomingEvents />
-              </TabContainer>
-            )}
-            {value === 1 && (
-              <TabContainer>
-                <ExpiredEvents />
-              </TabContainer>
-            )}
-            {value === 2 && (
-              <TabContainer>
-                <MyEvents />
-              </TabContainer>
-            )}
-          </div>
-        </NoSsr>
-      </Paper>
+              >
+                <Tab
+                  disableRipple
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.tabSelected
+                  }}
+                  label="Upcoming Events"
+                />
+                <Tab
+                  disableRipple
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.tabSelected
+                  }}
+                  label="Expired Events"
+                />
+                <Tab
+                  disableRipple
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.tabSelected
+                  }}
+                  label="My Events"
+                />
+              </Tabs>
+              {/* </AppBar> */}
+              {value === 0 && (
+                <TabContainer>
+                  <UpcomingEvents />
+                </TabContainer>
+              )}
+              {value === 1 && (
+                <TabContainer>
+                  <ExpiredEvents />
+                </TabContainer>
+              )}
+              {value === 2 && (
+                <TabContainer>
+                  <MyEvents />
+                </TabContainer>
+              )}
+            </div>
+          </NoSsr>
+        </Paper>
+      </div>
     );
   }
 }
