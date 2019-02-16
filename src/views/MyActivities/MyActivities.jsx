@@ -114,6 +114,7 @@ class NavTabs extends React.Component {
             <Tabs
               value={value}
               onChange={this.handleChange}
+              variant="scrollable"
               classes={{
                 root: classes.tabsRoot,
                 indicator: classes.tabsIndicator
