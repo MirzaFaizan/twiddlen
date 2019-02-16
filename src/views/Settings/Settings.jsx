@@ -27,7 +27,7 @@ const styles = theme => ({
     margin: 0,
     position: 'absolute',
     width: '90%',
-    top: '35%',
+    top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)'
   }
