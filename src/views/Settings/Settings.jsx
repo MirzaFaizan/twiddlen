@@ -31,13 +31,22 @@ const styles = theme => ({
     width: '90%',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    zIndex: 2
   },
   customHeading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
     paddingTop: '1%'
+  },
+  bgImage: {
+    backgrounColor: 'grey',
+    backgroundImage: `url('https://coresites-cdn.factorymedia.com/twc/wp-content/uploads/2017/02/lwr_beth_bryn_hodge_peloton_drops_in_front_1150.jpg')`,
+    backgroundSize: 'cover',
+    height: '100vh',
+    position: 'relative',
+    filter: 'blur(8px)'
   }
 });
 
@@ -57,7 +66,8 @@ class ControlledExpansionPanels extends React.Component {
     const { expanded } = this.state;
 
     return (
-      <div style={{ backgroundColor: 'grey' }}>
+      <div>
+        <div className={classes.bgImage} />
         <Paper className={classes.paperRoot}>
           <Typography
             variant="display1"

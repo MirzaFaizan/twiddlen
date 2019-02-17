@@ -84,6 +84,15 @@ const styles = theme => ({
     transform: 'translate(-50%, -50%)',
     height: '500px',
     overflow: 'auto'
+  },
+  bgImage: {
+    backgrounColor: 'grey',
+    backgroundImage: `url('https://coresites-cdn.factorymedia.com/twc/wp-content/uploads/2017/02/lwr_beth_bryn_hodge_peloton_drops_in_front_1150.jpg')`,
+    backgroundSize: 'cover',
+    height: '100vh',
+    position: 'relative',
+    filter: 'blur(5px)',
+    webkitFilter: 'blur(5px)'
   }
 });
 
@@ -101,7 +110,8 @@ class NavTabs extends React.Component {
     const { value } = this.state;
 
     return (
-      <div style={{ backgrounColor: 'grey' }}>
+      <div>
+        <div className={classes.bgImage} />
         <Paper className={classes.paperRoot}>
           <Typography
             variant="display1"
