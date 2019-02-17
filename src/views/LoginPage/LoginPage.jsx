@@ -242,7 +242,6 @@ class LoginPage extends React.Component {
                 // backgroundPosition: 'top center',
                 backgroundColor:'transparent',
               }}
-<<<<<<< HEAD
             >
               <GridContainer justify="center">
                 <GridItem xs={12} sm={10} md={8}>
@@ -280,9 +279,8 @@ class LoginPage extends React.Component {
                               callback={this.facebookResponse}
                             />
                           }
-=======
             > */}
-          >>>>>>> 3de844064c806e04a89d20b40a0b2317a63327d8
+
           <Card
             className={classes[this.state.cardAnimaton]}
             style={{ maxWidth: 400 }}
@@ -389,6 +387,7 @@ class LoginPage extends React.Component {
               </CardFooter>
             </form>
           </Card>
+
           {/* </DialogContent> */}
         </Dialog>
         {/*</div>}
