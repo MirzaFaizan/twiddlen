@@ -46,7 +46,8 @@ const styles = theme => ({
     backgroundSize: 'cover',
     height: '100vh',
     position: 'relative',
-    filter: 'blur(8px)'
+    filter: 'blur(5px)',
+    webkitFilter: 'blur(5px)'
   }
 });
 
