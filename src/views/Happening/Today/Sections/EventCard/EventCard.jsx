@@ -6,10 +6,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
+
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
-// import Hidden from '@material-ui/core/Hidden';
 
 import LocationOn from '@material-ui/icons/LocationOn';
 import Notification from '@material-ui/icons/Notifications';
@@ -27,7 +27,6 @@ const styles = {
     minHeight: 300
   },
   cardContent: {
-    // flex: '0 0 auto',
     maxHeight: 180
   },
   media: {
@@ -91,11 +90,10 @@ class ImgMediaCard extends React.Component {
       });
     } else {
       this.setState({
-        heartSub: 'grey'
+        heartSub: 'orange'
       });
     }
   };
-
   render() {
     const { classes } = this.props;
     return (
@@ -105,7 +103,7 @@ class ImgMediaCard extends React.Component {
             component="img"
             alt={this.props.name}
             className={classes.media}
-            height="200"
+            height="255"
             image={this.props.image}
             title={this.props.name}
           />
@@ -113,36 +111,27 @@ class ImgMediaCard extends React.Component {
         <CardContent className={classes.cardContent}>
           <div>
             <Grid container spacing={8} justify="space-evenly">
-              <Grid item xs={4} sm={3} md={4}>
-                <Typography
-                  variant="caption"
-                  component="h2"
-                  color="textPrimary"
-                >
+              <Grid item xs={3} sm={3} md={4}>
+                <Typography variant="body2" component="h2" color="textPrimary">
                   <strong>{this.props.name}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={4} sm={3} md={3}>
-                <Typography
-                  variant="caption"
-                  component="h2"
-                  color="textPrimary"
-                >
+              <Grid item xs={3} sm={3} md={4}>
+                <Typography variant="body2" component="h2" color="textPrimary">
                   <strong>{this.props.city}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={4} sm={6} md={5}>
+              <Grid item xs={6} sm={6} md={4}>
                 <div style={{ marginTop: '-10%' }}>
                   <Grid
                     container
                     direction="row"
-                    justify="flex-end"
-                    alignItems="flex-start"
-                    spacing={0}
+                    // justify="flex-end"
+                    // alignItems="flex-start"
+                    spacing={16}
                   >
                     <Grid item xs={4}>
                       <IconButton
-                        //color={this.state.locationSub}
                         disableRipple={true}
                         onClick={() => this.locationSub()}
                         style={{ color: this.state.locationSub }}
@@ -152,7 +141,6 @@ class ImgMediaCard extends React.Component {
                     </Grid>
                     <Grid item xs={4}>
                       <IconButton
-                        //color={this.state.notificationSub}
                         onClick={() => this.notificationSub()}
                         style={{ color: this.state.notificationSub }}
                       >
@@ -161,7 +149,6 @@ class ImgMediaCard extends React.Component {
                     </Grid>
                     <Grid item xs={4}>
                       <IconButton
-                        //color={this.state.heartSub}
                         onClick={() => this.heartSub()}
                         style={{ color: this.state.heartSub }}
                       >
@@ -217,6 +204,7 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
+
               <Grid item xs={12}>
                 <div>
                   <ExpandedCard
@@ -231,28 +219,22 @@ class ImgMediaCard extends React.Component {
                     description={this.props.description}
                     seating="300"
                     price="$700"
-                    category={[this.props.category]}
+                    category={['category1', 'category2']}
                     sponsor={this.props.sponsor}
                   />
                 </div>
               </Grid>
-
-              {/* <Hidden xsDown>
-            <Grid item xs={12}>
-            <div style={{marginTop:'-3%'}}>
-            <Typography variant="body2" component="h5" color='textPrimary'>
-             <b>Description</b>
-            </Typography>
-            </div>
-            </Grid>
-            <Grid item xs={12}>
-            <div style={{marginTop:'-2%'}}>
-            <Typography variant="caption" component="p" color="textPrimary">
-            {this.props.description}
-            </Typography>
-            </div>
-            </Grid>
-            </Hidden> */}
+              <Grid item xs={12}>
+                <div style={{ marginTop: '-2%' }}>
+                  {/* <Typography
+                      variant="caption"
+                      component="p"
+                      color="textPrimary"
+                    >
+                      {this.props.description}
+                    </Typography> */}
+                </div>
+              </Grid>
             </Grid>
           </div>
         </CardContent>

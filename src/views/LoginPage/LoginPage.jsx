@@ -10,8 +10,9 @@ import Email from '@material-ui/icons/Email';
 //import Header from "components/Header/Header.jsx";
 //import HeaderLinks from "components/Header/HeaderLinks.jsx";
 //import Footer from "components/Footer/Footer.jsx";
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
+// import GridContainer from 'components/Grid/GridContainer.jsx';
+// import GridItem from 'components/Grid/GridItem.jsx';
+// import Grid from '@material-ui/core/Grid'
 import Button from 'components/CustomButtons/Button.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
@@ -25,12 +26,16 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import TwitterLogin from 'react-twitter-auth';
 
 //import image2 from "assets/img/bg7.jpg";
-import image2 from 'assets/img/twiddlen-bg-final.jpg';
+//import image2 from 'assets/img/twiddlen-bg-final.jpg';
 
 import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
+// import DialogContent from '@material-ui/core/DialogContent';
 //import color from '@material-ui/core/colors/yellow';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateClient } from '../../actions/client-action.js';
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -83,6 +88,7 @@ class LoginPage extends React.Component {
         } else {
           //redirect to login component
           alert('Succesfully Logged in');
+          this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
       })
@@ -140,6 +146,7 @@ class LoginPage extends React.Component {
           //redirect to login component
           //console.log(res.data);
           alert('Succesfully Logged in');
+          this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
       })
@@ -173,6 +180,7 @@ class LoginPage extends React.Component {
           //redirect to login component
           console.log(res.data);
           alert('Succesfully Logged in');
+          this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
       })
@@ -216,10 +224,10 @@ class LoginPage extends React.Component {
           Log IN
         </Button>
         <Dialog
-          classes={{
-            root: classes.center,
-            paper: classes.modal
-          }}
+          // classes={{
+          //   root: classes.center,
+          //   paper: classes.modal
+          // }}
           open={this.state.modal}
           TransitionComponent={Transition}
           keepMounted
@@ -227,13 +235,14 @@ class LoginPage extends React.Component {
           aria-labelledby="modal-slide-title"
           aria-describedby="modal-slide-description"
         >
-          <div>
-            <DialogContent
+          {/* <DialogContent
               style={{
-                backgroundImage: 'url(' + image2 + ')',
-                backgroundSize: 'cover',
-                backgroundPosition: 'top center'
+                // backgroundImage: 'url(' + image2 + ')',
+                // backgroundSize: 'cover',
+                // backgroundPosition: 'top center',
+                backgroundColor:'transparent',
               }}
+<<<<<<< HEAD
             >
               <GridContainer justify="center">
                 <GridItem xs={12} sm={10} md={8}>
@@ -271,82 +280,116 @@ class LoginPage extends React.Component {
                               callback={this.facebookResponse}
                             />
                           }
+=======
+            > */}
+          >>>>>>> 3de844064c806e04a89d20b40a0b2317a63327d8
+          <Card
+            className={classes[this.state.cardAnimaton]}
+            style={{ maxWidth: 400 }}
+          >
+            <form className={classes.form}>
+              <CardHeader color="warning" className={classes.cardHeader}>
+                <h4 style={{ paddingTop: '15px' }}>Login</h4>
+                <div className={classes.socialLine}>
+                  <TwitterLogin
+                    loginUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter"
+                    onFailure={this.twitterFailure}
+                    onSuccess={this.twitterResponse}
+                    requestTokenUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter/reverse"
+                    tag="icon"
+                    showIcon={false}
+                    style={{ margin: '3.5%' }}
+                    text=""
+                    className="fab fa-twitter"
+                  />
+                  {
+                    <FacebookLogin
+                      appId="1693021777466367"
+                      autoLoad={false}
+                      render={renderProps => (
+                        <i
+                          style={{ margin: '3.5%' }}
+                          onClick={renderProps.onClick}
+                          className={'fab fa-facebook'}
+                        />
+                      )}
+                      fields="name,email,picture"
+                      callback={this.facebookResponse}
+                    />
+                  }
 
-                          {
-                            <GoogleLogin
-                              clientId={
-                                '213753292951-6nqr2q7p0n69sd4a29bvoch2gggedom8.apps.googleusercontent.com'
-                              }
-                              render={renderProps => (
-                                <i
-                                  style={{ margin: '3.5%' }}
-                                  onClick={renderProps.onClick}
-                                  className={'fab fa-google-plus-g'}
-                                />
-                              )}
-                              onSuccess={this.googleResponse}
-                              onFailure={this.googleFailure}
-                            />
-                          }
-                        </div>
-                      </CardHeader>
-                      <p className={classes.divider}>Or Be Classical</p>
-                      <CardBody>
-                        <CustomInput
-                          labelText="Email..."
-                          id="email"
-                          formControlProps={{
-                            fullWidth: true
-                          }}
-                          inputProps={{
-                            onChange: e => {
-                              this.handleEmailChange(e);
-                            },
-                            type: 'email',
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <Email className={classes.inputIconsColor} />
-                              </InputAdornment>
-                            )
-                          }}
+                  {
+                    <GoogleLogin
+                      clientId={
+                        '213753292951-6nqr2q7p0n69sd4a29bvoch2gggedom8.apps.googleusercontent.com'
+                      }
+                      render={renderProps => (
+                        <i
+                          style={{ margin: '3.5%' }}
+                          onClick={renderProps.onClick}
+                          className={'fab fa-google-plus-g'}
                         />
-                        <CustomInput
-                          labelText="Password"
-                          id="pass"
-                          formControlProps={{
-                            fullWidth: true
-                          }}
-                          inputProps={{
-                            onChange: e => {
-                              this.handlePasswordChange(e);
-                            },
-                            type: 'password',
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <Icon className={classes.inputIconsColor}>
-                                  lock_outline
-                                </Icon>
-                              </InputAdornment>
-                            )
-                          }}
-                        />
-                      </CardBody>
-                      <CardFooter className={classes.cardFooter}>
-                        <Button
-                          simple
-                          color="primary"
-                          size="lg"
-                          onClick={() => this.loginHandleClick()}
-                        >
-                          LOG IN
-                        </Button>
-                      </CardFooter>
-                    </form>
-                  </Card>
-                </GridItem>
-              </GridContainer>
-            </DialogContent>
-          </div>
+                      )}
+                      onSuccess={this.googleResponse}
+                      onFailure={this.googleFailure}
+                    />
+                  }
+                </div>
+              </CardHeader>
+              <p className={classes.divider}>Or Be Classical</p>
+              <CardBody>
+                <CustomInput
+                  labelText="Email..."
+                  id="email"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    onChange: e => {
+                      this.handleEmailChange(e);
+                    },
+                    type: 'email',
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Email className={classes.inputIconsColor} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+                <CustomInput
+                  labelText="Password"
+                  id="pass"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    onChange: e => {
+                      this.handlePasswordChange(e);
+                    },
+                    type: 'password',
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Icon className={classes.inputIconsColor}>
+                          lock_outline
+                        </Icon>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </CardBody>
+              <CardFooter className={classes.cardFooter}>
+                <Button
+                  simple
+                  color="primary"
+                  size="lg"
+                  onClick={() => this.loginHandleClick()}
+                >
+                  LOG IN
+                </Button>
+              </CardFooter>
+            </form>
+          </Card>
+          {/* </DialogContent> */}
         </Dialog>
         {/*</div>}
           {/*<Footer whiteFont />*/}
@@ -355,4 +398,25 @@ class LoginPage extends React.Component {
     );
   }
 }
-export default withStyles(loginPageStyle)(LoginPage);
+
+const mapStateToProps = state => {
+  // console.log(props);
+  return {
+    client: state.client
+  };
+};
+
+const mapActionsToProps = dispatch => {
+  // console.log(props);
+  return bindActionCreators(
+    {
+      onUpdateClient: updateClient
+    },
+    dispatch
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(loginPageStyle)(LoginPage));

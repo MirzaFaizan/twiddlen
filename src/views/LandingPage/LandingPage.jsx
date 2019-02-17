@@ -87,7 +87,7 @@ class LandingPage extends React.Component {
                 {/* <input onChange={this.onUpdateUser}/>
                 <div>{this.props.user}</div> */}
                 <GridItem xs={12} sm={12} md={12}>
-                  <SearchBar />
+                  <SearchBar history={this.props.history} />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={12}>
                   <h4 className={classes.subtitle}>

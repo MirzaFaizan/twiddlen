@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
@@ -17,11 +16,9 @@ import Favorite from '@material-ui/icons/Favorite';
 
 import IconButton from '@material-ui/core/IconButton';
 
-import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
-
 const styles = {
   card: {
-    maxWidth: 'auto',
+    maxWidth: 200,
     maxHeight: 'auto',
     minWidth: 'auto',
     minHeight: 300
@@ -41,57 +38,44 @@ class ImgMediaCard extends React.Component {
     super(props);
 
     this.state = {
-      locationSub: 'grey',
-      notificationSub: 'grey',
-      heartSub: 'grey',
-      openExpandedCardstate: false
+      locationSub: 'default',
+      notificationSub: 'default',
+      heartSub: 'default'
     };
   }
 
-  openExpandedCard = () => {
-    this.setState({
-      openExpandedCardstate: true
-    });
-  };
-
-  closeExpandedCard = () => {
-    this.setState({
-      openExpandedCardstate: false
-    });
-  };
-
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
+    if (this.state.locationSub === 'default') {
       this.setState({
-        locationSub: 'orange'
+        locationSub: 'primary'
       });
     } else {
       this.setState({
-        locationSub: 'grey'
+        locationSub: 'default'
       });
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
+    if (this.state.notificationSub === 'default') {
       this.setState({
-        notificationSub: 'orange'
+        notificationSub: 'primary'
       });
     } else {
       this.setState({
-        notificationSub: 'grey'
+        notificationSub: 'default'
       });
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
+    if (this.state.heartSub === 'default') {
       this.setState({
-        heartSub: 'orange'
+        heartSub: 'primary'
       });
     } else {
       this.setState({
-        heartSub: 'grey'
+        heartSub: 'default'
       });
     }
   };
@@ -100,16 +84,14 @@ class ImgMediaCard extends React.Component {
     const { classes } = this.props;
     return (
       <Card className={classes.card}>
-        <CardActionArea onClick={() => this.openExpandedCard()}>
-          <CardMedia
-            component="img"
-            alt={this.props.name}
-            className={classes.media}
-            height="200"
-            image={this.props.image}
-            title={this.props.name}
-          />
-        </CardActionArea>
+        <CardMedia
+          component="img"
+          alt={this.props.name}
+          className={classes.media}
+          height="200"
+          image={this.props.image}
+          title={this.props.name}
+        />
         <CardContent className={classes.cardContent}>
           <div>
             <Grid container spacing={8} justify="space-evenly">
@@ -142,28 +124,25 @@ class ImgMediaCard extends React.Component {
                   >
                     <Grid item xs={4}>
                       <IconButton
-                        //color={this.state.locationSub}
+                        color={this.state.locationSub}
                         disableRipple={true}
                         onClick={() => this.locationSub()}
-                        style={{ color: this.state.locationSub }}
                       >
                         <LocationOn />
                       </IconButton>
                     </Grid>
                     <Grid item xs={4}>
                       <IconButton
-                        //color={this.state.notificationSub}
+                        color={this.state.notificationSub}
                         onClick={() => this.notificationSub()}
-                        style={{ color: this.state.notificationSub }}
                       >
                         <Notification />
                       </IconButton>
                     </Grid>
                     <Grid item xs={4}>
                       <IconButton
-                        //color={this.state.heartSub}
+                        color={this.state.heartSub}
                         onClick={() => this.heartSub()}
-                        style={{ color: this.state.heartSub }}
                       >
                         <Favorite />
                       </IconButton>
@@ -215,25 +194,6 @@ class ImgMediaCard extends React.Component {
                   >
                     <small>{this.props.timeAndDate}</small>
                   </Typography>
-                </div>
-              </Grid>
-              <Grid item xs={12}>
-                <div>
-                  <ExpandedCard
-                    open={this.state.openExpandedCardstate}
-                    openCard={() => this.openExpandedCard()}
-                    closeCard={() => this.closeExpandedCard()}
-                    image={this.props.image}
-                    name={this.props.name}
-                    city={this.props.city}
-                    organizerName={this.props.organizerName}
-                    timeAndDate={this.props.timeAndDate}
-                    description={this.props.description}
-                    seating="300"
-                    price="$700"
-                    category={[this.props.category]}
-                    sponsor={this.props.sponsor}
-                  />
                 </div>
               </Grid>
 

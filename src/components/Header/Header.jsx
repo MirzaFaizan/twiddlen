@@ -79,7 +79,10 @@ class Header extends React.Component {
       height: 'auto'
     };
     const brandComponent = (
-      <Button className={classes.title}>
+      <Button
+        className={classes.title}
+        onClick={() => this.props.history.push('/')}
+      >
         <img
           src={require(`assets/img/twiddlen-logo${brand}.png`)}
           alt="Twiddlen"

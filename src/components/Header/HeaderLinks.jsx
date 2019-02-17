@@ -7,18 +7,22 @@ import { Link } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Tooltip from '@material-ui/core/Tooltip';
+// import Tooltip from '@material-ui/core/Tooltip';
 
-import Slide from '@material-ui/core/Slide';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
+// import Slide from '@material-ui/core/Slide';
+// import Dialog from '@material-ui/core/Dialog';
+// import DialogTitle from '@material-ui/core/DialogTitle';
+// import DialogContent from '@material-ui/core/DialogContent';
+// import DialogActions from '@material-ui/core/DialogActions';
+// import IconButton from '@material-ui/core/IconButton';
 
 // @material-ui/icons
 import Close from '@material-ui/icons/Close';
 import { Apps, CloudDownload } from '@material-ui/icons';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateClient } from '../../actions/client-action.js';
 
 // core components
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx';
@@ -36,7 +40,7 @@ class HeaderLinks extends React.Component {
     super(props);
 
     this.state = {
-      searchDisplay: true
+      searchDisplay: false
     };
   }
 
@@ -48,7 +52,7 @@ class HeaderLinks extends React.Component {
 
   display = () => {
     const { classes } = this.props;
-    if (this.state.searchDisplay) {
+    if (this.props.client) {
       return (
         <List className={classes.list}>
           {/* <ListItem className={classes.listItem}>
@@ -56,10 +60,27 @@ class HeaderLinks extends React.Component {
         </ListItem> */}
           <ListItem className={classes.listItem}>
             {/*Login button*/}
-            <LoginPage />
-          </ListItem>
-          <ListItem className={classes.listItem}>
-            <RegisterPage />
+            <Button
+              onClick={() => {
+                this.props.onUpdateClient(false);
+              }}
+            >
+              My Activities
+            </Button>
+            <Button
+              onClick={() => {
+                this.props.onUpdateClient(false);
+              }}
+            >
+              Settings
+            </Button>
+            <Button
+              onClick={() => {
+                this.props.onUpdateClient(false);
+              }}
+            >
+              Log Out
+            </Button>
           </ListItem>
         </List>
       );
@@ -83,4 +104,24 @@ class HeaderLinks extends React.Component {
   }
 }
 
-export default withStyles(headerLinksStyle)(HeaderLinks);
+const mapStateToProps = state => {
+  // console.log(props);
+  return {
+    client: state.client
+  };
+};
+
+const mapActionsToProps = dispatch => {
+  // console.log(props);
+  return bindActionCreators(
+    {
+      onUpdateClient: updateClient
+    },
+    dispatch
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(headerLinksStyle)(HeaderLinks));
