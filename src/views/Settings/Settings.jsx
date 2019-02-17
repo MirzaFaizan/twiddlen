@@ -9,6 +9,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Paper from '@material-ui/core/Paper';
 
 import UserProfile from './UserProfile/UserProfile.jsx';
+import Notifications from './Notifications/Notifications.jsx';
+import SocialMediaConnections from './SocialMediaConnections/SocialMediaConnections.jsx';
 
 const styles = theme => ({
   root: {
@@ -30,6 +32,12 @@ const styles = theme => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)'
+  },
+  customHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    flexBasis: '33.33%',
+    flexShrink: 0,
+    paddingTop: '1%'
   }
 });
 
@@ -96,24 +104,21 @@ class ControlledExpansionPanels extends React.Component {
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel
-              expanded={expanded === 'panel3'}
-              onChange={this.handleChange('panel3')}
+            // expanded={expanded === 'panel3'}
+            // onChange={this.handleChange('panel3')}
             >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography className={classes.heading}>
+              {/* <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}> */}
+              <ExpansionPanelSummary>
+                <Typography className={classes.customHeading}>
                   Notifications
                 </Typography>
                 <Typography className={classes.secondaryHeading}>
-                  (On/Off settings)
+                  <Notifications />
                 </Typography>
               </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <Typography>
-                  Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                  Integer sit amet egestas eros, vitae egestas augue. Duis vel
-                  est augue.
-                </Typography>
-              </ExpansionPanelDetails>
+              {/* <ExpansionPanelDetails>
+               
+              </ExpansionPanelDetails> */}
             </ExpansionPanel>
             <ExpansionPanel
               expanded={expanded === 'panel4'}
@@ -135,17 +140,18 @@ class ControlledExpansionPanels extends React.Component {
               expanded={expanded === 'panel5'}
               onChange={this.handleChange('panel5')}
             >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography className={classes.heading}>
+              {/* <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}> */}
+              <ExpansionPanelSummary>
+                <Typography className={classes.customHeading}>
                   Social Media Connections
                 </Typography>
                 <Typography className={classes.secondaryHeading}>
-                  Connect your Social Media
+                  <SocialMediaConnections />
                 </Typography>
               </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              {/* <ExpansionPanelDetails>
                 <Typography>Social Media Connection Buttons</Typography>
-              </ExpansionPanelDetails>
+              </ExpansionPanelDetails> */}
             </ExpansionPanel>
             <ExpansionPanel
               expanded={expanded === 'panel6'}
