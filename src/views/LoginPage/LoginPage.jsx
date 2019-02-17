@@ -182,7 +182,8 @@ class LoginPage extends React.Component {
   };
 
   twitterResponse = res => {
-    console.log(res);
+    console.log('here', res);
+    alert('successfully authenticated');
     if (!res.email) {
       alert('Can not authenticte your twitter account');
     }
@@ -198,13 +199,13 @@ class LoginPage extends React.Component {
     console.log(err);
     alert('Can not authenticte your Google account');
   };
+
   twitterFailure = err => {
     console.log(err);
     alert('Can not authenticte your Twitter account');
   };
   render() {
     const { classes } = this.props;
-
     return (
       <div>
         <Button
@@ -245,10 +246,10 @@ class LoginPage extends React.Component {
                         <h4>Login</h4>
                         <div className={classes.socialLine}>
                           <TwitterLogin
-                            loginUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter"
+                            loginUrl="http://localhost:8000/user/auth/twitter"
                             onFailure={this.twitterFailure}
                             onSuccess={this.twitterResponse}
-                            requestTokenUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter/reverse"
+                            requestTokenUrl="http://localhost:8000/user/auth/twitter/reverse"
                             tag="icon"
                             showIcon={false}
                             style={{ margin: '3.5%' }}
