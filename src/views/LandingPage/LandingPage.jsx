@@ -54,7 +54,7 @@ class LandingPage extends React.Component {
           color="transparent"
           routes={dashboardRoutes}
           brand="1"
-          rightLinks={<HeaderLinks />}
+          rightLinks={<HeaderLinks history={this.props.history} />}
           fixed
           changeColorOnScroll={{
             height: 400,
@@ -114,6 +114,7 @@ class LandingPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
+  console.log(props);
   return {
     history: props.history,
     products: state.products,
