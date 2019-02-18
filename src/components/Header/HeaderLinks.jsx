@@ -61,20 +61,26 @@ class HeaderLinks extends React.Component {
           <ListItem className={classes.listItem}>
             {/*Login button*/}
             <Button
+              color="transparent"
+              simple
               onClick={() => {
-                this.props.onUpdateClient(false);
+                this.props.history.push('/my-activities');
               }}
             >
               My Activities
             </Button>
             <Button
+              color="transparent"
+              simple
               onClick={() => {
-                this.props.onUpdateClient(false);
+                this.props.history.push('/my-settings');
               }}
             >
               Settings
             </Button>
             <Button
+              color="transparent"
+              simple
               onClick={() => {
                 this.props.onUpdateClient(false);
               }}
