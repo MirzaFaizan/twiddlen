@@ -56,6 +56,9 @@ const styles = theme => ({
   },
   iOSIconChecked: {
     boxShadow: theme.shadows[1]
+  },
+  textColor: {
+    color: 'white'
   }
 });
 
@@ -90,6 +93,9 @@ class SocialMediaConnections extends React.Component {
               label="Custom color"
             /> */}
         <FormControlLabel
+          classes={{
+            label: classes.textColor
+          }}
           control={
             <Switch
               classes={{
@@ -108,6 +114,9 @@ class SocialMediaConnections extends React.Component {
           label="Facebook"
         />
         <FormControlLabel
+          classes={{
+            label: classes.textColor
+          }}
           control={
             <Switch
               classes={{
@@ -126,6 +135,9 @@ class SocialMediaConnections extends React.Component {
           label="Twitter"
         />
         <FormControlLabel
+          classes={{
+            label: classes.textColor
+          }}
           control={
             <Switch
               classes={{

@@ -56,6 +56,9 @@ const styles = theme => ({
   },
   iOSIconChecked: {
     boxShadow: theme.shadows[1]
+  },
+  textColor: {
+    color: 'white'
   }
 });
 
@@ -89,6 +92,9 @@ class Notifications extends React.Component {
               label="Custom color"
             /> */}
         <FormControlLabel
+          classes={{
+            label: classes.textColor
+          }}
           control={
             <Switch
               classes={{

@@ -33,13 +33,17 @@ class UpcomingEvents extends React.Component {
             </Grid>
             <Hidden smDown>
               <Grid item xs={12} md={6} style={{ paddingTop: '7%' }}>
-                <Typography align="center">A day at the Beach!</Typography>
+                <Typography align="center" style={{ color: 'white' }}>
+                  A day at the Beach!
+                </Typography>
               </Grid>
             </Hidden>
 
             <Hidden mdUp>
               <Grid item xs={12} md={6}>
-                <Typography align="center">A day at the Beach!</Typography>
+                <Typography align="center" style={{ color: 'white' }}>
+                  A day at the Beach!
+                </Typography>
               </Grid>
             </Hidden>
           </Grid>
@@ -49,61 +53,89 @@ class UpcomingEvents extends React.Component {
           <Grid
             container
             spacing={16}
-            justify="flex-start"
-            alignContent="flex-start"
-            alignItems="flex-start"
+            justify="flex-end"
+            alignContent="flex-end"
+            alignItems="flex-end"
           >
             <Grid item xs={3} md={3}>
-              <Grid container spacing={0} direction="column">
+              <Grid
+                container
+                spacing={0}
+                direction="column"
+                justify="center"
+                alignContent="center"
+                alignItems="center"
+              >
                 <Grid item xs={12}>
-                  <IconButton>
-                    <AddCircle />
+                  <IconButton style={{ color: 'white' }}>
+                    <AddCircle style={{ color: 'white' }} />
                   </IconButton>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="caption" align="center">
+                  <Typography variant="caption" style={{ color: 'white' }}>
                     Add
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={3} md={3}>
-              <Grid container spacing={0} direction="column">
+              <Grid
+                container
+                spacing={0}
+                direction="column"
+                justify="center"
+                alignContent="center"
+                alignItems="center"
+              >
                 <Grid item xs={12}>
-                  <IconButton>
-                    <Notifications />
+                  <IconButton style={{ color: 'white' }}>
+                    <Notifications style={{ color: 'white' }} />
                   </IconButton>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="caption" align="center">
+                  <Typography variant="caption" style={{ color: 'white' }}>
                     Notify
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={3} md={3}>
-              <Grid container spacing={0} direction="column">
+              <Grid
+                container
+                spacing={0}
+                direction="column"
+                justify="center"
+                alignContent="center"
+                alignItems="center"
+              >
                 <Grid item xs={12}>
-                  <IconButton>
-                    <Share />
+                  <IconButton style={{ color: 'white' }}>
+                    <Share style={{ color: 'white' }} />
                   </IconButton>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="caption" align="center">
+                  <Typography variant="caption" style={{ color: 'white' }}>
                     Share
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={3} md={3}>
-              <Grid container spacing={0} direction="column">
+              <Grid
+                container
+                spacing={0}
+                direction="column"
+                justify="center"
+                alignContent="center"
+                alignItems="center"
+              >
                 <Grid item xs={12}>
-                  <IconButton>
-                    <Comment />
+                  <IconButton style={{ color: 'white' }}>
+                    <Comment style={{ color: 'white' }} />
                   </IconButton>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="caption" align="center">
+                  <Typography variant="caption" style={{ color: 'white' }}>
                     Comment
                   </Typography>
                 </Grid>
@@ -112,7 +144,7 @@ class UpcomingEvents extends React.Component {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Divider />
+          <Divider style={{ color: 'white' }} />
         </Grid>
       </Grid>
     );

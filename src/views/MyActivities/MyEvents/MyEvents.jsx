@@ -29,13 +29,17 @@ class MyEvents extends React.Component {
             </Grid>
             <Hidden smDown>
               <Grid item xs={12} md={6} style={{ paddingTop: '7%' }}>
-                <Typography align="center">A day at the Beach!</Typography>
+                <Typography align="center" style={{ color: 'white' }}>
+                  A day at the Beach!
+                </Typography>
               </Grid>
             </Hidden>
 
             <Hidden mdUp>
               <Grid item xs={12} md={6}>
-                <Typography align="center">A day at the Beach!</Typography>
+                <Typography align="center" style={{ color: 'white' }}>
+                  A day at the Beach!
+                </Typography>
               </Grid>
             </Hidden>
           </Grid>
@@ -51,10 +55,14 @@ class MyEvents extends React.Component {
             alignItems="center"
           >
             <Grid item xs={12}>
-              <IconButton>
-                <Edit />
+              <IconButton style={{ color: 'white' }}>
+                <Edit style={{ color: 'white' }} />
               </IconButton>
-              <Typography variant="caption" align="center">
+              <Typography
+                variant="caption"
+                align="center"
+                style={{ color: 'white' }}
+              >
                 Edit
               </Typography>
             </Grid>

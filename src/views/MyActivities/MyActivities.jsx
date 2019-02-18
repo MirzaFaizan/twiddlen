@@ -32,12 +32,15 @@ TabContainer.propTypes = {
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    width: '100%'
+    width: '100%',
+    backgroundColor: 'rgba(0,0,0, 0.4)',
+    margin: 0,
+    zIndex: 2,
+    color: 'white'
   },
   tabsRoot: {
     borderBottom: '1px solid #e8e8e8',
-    color: 'black'
+    color: 'orange'
   },
   tabsIndicator: {
     backgroundColor: 'orange'
@@ -64,11 +67,11 @@ const styles = theme => ({
       opacity: 1
     },
     '&$tabSelected': {
-      color: 'brown',
+      color: 'white',
       fontWeight: theme.typography.fontWeightMedium
     },
     '&:focus': {
-      color: 'brown'
+      color: 'white'
     }
   },
   tabSelected: {},
@@ -76,23 +79,23 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3
   },
   paperRoot: {
+    backgroundColor: 'rgba(0,0,0, 0.4)',
     margin: 0,
     position: 'absolute',
-    width: '75%',
+    width: '90%',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    height: '500px',
-    overflow: 'auto'
+    zIndex: 2
   },
   bgImage: {
     backgrounColor: 'grey',
     backgroundImage: `url('https://coresites-cdn.factorymedia.com/twc/wp-content/uploads/2017/02/lwr_beth_bryn_hodge_peloton_drops_in_front_1150.jpg')`,
     backgroundSize: 'cover',
     height: '100vh',
-    position: 'relative',
-    filter: 'blur(5px)',
-    webkitFilter: 'blur(5px)'
+    position: 'relative'
+    // filter: 'blur(5px)',
+    // webkitFilter: 'blur(5px)'
   }
 });
 
@@ -117,7 +120,7 @@ class NavTabs extends React.Component {
             variant="display1"
             component="div"
             align="center"
-            style={{ padding: '5%', color: 'black' }}
+            style={{ padding: '5%', color: 'white' }}
           >
             My Activities
           </Typography>

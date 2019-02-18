@@ -14,18 +14,25 @@ import SocialMediaConnections from './SocialMediaConnections/SocialMediaConnecti
 
 const styles = theme => ({
   root: {
-    width: '100%'
+    width: '100%',
+    // backgroundColor: 'rgb(0,0,0)', /* Fallback color */
+    backgroundColor: 'rgba(0,0,0, 0.4)',
+    margin: 0,
+    zIndex: 2
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
-    flexShrink: 0
+    flexShrink: 0,
+    color: 'white'
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary
+    color: 'white'
   },
   paperRoot: {
+    // backgroundColor: 'rgb(0,0,0)', /* Fallback color */
+    backgroundColor: 'rgba(0,0,0, 0.4)',
     margin: 0,
     position: 'absolute',
     width: '90%',
@@ -45,9 +52,16 @@ const styles = theme => ({
     backgroundImage: `url('https://coresites-cdn.factorymedia.com/twc/wp-content/uploads/2017/02/lwr_beth_bryn_hodge_peloton_drops_in_front_1150.jpg')`,
     backgroundSize: 'cover',
     height: '100vh',
-    position: 'relative',
-    filter: 'blur(5px)',
-    webkitFilter: 'blur(5px)'
+    position: 'relative'
+    // filter: 'blur(5px)',
+    // webkitFilter: 'blur(5px)'
+  },
+  expansionPanel: {
+    width: '100%',
+    // backgroundColor: 'rgb(0,0,0)', /* Fallback color */
+    backgroundColor: 'rgba(0,0,0, 0.4)',
+    margin: 0,
+    zIndex: 2
   }
 });
 
@@ -74,7 +88,7 @@ class ControlledExpansionPanels extends React.Component {
             variant="display1"
             component="div"
             align="center"
-            style={{ padding: '5%', color: 'black' }}
+            style={{ padding: '5%', color: 'white' }}
           >
             My Settings
           </Typography>
@@ -82,6 +96,7 @@ class ControlledExpansionPanels extends React.Component {
             <ExpansionPanel
               expanded={expanded === 'panel1'}
               onChange={this.handleChange('panel1')}
+              className={classes.expansionPanel}
             >
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Favorites</Typography>
@@ -90,7 +105,7 @@ class ControlledExpansionPanels extends React.Component {
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <Typography>
+                <Typography style={{ color: 'white' }}>
                   Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
                   feugiat. Aliquam eget maximus est, id dignissim quam.
                 </Typography>
@@ -99,6 +114,7 @@ class ControlledExpansionPanels extends React.Component {
             <ExpansionPanel
               expanded={expanded === 'panel2'}
               onChange={this.handleChange('panel2')}
+              className={classes.expansionPanel}
             >
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Categories</Typography>
@@ -107,7 +123,7 @@ class ControlledExpansionPanels extends React.Component {
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <Typography>
+                <Typography style={{ color: 'white' }}>
                   Donec placerat, lectus sed mattis semper, neque lectus feugiat
                   lectus, varius pulvinar diam eros in elit. Pellentesque
                   convallis laoreet laoreet.
@@ -115,25 +131,26 @@ class ControlledExpansionPanels extends React.Component {
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel
-            // expanded={expanded === 'panel3'}
-            // onChange={this.handleChange('panel3')}
+              expanded={expanded === 'panel3'}
+              onChange={this.handleChange('panel3')}
+              className={classes.expansionPanel}
             >
-              {/* <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}> */}
-              <ExpansionPanelSummary>
-                <Typography className={classes.customHeading}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography className={classes.heading}>
                   Notifications
                 </Typography>
                 <Typography className={classes.secondaryHeading}>
-                  <Notifications />
+                  On/Off Notifications
                 </Typography>
               </ExpansionPanelSummary>
-              {/* <ExpansionPanelDetails>
-               
-              </ExpansionPanelDetails> */}
+              <ExpansionPanelDetails>
+                <Notifications />
+              </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel
               expanded={expanded === 'panel4'}
               onChange={this.handleChange('panel4')}
+              className={classes.expansionPanel}
             >
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>
@@ -150,23 +167,24 @@ class ControlledExpansionPanels extends React.Component {
             <ExpansionPanel
               expanded={expanded === 'panel5'}
               onChange={this.handleChange('panel5')}
+              className={classes.expansionPanel}
             >
-              {/* <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}> */}
-              <ExpansionPanelSummary>
-                <Typography className={classes.customHeading}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography className={classes.heading}>
                   Social Media Connections
                 </Typography>
                 <Typography className={classes.secondaryHeading}>
-                  <SocialMediaConnections />
+                  Social Media Connection Buttons
                 </Typography>
               </ExpansionPanelSummary>
-              {/* <ExpansionPanelDetails>
-                <Typography>Social Media Connection Buttons</Typography>
-              </ExpansionPanelDetails> */}
+              <ExpansionPanelDetails>
+                <SocialMediaConnections />
+              </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel
               expanded={expanded === 'panel6'}
               onChange={this.handleChange('panel6')}
+              className={classes.expansionPanel}
             >
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>
@@ -174,12 +192,15 @@ class ControlledExpansionPanels extends React.Component {
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <Typography>Followers Following Will go here</Typography>
+                <Typography style={{ color: 'white' }}>
+                  Followers Following Will go here
+                </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel
               expanded={expanded === 'panel7'}
               onChange={this.handleChange('panel7')}
+              className={classes.expansionPanel}
             >
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>
@@ -187,7 +208,9 @@ class ControlledExpansionPanels extends React.Component {
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <Typography>Payment Information will go here</Typography>
+                <Typography style={{ color: 'white' }}>
+                  Payment Information will go here
+                </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </div>
