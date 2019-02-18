@@ -12,6 +12,9 @@ import UserProfile from './UserProfile/UserProfile.jsx';
 import Notifications from './Notifications/Notifications.jsx';
 import SocialMediaConnections from './SocialMediaConnections/SocialMediaConnections.jsx';
 
+// import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+import Header from 'components/Header/Header.jsx';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -65,6 +68,8 @@ const styles = theme => ({
   }
 });
 
+const dashboardRoutes = [];
+
 class ControlledExpansionPanels extends React.Component {
   state = {
     expanded: null
@@ -77,11 +82,24 @@ class ControlledExpansionPanels extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, ...rest } = this.props;
     const { expanded } = this.state;
 
     return (
       <div>
+        <Header
+          color="transparent"
+          routes={dashboardRoutes}
+          brand="1"
+          // rightLinks={<HeaderLinks history={this.props.history} />}
+          fixed
+          changeColorOnScroll={{
+            height: 400,
+            color: 'dark',
+            brand: '2'
+          }}
+          {...rest}
+        />
         <div className={classes.bgImage} />
         <Paper className={classes.paperRoot}>
           <Typography

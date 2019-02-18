@@ -6,12 +6,14 @@ import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 import UpcomingEvents from './UpcomingEvents/UpcomingEvents';
 import MyEvents from './MyEvents/MyEvents.jsx';
 import ExpiredEvents from './ExpiredEvents/ExpiredEvents.jsx';
 
-import Paper from '@material-ui/core/Paper';
+// import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+import Header from 'components/Header/Header.jsx';
 
 function TabContainer(props) {
   return (
@@ -99,6 +101,8 @@ const styles = theme => ({
   }
 });
 
+const dashboardRoutes = [];
+
 class NavTabs extends React.Component {
   state = {
     value: 0
@@ -109,11 +113,24 @@ class NavTabs extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, ...rest } = this.props;
     const { value } = this.state;
 
     return (
       <div>
+        <Header
+          color="transparent"
+          routes={dashboardRoutes}
+          brand="1"
+          // rightLinks={<HeaderLinks history={this.props.history} />}
+          fixed
+          changeColorOnScroll={{
+            height: 400,
+            color: 'dark',
+            brand: '2'
+          }}
+          {...rest}
+        />
         <div className={classes.bgImage} />
         <Paper className={classes.paperRoot}>
           <Typography

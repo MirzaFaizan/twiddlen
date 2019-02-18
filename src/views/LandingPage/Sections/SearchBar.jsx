@@ -37,9 +37,6 @@ const styles = {
   }
 };
 
-var LATITUDE = 0;
-var LONGITUDE = 0;
-
 class CustomizedInputBase extends React.Component {
   constructor(props) {
     super(props);
@@ -53,12 +50,41 @@ class CustomizedInputBase extends React.Component {
     this.setState({
       searchValue: e.target.value
     });
-    console.log(this.state.searchValue);
+    // const a = this.state.searchValue.toString();
+    // console.log(a.search('64555'));
   };
 
   gotoHome = () => {
     let data = {
       zipcode: this.state.searchValue
+    };
+    axios
+      .post(
+        'https://twiddlen-api.herokuapp.com/user/zipAddress',
+        data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        JSON.stringify(res);
+        //Check if response reture suceess: true or false
+        console.log(res.data);
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          this.props.history.push('/home-page');
+          console.log(res.data.location);
+          alert(res.data.message);
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
+  };
+
+  fetchZip = (lat, long) => {
+    var temp = lat + ',' + long;
+    let data = {
+      zipcode: temp
     };
     axios
       .post(
@@ -107,11 +133,11 @@ class CustomizedInputBase extends React.Component {
                 onClick={getCurrentPosition}
               >
                 <GpsFixed />
-                <Hidden xlDown>
-                  {(LATITUDE = latitude)}
-                  {(LONGITUDE = longitude)}
-                  {console.log(LATITUDE + LONGITUDE)}
-                </Hidden>
+                {fetchingPosition === false ? (
+                  <Hidden xlDown>{this.fetchZip(latitude, longitude)}</Hidden>
+                ) : (
+                  <Hidden xlDown>a</Hidden>
+                )}
               </IconButton>
             </div>
           )}
