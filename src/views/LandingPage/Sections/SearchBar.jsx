@@ -110,6 +110,7 @@ class CustomizedInputBase extends React.Component {
                 <Hidden xlDown>
                   {(LATITUDE = latitude)}
                   {(LONGITUDE = longitude)}
+                  {console.log(LATITUDE + LONGITUDE)}
                 </Hidden>
               </IconButton>
             </div>
