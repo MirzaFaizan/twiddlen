@@ -190,7 +190,8 @@ class LoginPage extends React.Component {
   };
 
   twitterResponse = res => {
-    console.log(res);
+    console.log('here', res);
+    alert('successfully authenticated');
     if (!res.email) {
       alert('Can not authenticte your twitter account');
     }
@@ -206,13 +207,13 @@ class LoginPage extends React.Component {
     console.log(err);
     alert('Can not authenticte your Google account');
   };
+
   twitterFailure = err => {
     console.log(err);
     alert('Can not authenticte your Twitter account');
   };
   render() {
     const { classes } = this.props;
-
     return (
       <div>
         <Button
@@ -241,6 +242,43 @@ class LoginPage extends React.Component {
                 // backgroundPosition: 'top center',
                 backgroundColor:'transparent',
               }}
+            >
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={10} md={8}>
+                  <Card className={classes[this.state.cardAnimaton]}>
+                    <form className={classes.form}>
+                      <CardHeader
+                        color="warning"
+                        className={classes.cardHeader}
+                      >
+                        <h4>Login</h4>
+                        <div className={classes.socialLine}>
+                          <TwitterLogin
+                            loginUrl="http://localhost:8000/user/auth/twitter"
+                            onFailure={this.twitterFailure}
+                            onSuccess={this.twitterResponse}
+                            requestTokenUrl="http://localhost:8000/user/auth/twitter/reverse"
+                            tag="icon"
+                            showIcon={false}
+                            style={{ margin: '3.5%' }}
+                            text=""
+                            className="fab fa-twitter"
+                          />
+                          {
+                            <FacebookLogin
+                              appId="1693021777466367"
+                              autoLoad={false}
+                              render={renderProps => (
+                                <i
+                                  style={{ margin: '3.5%' }}
+                                  onClick={renderProps.onClick}
+                                  className={'fab fa-facebook'}
+                                />
+                              )}
+                              fields="name,email,picture"
+                              callback={this.facebookResponse}
+                            />
+                          }
             > */}
 
           <Card

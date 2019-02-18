@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import GpsFixed from '@material-ui/icons/GpsFixed';
 import Geolocation from 'react-geolocation';
 import Hidden from '@material-ui/core/Hidden';
-
+import axios from 'axios';
 const styles = {
   root: {
     padding: '0px 0px 1px 0px',
@@ -57,8 +57,30 @@ class CustomizedInputBase extends React.Component {
   };
 
   gotoHome = () => {
-    this.props.history.push('/home-page');
-    console.log(LATITUDE + LONGITUDE);
+    let data = {
+      zipcode: this.state.searchValue
+    };
+    axios
+      .post(
+        'https://twiddlen-api.herokuapp.com/user/zipAddress',
+        data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        JSON.stringify(res);
+        //Check if response reture suceess: true or false
+        console.log(res.data);
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          this.props.history.push('/home-page');
+          console.log(res.data.location);
+          alert(res.data.message);
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
   };
 
   render() {
@@ -68,7 +90,7 @@ class CustomizedInputBase extends React.Component {
       <Paper className={classes.root} elevation={1}>
         <InputBase
           className={classes.input}
-          placeholder="ZIP / LOCATION"
+          placeholder="ZIP / LOCATION ADDRESS "
           onChange={e => this.searchValueChange(e)}
         />
         <Geolocation
