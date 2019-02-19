@@ -53,7 +53,9 @@ class CustomizedInputBase extends React.Component {
     // const a = this.state.searchValue.toString();
     // console.log(a.search('64555'));
   };
-
+  getPosition = gP => {
+    gP();
+  };
   gotoHome = () => {
     let data = {
       zipcode: this.state.searchValue
@@ -136,7 +138,7 @@ class CustomizedInputBase extends React.Component {
                 {fetchingPosition === false ? (
                   <Hidden xlDown>{this.fetchZip(latitude, longitude)}</Hidden>
                 ) : (
-                  <Hidden xlDown>a</Hidden>
+                  <Hidden xlDown>abc</Hidden>
                 )}
               </IconButton>
             </div>
