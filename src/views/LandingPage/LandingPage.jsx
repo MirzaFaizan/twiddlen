@@ -84,7 +84,7 @@ class LandingPage extends React.Component {
                   align="center"
                   color="inherit"
                 >
-                  WE FIND EVENTS YOU DO THEM
+                  WE FIND EVENTS SO YOU DON'T HAVE TOO
                 </Typography>
                 <h4 className={classes.subtitle}>
                   Enter Zip or Location for accurate nearby event search

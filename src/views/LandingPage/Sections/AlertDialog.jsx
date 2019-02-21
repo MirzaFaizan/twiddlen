@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import GpsFixed from '@material-ui/icons/GpsFixed';
 import IconButton from '@material-ui/core/IconButton';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 import Geolocation from 'react-geolocation';
 import axios from 'axios';
 
@@ -56,33 +56,42 @@ class ResponsiveDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  fetchZip = (lat, long) => {
-    var temp = lat + ',' + long;
-    let data = {
-      zipcode: temp
-    };
-    axios
-      .post(
-        'https://twiddlen-api.herokuapp.com/user/zipAddress',
-        data
-        //, { headers: {"Authorization" : `Bearer ${token}`} }
-      )
-      .then(res => {
-        JSON.stringify(res);
-        //Check if response reture suceess: true or false
-        console.log(res.data);
-        if (res.data.success === false) {
-          alert(res.data.message);
-        } else {
-          // this.props.history.push('/home-page');
-          console.log(res.data.location);
-          alert(res.data.message);
-        }
-      })
-      .catch(error => {
-        alert('Internal Server error, Server Resopnded with "' + error + '"');
-      });
+  getPosition = (getCurrentPosition, latitude, longitude) => {
+    getCurrentPosition();
+    // console.log(latitude,longitude)
+    if (latitude !== undefined && longitude !== undefined) {
+      var temp = latitude + ',' + longitude;
+      let data = {
+        zipcode: temp
+      };
+      axios
+        .post(
+          'https://twiddlen-api.herokuapp.com/user/zipAddress',
+          data
+          //, { headers: {"Authorization" : `Bearer ${token}`} }
+        )
+        .then(res => {
+          JSON.stringify(res);
+          //Check if response reture suceess: true or false
+          console.log(res.data);
+          if (res.data.success === false) {
+            alert(res.data.message);
+          } else {
+            // this.props.history.push('/home-page');
+            console.log(res.data.location);
+            alert(res.data.message);
+            this.props.locationGotFunc();
+          }
+        })
+        .catch(error => {
+          alert('Internal Server error, Server Resopnded with "' + error + '"');
+        });
+    }
   };
+
+  // fetchZip = (lat, long) => {
+
+  // };
 
   render() {
     // const { fullScreen } = this.props;
@@ -101,14 +110,16 @@ class ResponsiveDialog extends React.Component {
               <IconButton
                 className={classes.iconButton}
                 aria-label="Directions"
-                onClick={getCurrentPosition}
+                onClick={() =>
+                  this.getPosition(getCurrentPosition, latitude, longitude)
+                }
               >
                 <GpsFixed />
-                {fetchingPosition === false ? (
+                {/* {this.props.locationGot === false ? (
                   <Hidden xlDown>{this.fetchZip(latitude, longitude)}</Hidden>
                 ) : (
                   <Hidden xlDown>abc</Hidden>
-                )}
+                )} */}
               </IconButton>
             </div>
           )}

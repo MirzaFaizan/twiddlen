@@ -45,7 +45,8 @@ class CustomizedInputBase extends React.Component {
 
     this.state = {
       searchValue: '',
-      open: false
+      open: false,
+      locationGot: false
     };
   }
 
@@ -63,6 +64,11 @@ class CustomizedInputBase extends React.Component {
     });
     // const a = this.state.searchValue.toString();
     // console.log(a.search('64555'));
+  };
+  locationGotfunc = () => {
+    this.setState({
+      locationGot: true
+    });
   };
   getLocationfromIP = () => {
     axios
@@ -177,6 +183,8 @@ class CustomizedInputBase extends React.Component {
         <div>
           <AlertDialog
             open={this.state.open}
+            locationGot={this.state.locationGot}
+            locationGotFunc={this.locationGotfunc}
             // handleClickOpen={() => this.handleClickOpen()}
             // handleClose={() => this.handleClose()}
             // getLocationfromIP={() => this.getLocationfromIP()}
