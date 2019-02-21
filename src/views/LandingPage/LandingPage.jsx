@@ -12,7 +12,7 @@ import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Parallax from 'components/Parallax/Parallax.jsx';
-import Button from 'components/CustomButtons/Button.jsx';
+// import Button from 'components/CustomButtons/Button.jsx';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -21,11 +21,13 @@ import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.js
 import ProductSection from './Sections/ProductSection.jsx';
 import SearchBar from './Sections/SearchBar.jsx';
 //import EventsSection from "./Sections/EventsSection.jsx";
-import Notifications from 'react-notify-toast';
+// import Notifications from 'react-notify-toast';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
+
+import AddEvent from '../PostEventsClient/PostEventsClient.jsx';
 
 const dashboardRoutes = [];
 
@@ -43,10 +45,10 @@ class LandingPage extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props;
-    const buttonStyle = {
-      //marginLeft:'35%',
-      // marginRight:'5000px',
-    };
+    // const buttonStyle = {
+    //   marginLeft:'35%',
+    //   marginRight:'5000px',
+    // };
 
     return (
       <div>
@@ -64,9 +66,12 @@ class LandingPage extends React.Component {
           {...rest}
         />
 
-        <Notifications options={{ zIndex: 200, top: '100px' }} />
+        {/* <Notifications options={{ zIndex: 200, top: '100px' }} /> */}
         <Parallax filter image={dynamicImage}>
           <div className={classes.container}>
+            <div style={{ position: 'absolute', right: 2, bottom: 30 }}>
+              <AddEvent />
+            </div>
             <GridContainer
               justify="center"
               alignItems="center"
@@ -94,9 +99,9 @@ class LandingPage extends React.Component {
                     Organizing an Event? Spread the Word, Reach more People
                     right now.
                     <br />
-                    <Button style={buttonStyle} color="warning" round>
+                    {/* <Button style={buttonStyle} color="warning" round>
                       Post an Event
-                    </Button>
+                    </Button> */}
                   </h4>
                 </GridItem>
               </GridItem>
@@ -108,6 +113,7 @@ class LandingPage extends React.Component {
             <ProductSection history={this.props.history} />
           </div>
         </div>
+        <div />
       </div>
     );
   }
