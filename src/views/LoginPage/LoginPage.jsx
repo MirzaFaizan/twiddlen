@@ -294,7 +294,7 @@ class LoginPage extends React.Component {
                     onFailure={this.twitterFailure}
                     onSuccess={this.twitterResponse}
                     requestTokenUrl="https://twiddlen.herokuapp.com/api/v1/auth/twitter/reverse"
-                    tag="icon"
+                    tag="i"
                     showIcon={false}
                     style={{ margin: '3.5%' }}
                     text=""

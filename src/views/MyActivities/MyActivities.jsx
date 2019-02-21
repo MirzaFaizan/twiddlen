@@ -89,6 +89,20 @@ const styles = theme => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     zIndex: 2
+    // filter:'blur(1px)',
+    // webkitFilter: 'blur(1px)'
+  },
+  blurred: {
+    filter: 'blur(13px)',
+    margin: 0,
+    height: '400px',
+    backgroundColor: 'rgba(192,192,192, 0.7)',
+    position: 'absolute',
+    width: '90%',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 2
   },
   bgImage: {
     backgrounColor: 'grey',
@@ -132,6 +146,8 @@ class NavTabs extends React.Component {
           {...rest}
         />
         <div className={classes.bgImage} />
+        <div className={classes.blurred} />
+
         <Paper className={classes.paperRoot}>
           <Typography
             variant="display1"

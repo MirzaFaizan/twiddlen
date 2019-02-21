@@ -114,7 +114,7 @@ class LandingPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
+  // console.log(props);
   return {
     history: props.history,
     products: state.products,
