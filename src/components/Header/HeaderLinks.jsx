@@ -111,7 +111,7 @@ class HeaderLinks extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
+  // console.log(props);
   return {
     client: state.client
   };
