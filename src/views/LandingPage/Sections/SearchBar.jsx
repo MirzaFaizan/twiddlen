@@ -177,9 +177,9 @@ class CustomizedInputBase extends React.Component {
         <div>
           <AlertDialog
             open={this.state.open}
-            handleClickOpen={() => this.handleClickOpen()}
-            handleClose={() => this.handleClose()}
-            getLocationfromIP={() => this.getLocationfromIP()}
+            // handleClickOpen={() => this.handleClickOpen()}
+            // handleClose={() => this.handleClose()}
+            // getLocationfromIP={() => this.getLocationfromIP()}
           />
         </div>
         <IconButton
