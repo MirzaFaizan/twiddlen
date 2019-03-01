@@ -13,7 +13,7 @@ import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
 
 // Sections for this page
-import SearchBar from './Sections/SearchBar.jsx';
+// import SearchBar from './Sections/SearchBar.jsx';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -29,7 +29,7 @@ import Slider from 'react-slick';
 
 import Fade from '@material-ui/core/Fade';
 
-import Slide from '@material-ui/core/Slide';
+// import Slide from '@material-ui/core/Slide';
 
 import axios from 'axios';
 
@@ -330,7 +330,7 @@ class LandingPage extends React.Component {
             alignContent="center"
             alignItems="center"
           >
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Slide
                 direction="down"
                 timeout={1000}
@@ -340,7 +340,7 @@ class LandingPage extends React.Component {
               >
                 <SearchBar />
               </Slide>
-            </Grid>
+            </Grid> */}
           </Grid>
         </div>
         <div>
@@ -385,6 +385,7 @@ class LandingPage extends React.Component {
                             description={type.description}
                             sponsor={type.sponsor}
                             category={type.category}
+                            history={this.props.history}
                           />
                         );
                       })}
@@ -432,6 +433,7 @@ class LandingPage extends React.Component {
                                 description={type.description}
                                 sponsor={type.sponsor}
                                 category={type.category}
+                                history={this.props.history}
                               />
                               <div
                                 style={{
@@ -487,6 +489,7 @@ class LandingPage extends React.Component {
                                 description={type.description}
                                 sponsor={type.sponsor}
                                 category={type.category}
+                                history={this.props.history}
                               />
                               <div
                                 style={{

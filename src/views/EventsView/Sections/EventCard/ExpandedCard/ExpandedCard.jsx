@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import { IconButton } from '@material-ui/core';
 
 import Notification from '@material-ui/icons/Notifications';
@@ -30,12 +30,12 @@ import Hidden from '@material-ui/core/Hidden';
 
 const styles = {
   card: {
-    maxWidth: 430,
+    maxWidth: 450,
     overflow: 'auto',
     height: 'auto'
   },
   media: {
-    height: 250,
+    height: 220,
     width: '100%'
   }
 };
@@ -83,7 +83,7 @@ class ResponsiveDialog extends React.Component {
                       Sponsored By
                     </Typography>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} style={{ paddingBottom: '5%' }}>
                     <img
                       src={this.props.sponsor}
                       alt="sponsor"
@@ -100,150 +100,241 @@ class ResponsiveDialog extends React.Component {
                   image={this.props.image}
                   title="The Great Event"
                 />
-                <div style={{ marginTop: '-17%', marginRight: '1%' }}>
-                  <Grid
-                    container
-                    spacing={0}
-                    justify="flex-end"
-                    alignContent="flex-end"
-                    alignItems="flex-end"
-                  >
-                    <Hidden smDown>
-                      <Grid item xs={4} md={7}>
-                        <Typography variant="title">
-                          {this.props.name}
-                        </Typography>
+                <Grid
+                  container
+                  spacing={0}
+                  justify="flex-end"
+                  alignContent="flex-end"
+                  alignItems="flex-end"
+                >
+                  <Hidden only={['xs']}>
+                    <Grid
+                      item
+                      xs={4}
+                      sm={8}
+                      md={8}
+                      style={{ paddingLeft: '3%' }}
+                    >
+                      <Typography variant="title">{this.props.name}</Typography>
+                    </Grid>
+                  </Hidden>
+                  <Grid item xs={7} sm={4} md={4}>
+                    <div style={{ marginTop: '-10%' }}>
+                      <Grid container spacing={0}>
+                        <Grid item xs={3} md={3}>
+                          <IconButton
+                            style={{
+                              backgroundColor: 'orange',
+                              width: '30px',
+                              height: '30px'
+                            }}
+                          >
+                            <Hidden only={'xs'}>
+                              <Notification
+                                style={{
+                                  color: 'white',
+                                  width: '20px'
+                                }}
+                              />
+                            </Hidden>
+                            <Hidden smUp>
+                              <Notification
+                                style={{
+                                  color: 'white',
+                                  width: '20px',
+                                  marginTop: '-10px'
+                                }}
+                              />
+                            </Hidden>
+                          </IconButton>
+                          <Hidden only={'xs'}>
+                            <small>Notify</small>
+                          </Hidden>
+                        </Grid>
+                        <Grid item xs={3} md={3}>
+                          <div
+                            style={{
+                              marginTop: '-36px'
+                            }}
+                          >
+                            <FloatingMenu
+                              slideSpeed={500}
+                              direction="up"
+                              spacing={8}
+                              isOpen={this.state.isOpen}
+                            >
+                              <IconButton
+                                style={{
+                                  backgroundColor: 'orange',
+                                  width: '30px',
+                                  height: '30px'
+                                }}
+                                onClick={() =>
+                                  this.setState({ isOpen: !this.state.isOpen })
+                                }
+                              >
+                                <Hidden only={'xs'}>
+                                  <Share
+                                    style={{
+                                      color: 'white',
+                                      width: '20px'
+                                      // height:'20px'
+                                    }}
+                                  />
+                                </Hidden>
+                                <Hidden smUp>
+                                  <Share
+                                    style={{
+                                      color: 'white',
+                                      width: '20px',
+                                      // height:'20px',
+                                      marginTop: '-10px'
+                                    }}
+                                  />
+                                </Hidden>
+                              </IconButton>
+                              <ChildButton
+                                icon={
+                                  <i
+                                    className={'fab fa-facebook'}
+                                    style={{ color: 'white' }}
+                                  />
+                                }
+                                size={10}
+                                onClick={() =>
+                                  console.log('First button clicked')
+                                }
+                              />
+                              <ChildButton
+                                icon={
+                                  <i
+                                    className={'fab fa-twitter'}
+                                    style={{ color: 'white' }}
+                                  />
+                                }
+                                size={10}
+                              />
+                            </FloatingMenu>
+                            <Hidden only={'xs'}>
+                              <small> Share</small>
+                            </Hidden>
+                          </div>
+                        </Grid>
+                        <Grid item xs={3} md={3}>
+                          <IconButton
+                            style={{
+                              backgroundColor: 'orange',
+                              width: '30px',
+                              height: '30px'
+                            }}
+                          >
+                            <Hidden only={'xs'}>
+                              <Bookmark
+                                style={{
+                                  color: 'white',
+                                  width: '20px'
+                                }}
+                              />
+                            </Hidden>
+                            <Hidden smUp>
+                              <Bookmark
+                                style={{
+                                  color: 'white',
+                                  width: '20px',
+                                  marginTop: '-10px'
+                                }}
+                              />
+                            </Hidden>
+                          </IconButton>
+                          <Hidden only={'xs'}>
+                            <small>Save</small>
+                          </Hidden>
+                        </Grid>
+                        <Grid item xs={3} md={3}>
+                          <IconButton
+                            style={{
+                              backgroundColor: 'orange',
+                              width: '30px',
+                              height: '30px'
+                            }}
+                          >
+                            <Hidden only={'xs'}>
+                              <Comment
+                                style={{
+                                  color: 'white',
+                                  width: '20px'
+                                }}
+                              />
+                            </Hidden>
+                            <Hidden smUp>
+                              <Comment
+                                style={{
+                                  color: 'white',
+                                  marginTop: '-10px',
+                                  width: '20px'
+                                }}
+                              />
+                            </Hidden>
+                          </IconButton>
+                          <Hidden only={'xs'}>
+                            <small>Add</small>
+                          </Hidden>
+                        </Grid>
                       </Grid>
-                    </Hidden>
-                    <Grid item xs={2} md={1}>
-                      <IconButton
-                        style={{
-                          backgroundColor: 'orange',
-                          width: '30px',
-                          height: '30px'
-                        }}
-                      >
-                        <Notification
-                          style={{ color: 'white', fontSize: '20px' }}
-                        />
-                      </IconButton>
-                      <small>Notify</small>
-                    </Grid>
-                    <Grid item xs={2} md={1}>
-                      <FloatingMenu
-                        slideSpeed={500}
-                        direction="up"
-                        spacing={8}
-                        isOpen={this.state.isOpen}
-                      >
-                        <IconButton
-                          style={{
-                            backgroundColor: 'orange',
-                            width: '30px',
-                            height: '30px'
-                          }}
-                          onClick={() =>
-                            this.setState({ isOpen: !this.state.isOpen })
-                          }
-                        >
-                          <small>
-                            <Share style={{ color: 'white' }} />
-                          </small>
-                        </IconButton>
-                        <ChildButton
-                          icon={
-                            <i
-                              className={'fab fa-facebook'}
-                              style={{ color: 'white' }}
-                            />
-                          }
-                          size={20}
-                          onClick={() => console.log('First button clicked')}
-                        />
-                        <ChildButton
-                          icon={
-                            <i
-                              className={'fab fa-twitter'}
-                              style={{ color: 'white' }}
-                            />
-                          }
-                          size={20}
-                        />
-                      </FloatingMenu>
-                      <small> Share</small>
-                    </Grid>
-                    <Grid item xs={2} md={1}>
-                      <IconButton
-                        style={{
-                          backgroundColor: 'orange',
-                          width: '30px',
-                          height: '30px'
-                        }}
-                      >
-                        <small>
-                          <Bookmark
-                            style={{ color: 'white', fontSize: '20px' }}
-                          />
-                        </small>
-                      </IconButton>
-                      <small>Save</small>
-                    </Grid>
-                    <Grid item xs={2} md={1}>
-                      <IconButton
-                        style={{
-                          backgroundColor: 'orange',
-                          width: '30px',
-                          height: '30px'
-                        }}
-                      >
-                        <small>
-                          <Comment
-                            style={{ color: 'white', fontSize: '18px' }}
-                          />
-                        </small>
-                      </IconButton>
-                      <small>Add</small>
-                    </Grid>
+                    </div>
                   </Grid>
-                </div>
+                </Grid>
 
                 <CardContent>
                   <Grid container spacing={0}>
                     <Grid item xs={12}>
                       <Grid container spacing={0} direction="row">
-                        <Grid item xs={7}>
+                        <Grid item xs={5} sm={7} md={7}>
                           <Typography variant="body1">
-                            {this.props.organizerName}
+                            <strong>{this.props.organizerName}</strong>
                           </Typography>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={7} sm={5} md={5}>
                           <Typography variant="body1">
-                            Avg. Ticket Price
+                            <small>
+                              {' '}
+                              Avg. Ticket Price:&nbsp;
+                              <strong>{this.props.price}</strong>
+                            </small>
                           </Typography>
                         </Grid>
-                        <Grid item xs={1}>
+                        {/* <Grid item xs={2} sm={1} md={1}>
                           <Typography variant="body1">
                             <strong>{this.props.price}</strong>
                           </Typography>
-                        </Grid>
+                        </Grid> */}
                       </Grid>
                     </Grid>
                     <Grid item xs={12}>
                       <Grid container spacing={8} direction="row">
-                        <Grid item xs={3}>
-                          <Typography variant="body2">
-                            {this.props.city}
+                        <Grid item xs={4} sm={4} md={4}>
+                          <Typography variant="subheading">
+                            <small>
+                              {' '}
+                              <strong>{this.props.city}</strong>{' '}
+                            </small>
                           </Typography>
                         </Grid>
-                        <Grid item xs={4}>
-                          <Typography variant="body2">
-                            {this.props.seating}
-                            Seatings
+                        <Grid item xs={4} sm={4} md={4}>
+                          <Typography variant="subheading">
+                            <small>
+                              <strong>
+                                {this.props.seating}
+                                Seatings
+                              </strong>
+                            </small>
                           </Typography>
                         </Grid>
-                        <Grid item xs={5}>
-                          <Typography variant="body2">
-                            <small>{this.props.timeAndDate}</small>
+                        <Grid item xs={4} sm={4} md={4}>
+                          <Typography variant="subheading" align="center">
+                            <small>
+                              <strong>2019-02-28</strong>
+                            </small>
                           </Typography>
                         </Grid>
                       </Grid>
@@ -263,6 +354,11 @@ class ResponsiveDialog extends React.Component {
                           color: 'white',
                           marginRight: 5
                         }}
+                        onClick={() =>
+                          this.props.history.push(
+                            '/category-page/' + this.props.category[0]
+                          )
+                        }
                       />
                     </Grid>
                     {/* <Grid item xs={4} md={3}>
@@ -281,7 +377,7 @@ class ResponsiveDialog extends React.Component {
                       </Typography>
                     </Grid> */}
                   </Grid>
-                  <Divider />
+                  {/* <Divider /> */}
                 </CardContent>
               </Grid>
             </Grid>

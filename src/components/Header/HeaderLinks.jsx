@@ -33,7 +33,8 @@ import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLin
 import LoginPage from 'views/LoginPage/LoginPage.jsx';
 import RegisterPage from 'views/RegisterPage/RegisterPage.jsx';
 
-import Search from '../../views/LandingPage/Sections/SearchBar.jsx';
+import GuestSearch from '../../views/LandingPage/Sections/SearchBar.jsx';
+import UserSearch from '../../views/EventsView/Sections/SearchBar.jsx';
 
 class HeaderLinks extends React.Component {
   constructor(props) {
@@ -55,11 +56,10 @@ class HeaderLinks extends React.Component {
     if (this.props.client) {
       return (
         <List className={classes.list}>
-          {/* <ListItem className={classes.listItem}>
-          <Search/>
-        </ListItem> */}
           <ListItem className={classes.listItem}>
-            {/*Login button*/}
+            <ListItem className={classes.listItem}>
+              <UserSearch history={this.props.history} />
+            </ListItem>
             <Button
               color="transparent"
               simple
@@ -93,6 +93,9 @@ class HeaderLinks extends React.Component {
     } else {
       return (
         <List className={classes.list}>
+          <ListItem className={classes.listItem}>
+            <GuestSearch history={this.props.history} />
+          </ListItem>
           <ListItem className={classes.listItem}>
             {/*Login button*/}
             <LoginPage />

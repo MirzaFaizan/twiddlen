@@ -26,7 +26,7 @@ class FloatingMenuItem extends React.Component {
 
   render() {
     return (
-      <div style={{ styles }}>
+      <div style={styles}>
         <FloatingMenu
           slideSpeed={500}
           direction="up"

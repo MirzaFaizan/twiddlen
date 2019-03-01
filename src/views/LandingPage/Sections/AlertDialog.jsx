@@ -77,7 +77,7 @@ class ResponsiveDialog extends React.Component {
           if (res.data.success === false) {
             alert(res.data.message);
           } else {
-            // this.props.history.push('/home-page');
+            this.props.history.push('/home-page');
             console.log(res.data.location);
             alert(res.data.message);
             this.props.locationGotFunc();
@@ -89,12 +89,7 @@ class ResponsiveDialog extends React.Component {
     }
   };
 
-  // fetchZip = (lat, long) => {
-
-  // };
-
   render() {
-    // const { fullScreen } = this.props;
     const { classes } = this.props;
 
     return (
@@ -115,42 +110,10 @@ class ResponsiveDialog extends React.Component {
                 }
               >
                 <GpsFixed />
-                {/* {this.props.locationGot === false ? (
-                  <Hidden xlDown>{this.fetchZip(latitude, longitude)}</Hidden>
-                ) : (
-                  <Hidden xlDown>abc</Hidden>
-                )} */}
               </IconButton>
             </div>
           )}
         />
-        {/* <Dialog
-          fullScreen={fullScreen}
-          open={this.props.open}
-          onClose={this.props.handleClose}
-          aria-labelledby="responsive-dialog-title"
-        >
-          <DialogTitle id="responsive-dialog-title">
-            {"Use Google's location service?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              You sure want to give access to your location?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.props.handleClose} color="primary">
-              Disagree
-            </Button>
-            <Button
-              onClick={this.props.getLocationfromIP}
-              color="primary"
-              autoFocus
-            >
-              Agree
-            </Button>
-          </DialogActions>
-        </Dialog> */}
       </div>
     );
   }

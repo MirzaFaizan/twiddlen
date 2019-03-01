@@ -19,7 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
 // Sections for this page
 import ProductSection from './Sections/ProductSection.jsx';
-import SearchBar from './Sections/SearchBar.jsx';
+// import SearchBar from './Sections/SearchBar.jsx';
 //import EventsSection from "./Sections/EventsSection.jsx";
 // import Notifications from 'react-notify-toast';
 
@@ -91,9 +91,9 @@ class LandingPage extends React.Component {
                 </h4>
                 {/* <input onChange={this.onUpdateUser}/>
                 <div>{this.props.user}</div> */}
-                <GridItem xs={12} sm={12} md={12}>
+                {/* <GridItem xs={12} sm={12} md={12}>
                   <SearchBar history={this.props.history} />
-                </GridItem>
+                </GridItem> */}
                 <GridItem xs={12} sm={12} md={12}>
                   <h4 className={classes.subtitle}>
                     Organizing an Event? Spread the Word, Reach more People

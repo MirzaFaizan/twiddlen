@@ -233,6 +233,7 @@ class ImgMediaCard extends React.Component {
                     price="$700"
                     category={[this.props.category]}
                     sponsor={this.props.sponsor}
+                    history={this.props.history}
                   />
                 </div>
               </Grid>

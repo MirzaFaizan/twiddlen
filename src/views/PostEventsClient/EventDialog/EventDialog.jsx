@@ -4,9 +4,11 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
+
+import AutoSuggest from './AutoSuggest.jsx';
 
 class ResponsiveDialog extends React.Component {
   state = {
@@ -22,7 +24,7 @@ class ResponsiveDialog extends React.Component {
   };
 
   render() {
-    const { fullScreen } = this.props;
+    // const { fullScreen } = this.props;
 
     return (
       <div>
@@ -37,19 +39,22 @@ class ResponsiveDialog extends React.Component {
           Add New Event
         </Button>
         <Dialog
-          fullScreen={fullScreen}
+          maxWidth={'md'}
+          fullWidth={true}
+          // fullScreen={true}
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title"
         >
           <DialogTitle id="responsive-dialog-title">
-            {"Use Google's location service?"}
+            {'Selecting Category'}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <AutoSuggest />
+            {/* <DialogContentText>
               Let Google help apps determine location. This means sending
               anonymous location data to Google, even when no apps are running.
-            </DialogContentText>
+            </DialogContentText> */}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

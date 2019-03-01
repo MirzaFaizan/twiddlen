@@ -9,13 +9,13 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import Header from 'components/Header/Header.jsx';
 import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
+// import GridItem from 'components/Grid/GridItem.jsx';
 import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 
 import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.jsx';
 // Sections for this page
 
-import SearchBar from './Sections/SearchBar.jsx';
+// import SearchBar from './Sections/SearchBar.jsx';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -250,9 +250,9 @@ class CategoryView extends React.Component {
             spacing={8}
             className={classes.container}
           >
-            <GridItem style={divText} xs={12} sm={12} md={6}>
+            {/* <GridItem style={divText} xs={12} sm={12} md={6}>
               <SearchBar />
-            </GridItem>
+            </GridItem> */}
           </GridContainer>
         </div>
         <div>
