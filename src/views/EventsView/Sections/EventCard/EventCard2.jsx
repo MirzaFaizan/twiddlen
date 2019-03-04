@@ -19,6 +19,8 @@ import IconButton from '@material-ui/core/IconButton';
 
 import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
 
+import SignUpAlert from '../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
+
 const styles = {
   card: {
     maxWidth: 'auto',
@@ -44,7 +46,8 @@ class ImgMediaCard extends React.Component {
       locationSub: 'grey',
       notificationSub: 'grey',
       heartSub: 'grey',
-      openExpandedCardstate: false
+      openExpandedCardstate: false,
+      openAlert: false
     };
   }
 
@@ -61,41 +64,73 @@ class ImgMediaCard extends React.Component {
   };
 
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
-      this.setState({
-        locationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.locationSub === 'grey') {
+        this.setState({
+          locationSub: 'orange',
+          subscriptionMessage: 'Location Added!'
+        });
+      } else {
+        this.setState({
+          locationSub: 'grey',
+          subscriptionMessage: 'Location Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        locationSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
-      this.setState({
-        notificationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.notificationSub === 'grey') {
+        this.setState({
+          notificationSub: 'orange',
+          subscriptionMessage: 'You Subscribed!'
+        });
+      } else {
+        this.setState({
+          notificationSub: 'grey',
+          subscriptionMessage: 'UnSubscribed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        notificationSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
-      this.setState({
-        heartSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.heartSub === 'grey') {
+        this.setState({
+          heartSub: 'orange',
+          subscriptionMessage: 'Favorite Added!'
+        });
+      } else {
+        this.setState({
+          heartSub: 'grey',
+          subscriptionMessage: 'Favorite Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        heartSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -257,6 +292,11 @@ class ImgMediaCard extends React.Component {
             </Grid>
           </div>
         </CardContent>
+        <SignUpAlert
+          open={this.state.openAlert}
+          handleClickOpen={() => this.handleClickOpen()}
+          handleClose={() => this.handleClose()}
+        />
       </Card>
     );
   }

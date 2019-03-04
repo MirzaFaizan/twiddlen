@@ -19,21 +19,22 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
-import LocalVibe from './Sections/EventCard/EventCard.jsx';
+// import LocalVibe from './Sections/EventCard/EventCard.jsx';
 import LocalVibe2 from './Sections/EventCard/EventCard2.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import { Carousel } from '3d-react-carousal';
+// import { Carousel } from '3d-react-carousal';
 import Slider from 'react-slick';
 
-import Fade from '@material-ui/core/Fade';
+// import Fade from '@material-ui/core/Fade';
 
 // import Slide from '@material-ui/core/Slide';
 
 import axios from 'axios';
 
 import Link from '@material-ui/core/Link';
+import LoadingScreen from 'react-loading-screen';
 
 // let abc = []
 
@@ -47,6 +48,7 @@ var settings = {
   initialSlide: 0,
   autoplaySpeed: 1500,
   adaptiveHeight: true,
+  centerPadding: '60px',
 
   responsive: [
     {
@@ -57,7 +59,8 @@ var settings = {
         infinite: true,
         dots: true,
         focusOnSelect: true,
-        autoplaySpeed: 1500
+        autoplaySpeed: 1500,
+        centerPadding: '60px'
       }
     },
     {
@@ -66,7 +69,9 @@ var settings = {
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
-        focusOnSelect: true
+        focusOnSelect: true,
+        dots: true,
+        centerPadding: '60px'
       }
     },
     {
@@ -75,7 +80,7 @@ var settings = {
         slidesToShow: 1,
         slidesToScroll: 1,
         focusOnSelect: true,
-        dots: false
+        dots: true
       }
     }
   ]
@@ -208,7 +213,8 @@ class LandingPage extends React.Component {
     this.onUpdateUser = this.onUpdateUser.bind(this);
 
     this.state = {
-      eventsData: ''
+      eventsData: '',
+      loading: true
     };
   }
 
@@ -225,7 +231,8 @@ class LandingPage extends React.Component {
           //console.log(dat);
           console.log(res.data);
           this.setState({
-            eventsData: res.data.events
+            eventsData: res.data.events,
+            loading: false
           });
           this.setSlides();
         }
@@ -285,7 +292,20 @@ class LandingPage extends React.Component {
 
     var rand = min + Math.floor(Math.random() * (max - min));
 
+    let fact = [
+      'Event Fact 1',
+      'Event Fact 2',
+      'Event Fact 3',
+      'Event Fact 4',
+      'Event Fact 5',
+      'Event Fact 6',
+      'Event Fact 7',
+      'Event Fact 8',
+      'Event Fact 9',
+      'Event Fact 10'
+    ];
     let choosenImage = images[rand];
+    let choosenFact = fact[rand];
 
     const divBackground = {
       backgroundImage: `url(${choosenImage})`,
@@ -306,31 +326,39 @@ class LandingPage extends React.Component {
 
     return (
       <div>
-        <Header
-          color="transparent"
-          routes={dashboardRoutes}
-          brand="1"
-          rightLinks={<HeaderLinks history={this.props.history} />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: 'dark',
-            brand: '2'
-          }}
-          {...rest}
-        />
+        <LoadingScreen
+          loading={this.state.loading}
+          bgColor="black"
+          spinnerColor="orange"
+          textColor="white"
+          logoSrc="https://clearlens.org/wp-content/uploads/2018/05/Facts.jpg"
+          text={choosenFact}
+        >
+          <Header
+            color="transparent"
+            routes={dashboardRoutes}
+            brand="1"
+            rightLinks={<HeaderLinks history={this.props.history} />}
+            fixed
+            changeColorOnScroll={{
+              height: 400,
+              color: 'dark',
+              brand: '2'
+            }}
+            {...rest}
+          />
 
-        <div style={divBackground}>
-          <Grid
-            style={divText}
-            container
-            spacing={0}
-            direction="column"
-            justify="center"
-            alignContent="center"
-            alignItems="center"
-          >
-            {/* <Grid item xs={12}>
+          <div style={divBackground}>
+            <Grid
+              style={divText}
+              container
+              spacing={0}
+              direction="column"
+              justify="center"
+              alignContent="center"
+              alignItems="center"
+            >
+              {/* <Grid item xs={12}>
               <Slide
                 direction="down"
                 timeout={1000}
@@ -341,31 +369,33 @@ class LandingPage extends React.Component {
                 <SearchBar />
               </Slide>
             </Grid> */}
-          </Grid>
-        </div>
-        <div>
-          <div style={{ backgroundColor: 'lightgrey', padding: 12 }}>
-            <Grid container spacing={24} direction="column">
-              <Grid item xs={12}>
-                <Typography
-                  variant="display1"
-                  component="h4"
-                  gutterBottom={true}
-                  align="center"
-                >
-                  <div style={{ paddingTop: '1%' }}>
-                    <Link
-                      component="button"
-                      variant="display1"
-                      onClick={() => this.props.history.push('/happeningtoday')}
-                      color="inherit"
-                    >
-                      <strong>Vibes Happening Today</strong>
-                    </Link>
-                  </div>
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
+            </Grid>
+          </div>
+          <div>
+            <div style={{ backgroundColor: 'lightgrey', padding: 12 }}>
+              <Grid container spacing={24} direction="column">
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <div style={{ paddingTop: '1%' }}>
+                      <Link
+                        component="button"
+                        variant="display1"
+                        onClick={() =>
+                          this.props.history.push('/happeningtoday')
+                        }
+                        color="inherit"
+                      >
+                        <strong>Vibes Happening Today</strong>
+                      </Link>
+                    </div>
+                  </Typography>
+                </Grid>
+                {/* <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Grid container spacing={0} justify="center">
                   <Grid item xs={12} sm={12} md={8} lg={5}>
                     <Carousel
@@ -391,66 +421,72 @@ class LandingPage extends React.Component {
                     />
                   </Grid>
                 </Grid>
-              </Grid>
+              </Grid> */}
 
-              <Grid item xs={12}>
-                <Typography
-                  variant="display1"
-                  component="h4"
-                  gutterBottom={true}
-                  align="center"
-                >
-                  <Link
-                    component="button"
+                <Grid item xs={12}>
+                  <Typography
                     variant="display1"
-                    onClick={() =>
-                      this.props.history.push('/happeningthisweek')
-                    }
-                    color="inherit"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
                   >
-                    <strong>Happening This Week</strong>
-                  </Link>
-                </Typography>
-              </Grid>
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/happeningthisweek')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Happening This Week</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
 
-              <Grid item xs={12} md={12}>
-                <Grid container spacing={0}>
-                  <Grid item xs={12}>
-                    <Slider {...settings}>
-                      {Object.values(this.state.eventsData).map((type, key) => {
-                        return (
-                          <Fade in={true} timeout={10000} key={key}>
-                            <div className={classes.container}>
-                              <LocalVibe2
-                                image={
-                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                                }
-                                name={type.name}
-                                city={type.Address.City}
-                                organizerName={'Twiddlen'}
-                                timeAndDate={type.Date.startDate.slice(0, 10)}
-                                description={type.description}
-                                sponsor={type.sponsor}
-                                category={type.category}
-                                history={this.props.history}
-                                client={this.props.client}
-                              />
+                <Grid item xs={12} md={12}>
+                  <Grid container spacing={0}>
+                    <Grid item xs={12}>
+                      <Slider {...settings}>
+                        {Object.values(this.state.eventsData).map(
+                          (type, key) => {
+                            return (
+                              // <Fade in={true} timeout={10000} key={key}>
                               <div
-                                style={{
-                                  paddingTop: '10%',
-                                  paddingBottom: '10%'
-                                }}
-                              />
-                            </div>
-                          </Fade>
-                        );
-                      })}
-                    </Slider>
+                                className={classes.container}
+                                key={key}
+                                index={key}
+                              >
+                                <LocalVibe2
+                                  image={
+                                    'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                                  }
+                                  name={type.name}
+                                  city={type.Address.City}
+                                  organizerName={'Twiddlen'}
+                                  timeAndDate={type.Date.startDate.slice(0, 10)}
+                                  description={type.description}
+                                  sponsor={type.sponsor}
+                                  category={type.category}
+                                  history={this.props.history}
+                                  client={this.props.client}
+                                />
+                                <div
+                                  style={{
+                                    paddingTop: '10%',
+                                    paddingBottom: '10%'
+                                  }}
+                                />
+                              </div>
+                              // </Fade>
+                            );
+                          }
+                        )}
+                      </Slider>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
 
-              {/* <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                 <Typography
                   variant="display1"
                   component="h4"
@@ -470,7 +506,7 @@ class LandingPage extends React.Component {
                 </Typography>
               </Grid> */}
 
-              {/* <Grid item xs={12} md={12}>
+                {/* <Grid item xs={12} md={12}>
                 <Grid container spacing={0}>
                   <Grid item xs={12}>
                     <Slider {...settings}>
@@ -505,9 +541,10 @@ class LandingPage extends React.Component {
                   </Grid>
                 </Grid>
               </Grid> */}
-            </Grid>
+              </Grid>
+            </div>
           </div>
-        </div>
+        </LoadingScreen>
       </div>
     );
   }

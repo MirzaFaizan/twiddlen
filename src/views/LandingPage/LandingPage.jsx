@@ -28,6 +28,7 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
 import AddEvent from '../PostEventsClient/PostEventsClient.jsx';
+import LoadingScreen from 'react-loading-screen';
 
 const dashboardRoutes = [];
 
@@ -36,12 +37,21 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      loading: true
+    };
     this.onUpdateUser = this.onUpdateUser.bind(this);
   }
 
   onUpdateUser = event => {
     this.props.onUpdateUser(event.target.value);
   };
+
+  componentDidMount() {
+    this.setState({
+      loading: false
+    });
+  }
 
   render() {
     const { classes, ...rest } = this.props;
@@ -54,70 +64,83 @@ class LandingPage extends React.Component {
       <Redirect to="/home-page" />
     ) : (
       <div>
-        <Header
-          color="transparent"
-          routes={dashboardRoutes}
-          brand="1"
-          rightLinks={<HeaderLinks history={this.props.history} />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: 'dark',
-            brand: '2'
-          }}
-          {...rest}
-        />
+        <LoadingScreen
+          loading={this.state.loading}
+          bgColor="#f1f1f1"
+          spinnerColor="#9ee5f8"
+          textColor="#676767"
+          logoSrc="/logo.png"
+          text="Here an introduction sentence (Optional)"
+        >
+          <Header
+            color="transparent"
+            routes={dashboardRoutes}
+            brand="1"
+            rightLinks={<HeaderLinks history={this.props.history} />}
+            fixed
+            changeColorOnScroll={{
+              height: 400,
+              color: 'dark',
+              brand: '2'
+            }}
+            {...rest}
+          />
 
-        {/* <Notifications options={{ zIndex: 200, top: '100px' }} /> */}
-        <Parallax filter image={dynamicImage}>
-          <div className={classes.container}>
-            <div style={{ position: 'absolute', right: 2, bottom: 30 }}>
-              <AddEvent />
-            </div>
-            <GridContainer
-              justify="center"
-              alignItems="center"
-              direction="column"
-            >
-              <GridItem xs={12} sm={12} md={6}>
-                <Typography
-                  variant="display2"
-                  component="div"
-                  align="center"
-                  color="inherit"
-                >
-                  LOCAL VIBES FOR YOU
-                </Typography>
-                {/* <h4 className={classes.subtitle}>
+          {/* <Notifications options={{ zIndex: 200, top: '100px' }} /> */}
+          <Parallax filter image={dynamicImage}>
+            <div className={classes.container}>
+              <div style={{ position: 'absolute', right: 2, bottom: 30 }}>
+                <AddEvent />
+              </div>
+              <GridContainer
+                justify="center"
+                alignItems="center"
+                direction="column"
+              >
+                <GridItem xs={12} sm={12} md={6}>
+                  <Typography
+                    variant="display2"
+                    component="div"
+                    align="center"
+                    color="inherit"
+                  >
+                    LOCAL VIBES FOR YOU
+                  </Typography>
+                  {/* <h4 className={classes.subtitle}>
                   Enter Zip or Location for accurate nearby vibe search
                 </h4> */}
-                {/* <input onChange={this.onUpdateUser}/>
+                  {/* <input onChange={this.onUpdateUser}/>
                 <div>{this.props.user}</div> */}
-                {/* <GridItem xs={12} sm={12} md={12}>
+                  {/* <GridItem xs={12} sm={12} md={12}>
                   <SearchBar history={this.props.history} />
                 </GridItem> */}
-                <GridItem xs={12} sm={12} md={12}>
-                  {/* <h4 className={classes.subtitle}> */}
-                  <Typography align="center" color="inherit" variant="subtitle">
-                    Organizing a VIBE? Spread the Word, Reach more People right
-                    now
-                  </Typography>
-                  <br />
-                  {/* <Button style={buttonStyle} color="warning" round>
+                  <GridItem xs={12} sm={12} md={12}>
+                    {/* <h4 className={classes.subtitle}> */}
+                    <Typography
+                      align="center"
+                      color="inherit"
+                      variant="subtitle"
+                    >
+                      Organizing a VIBE? Spread the Word, Reach more People
+                      right now
+                    </Typography>
+                    <br />
+                    {/* <Button style={buttonStyle} color="warning" round>
                       Post an Event
                     </Button> */}
-                  {/* </h4> */}
+                    {/* </h4> */}
+                  </GridItem>
                 </GridItem>
-              </GridItem>
-            </GridContainer>
+              </GridContainer>
+            </div>
+          </Parallax>
+          <div className={classNames(classes.main, classes.mainRaised)}>
+            <div className={classes.container}>
+              <ProductSection history={this.props.history} />
+            </div>
           </div>
-        </Parallax>
-        <div className={classNames(classes.main, classes.mainRaised)}>
-          <div className={classes.container}>
-            <ProductSection history={this.props.history} />
-          </div>
-        </div>
-        <div />
+          <div />
+        </LoadingScreen>
       </div>
     );
   }

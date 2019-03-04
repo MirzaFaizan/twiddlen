@@ -21,6 +21,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
 import Snackbar from './SnackbarAlert/SnackBarAlert.jsx';
 
+import SignUpAlert from '../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
+
 const styles = {
   card: {
     maxWidth: 'auto',
@@ -48,7 +50,8 @@ class ImgMediaCard extends React.Component {
       heartSub: 'grey',
       openExpandedCardstate: false,
       subscriptionAlert: false,
-      subscriptionMessage: 'You Subscribed!'
+      subscriptionMessage: 'You Subscribed!',
+      openAlert: false
     };
   }
 
@@ -91,7 +94,7 @@ class ImgMediaCard extends React.Component {
       }
       this.openSubscriptionAlert();
     } else {
-      console.log('Sign Up First!!');
+      this.handleClickOpen();
     }
   };
 
@@ -110,7 +113,7 @@ class ImgMediaCard extends React.Component {
       }
       this.openSubscriptionAlert();
     } else {
-      console.log('Sign Up First!!!');
+      this.handleClickOpen();
     }
   };
 
@@ -129,8 +132,20 @@ class ImgMediaCard extends React.Component {
       }
       this.openSubscriptionAlert();
     } else {
-      console.log('Sign Up First');
+      this.handleClickOpen();
     }
+  };
+
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
   };
   render() {
     const { classes } = this.props;
@@ -309,6 +324,11 @@ class ImgMediaCard extends React.Component {
           openSnackbar={() => this.openSubscriptionAlert()}
           closeSnackbar={() => this.closeSubscriptionAlert()}
           message={this.state.subscriptionMessage}
+        />
+        <SignUpAlert
+          open={this.state.openAlert}
+          handleClickOpen={() => this.handleClickOpen()}
+          handleClose={() => this.handleClose()}
         />
       </div>
     );
