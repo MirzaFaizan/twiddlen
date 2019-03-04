@@ -14,6 +14,7 @@ import productsReducer from './reducers/productsReducer.js';
 import usersReducer from './reducers/usersReducer.js';
 import adminReducer from './reducers/adminReducer.js';
 import clientReducer from './reducers/clientReducer.js';
+import factsReducer from './reducers/factsReducer.js';
 
 import LandingPage from 'views/LandingPage/LandingPage.jsx';
 import ProfilePage from 'views/ProfilePage/ProfilePage.jsx';
@@ -31,7 +32,8 @@ const allReducers = combineReducers({
   products: productsReducer,
   user: usersReducer,
   admin: adminReducer,
-  client: clientReducer
+  client: clientReducer,
+  facts: factsReducer
 });
 
 const store = createStore(
@@ -40,7 +42,19 @@ const store = createStore(
     products: [{ name: 'iPhone' }],
     user: 'Michael',
     admin: false,
-    client: false
+    client: false,
+    facts: [
+      'Event Fact 1',
+      'Event Fact 2',
+      'Event Fact 3',
+      'Event Fact 4',
+      'Event Fact 5',
+      'Event Fact 6',
+      'Event Fact 7',
+      'Event Fact 8',
+      'Event Fact 9',
+      'Event Fact 10'
+    ]
   }
   // window.devToolsExtension && window.devToolsExtension()
 );

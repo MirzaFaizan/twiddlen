@@ -292,20 +292,8 @@ class LandingPage extends React.Component {
 
     var rand = min + Math.floor(Math.random() * (max - min));
 
-    let fact = [
-      'Event Fact 1',
-      'Event Fact 2',
-      'Event Fact 3',
-      'Event Fact 4',
-      'Event Fact 5',
-      'Event Fact 6',
-      'Event Fact 7',
-      'Event Fact 8',
-      'Event Fact 9',
-      'Event Fact 10'
-    ];
     let choosenImage = images[rand];
-    let choosenFact = fact[rand];
+    let choosenFact = this.props.facts[rand];
 
     const divBackground = {
       backgroundImage: `url(${choosenImage})`,
@@ -553,7 +541,8 @@ class LandingPage extends React.Component {
 const mapStateToProps = (state, props) => {
   // console.log(props);
   return {
-    client: state.client
+    client: state.client,
+    facts: state.facts
   };
 };
 
