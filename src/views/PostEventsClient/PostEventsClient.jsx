@@ -1,9 +1,9 @@
 import React from 'react';
-import {
-  FloatingMenu
-  //   MainButton,
-  //   ChildButton
-} from 'react-floating-button-menu';
+// import {
+//   FloatingMenu
+//   //   MainButton,
+//   //   ChildButton
+// } from 'react-floating-button-menu';
 // import MdAdd from '@material-ui/icons/Add';
 // import MdClose from '@material-ui/icons/Clear';
 import EventDialog from './EventDialog/EventDialog.jsx';
@@ -16,24 +16,24 @@ const styles = {
 };
 
 class FloatingMenuItem extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      isOpen: false
-    };
-  }
+  //   // this.state = {
+  //   //   isOpen: false
+  //   // };
+  // }
 
   render() {
     return (
       <div style={styles}>
-        <FloatingMenu
+        {/* <FloatingMenu
           slideSpeed={500}
           direction="up"
           spacing={20}
           isOpen={this.state.isOpen}
-        >
-          {/* <MainButton
+        > */}
+        {/* <MainButton
             iconResting={<MdAdd style={{ fontSize: 20 }} nativeColor="white" />}
             iconActive={
               <MdClose style={{ fontSize: 20 }} nativeColor="white" />
@@ -42,8 +42,8 @@ class FloatingMenuItem extends React.Component {
             onClick={() => this.setState({ isOpen: !this.state.isOpen })}
             size={40}
           /> */}
-          <EventDialog />
-          {/* <ChildButton
+        <EventDialog />
+        {/* <ChildButton
             icon={<MdFavorite style={{ fontSize: 20 }} nativeColor="black" />}
             backgroundColor="white"
             size={40}
@@ -59,7 +59,7 @@ class FloatingMenuItem extends React.Component {
             backgroundColor="white"
             size={40}
           /> */}
-        </FloatingMenu>
+        {/* </FloatingMenu> */}
       </div>
     );
   }

@@ -29,6 +29,8 @@ import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
 // import DialogContent from '@material-ui/core/DialogContent';
 
+import Typography from '@material-ui/core/Typography';
+
 function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
@@ -169,11 +171,14 @@ class LoginPage extends React.Component {
         //   }}
         >
           <Button
-            color="transparent"
+            color="warning"
             simple
             onClick={() => this.handleClickOpen('modal')}
+            // style={{color:'black'}}
           >
-            Register
+            <Typography color="inherit" align="center">
+              Register
+            </Typography>
           </Button>
           <Dialog
             classes={{

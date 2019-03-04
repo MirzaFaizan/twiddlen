@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // @material-ui/icons
-
+import { Redirect } from 'react-router-dom';
 // core components
 import Header from 'components/Header/Header.jsx';
 import GridContainer from 'components/Grid/GridContainer.jsx';
@@ -50,7 +50,9 @@ class LandingPage extends React.Component {
     //   marginRight:'5000px',
     // };
 
-    return (
+    return this.props.client ? (
+      <Redirect to="/home-page" />
+    ) : (
       <div>
         <Header
           color="transparent"
@@ -79,30 +81,32 @@ class LandingPage extends React.Component {
             >
               <GridItem xs={12} sm={12} md={6}>
                 <Typography
-                  variant="display1"
+                  variant="display2"
                   component="div"
                   align="center"
                   color="inherit"
                 >
-                  WE FIND EVENTS SO YOU DON'T HAVE TOO
+                  LOCAL VIBES FOR YOU
                 </Typography>
-                <h4 className={classes.subtitle}>
-                  Enter Zip or Location for accurate nearby event search
-                </h4>
+                {/* <h4 className={classes.subtitle}>
+                  Enter Zip or Location for accurate nearby vibe search
+                </h4> */}
                 {/* <input onChange={this.onUpdateUser}/>
                 <div>{this.props.user}</div> */}
                 {/* <GridItem xs={12} sm={12} md={12}>
                   <SearchBar history={this.props.history} />
                 </GridItem> */}
                 <GridItem xs={12} sm={12} md={12}>
-                  <h4 className={classes.subtitle}>
-                    Organizing an Event? Spread the Word, Reach more People
-                    right now.
-                    <br />
-                    {/* <Button style={buttonStyle} color="warning" round>
+                  {/* <h4 className={classes.subtitle}> */}
+                  <Typography align="center" color="inherit" variant="subtitle">
+                    Organizing a VIBE? Spread the Word, Reach more People right
+                    now
+                  </Typography>
+                  <br />
+                  {/* <Button style={buttonStyle} color="warning" round>
                       Post an Event
                     </Button> */}
-                  </h4>
+                  {/* </h4> */}
                 </GridItem>
               </GridItem>
             </GridContainer>
@@ -123,8 +127,7 @@ const mapStateToProps = (state, props) => {
   // console.log(props);
   return {
     history: props.history,
-    products: state.products,
-    user: state.user
+    client: state.client
   };
 };
 

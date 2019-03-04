@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import UpcomingEvents from './UpcomingEvents/UpcomingEvents';
 import MyEvents from './MyEvents/MyEvents.jsx';
 import ExpiredEvents from './ExpiredEvents/ExpiredEvents.jsx';
+import Favorites from './Favorites/Favorites.jsx';
 
 // import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Header from 'components/Header/Header.jsx';
@@ -193,7 +194,16 @@ class NavTabs extends React.Component {
                   }}
                   label="My Events"
                 />
+                <Tab
+                  disableRipple
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.tabSelected
+                  }}
+                  label="Favorites"
+                />
               </Tabs>
+
               {/* </AppBar> */}
               {value === 0 && (
                 <TabContainer>
@@ -208,6 +218,11 @@ class NavTabs extends React.Component {
               {value === 2 && (
                 <TabContainer>
                   <MyEvents />
+                </TabContainer>
+              )}
+              {value === 3 && (
+                <TabContainer>
+                  <Favorites />
                 </TabContainer>
               )}
             </div>

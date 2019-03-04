@@ -77,48 +77,60 @@ class ImgMediaCard extends React.Component {
   };
 
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
-      this.setState({
-        locationSub: 'orange',
-        subscriptionMessage: 'Location Added!'
-      });
+    if (this.props.client) {
+      if (this.state.locationSub === 'grey') {
+        this.setState({
+          locationSub: 'orange',
+          subscriptionMessage: 'Location Added!'
+        });
+      } else {
+        this.setState({
+          locationSub: 'grey',
+          subscriptionMessage: 'Location Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        locationSub: 'grey',
-        subscriptionMessage: 'Location Removed!'
-      });
+      console.log('Sign Up First!!');
     }
-    this.openSubscriptionAlert();
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
-      this.setState({
-        notificationSub: 'orange',
-        subscriptionMessage: 'You Subscribed!'
-      });
+    if (this.props.client) {
+      if (this.state.notificationSub === 'grey') {
+        this.setState({
+          notificationSub: 'orange',
+          subscriptionMessage: 'You Subscribed!'
+        });
+      } else {
+        this.setState({
+          notificationSub: 'grey',
+          subscriptionMessage: 'UnSubscribed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        notificationSub: 'grey',
-        subscriptionMessage: 'UnSubscribed!'
-      });
+      console.log('Sign Up First!!!');
     }
-    this.openSubscriptionAlert();
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
-      this.setState({
-        heartSub: 'orange',
-        subscriptionMessage: 'Favorite Added!'
-      });
+    if (this.props.client) {
+      if (this.state.heartSub === 'grey') {
+        this.setState({
+          heartSub: 'orange',
+          subscriptionMessage: 'Favorite Added!'
+        });
+      } else {
+        this.setState({
+          heartSub: 'grey',
+          subscriptionMessage: 'Favorite Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        heartSub: 'grey',
-        subscriptionMessage: 'Favorite Removed!'
-      });
+      console.log('Sign Up First');
     }
-    this.openSubscriptionAlert();
   };
   render() {
     const { classes } = this.props;
@@ -284,6 +296,7 @@ class ImgMediaCard extends React.Component {
                       category={['sports']}
                       sponsor={this.props.sponsor}
                       history={this.props.history}
+                      client={this.props.client}
                     />
                   </div>
                 </Grid>

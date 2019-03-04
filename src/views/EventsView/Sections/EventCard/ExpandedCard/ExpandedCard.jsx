@@ -54,6 +54,43 @@ class ResponsiveDialog extends React.Component {
     this.props.closeCard();
   };
 
+  handleNotification = () => {
+    if (this.props.client) {
+      console.log('Notifications On');
+    } else {
+      console.log('Sign Up First! ');
+    }
+  };
+  handleFacebookShare = () => {
+    if (this.props.client) {
+      console.log('Facebook Share');
+    } else {
+      console.log('Sign Up First!');
+    }
+  };
+  handleTwitterShare = () => {
+    if (this.props.client) {
+      console.log('Twitter Share');
+    } else {
+      console.log('Sign Up First!');
+    }
+  };
+
+  handleBookmark = () => {
+    if (this.props.client) {
+      console.log('Bookmark');
+    } else {
+      console.log('Sign Up First!');
+    }
+  };
+
+  handleComment = () => {
+    if (this.props.client) {
+      console.log('Comment');
+    } else {
+      console.log('Sign Up First!');
+    }
+  };
   render() {
     const { classes } = this.props;
 
@@ -128,6 +165,7 @@ class ResponsiveDialog extends React.Component {
                               width: '30px',
                               height: '30px'
                             }}
+                            onClick={() => this.handleNotification()}
                           >
                             <Hidden only={'xs'}>
                               <Notification
@@ -201,9 +239,7 @@ class ResponsiveDialog extends React.Component {
                                   />
                                 }
                                 size={10}
-                                onClick={() =>
-                                  console.log('First button clicked')
-                                }
+                                onClick={() => this.handleFacebookShare()}
                               />
                               <ChildButton
                                 icon={
@@ -213,6 +249,7 @@ class ResponsiveDialog extends React.Component {
                                   />
                                 }
                                 size={10}
+                                onClick={() => this.handleTwitterShare()}
                               />
                             </FloatingMenu>
                             <Hidden only={'xs'}>
@@ -227,6 +264,7 @@ class ResponsiveDialog extends React.Component {
                               width: '30px',
                               height: '30px'
                             }}
+                            onClick={() => this.handleBookmark()}
                           >
                             <Hidden only={'xs'}>
                               <Bookmark
@@ -257,6 +295,7 @@ class ResponsiveDialog extends React.Component {
                               width: '30px',
                               height: '30px'
                             }}
+                            onClick={() => this.handleComment()}
                           >
                             <Hidden only={'xs'}>
                               <Comment
@@ -342,6 +381,8 @@ class ResponsiveDialog extends React.Component {
                   </Grid>
                   <Hidden xsDown>
                     <Typography component="p">
+                      {this.props.description}
+                      {this.props.description}
                       {this.props.description}
                     </Typography>
                   </Hidden>

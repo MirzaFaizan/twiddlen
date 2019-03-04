@@ -55,8 +55,8 @@ const styles = theme => ({
     backgroundImage: `url('https://coresites-cdn.factorymedia.com/twc/wp-content/uploads/2017/02/lwr_beth_bryn_hodge_peloton_drops_in_front_1150.jpg')`,
     backgroundSize: 'cover',
     height: '100vh',
-    position: 'relative'
-    // filter: 'blur(5px)',
+    position: 'relative',
+    filter: 'blur(1px)'
     // webkitFilter: 'blur(5px)'
   },
   expansionPanel: {
@@ -67,16 +67,16 @@ const styles = theme => ({
     zIndex: 2
   },
   blurred: {
-    filter: 'blur(13px)',
+    filter: 'blur(100px)',
     margin: 0,
-    height: '400px',
-    backgroundColor: 'rgba(192,192,192, 0.7)',
+    height: '500px',
+    backgroundColor: 'rgba(192,192,255, 0.7)',
     position: 'absolute',
     width: '90%',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: 2
+    zIndex: 0
   },
   expandIcon: {
     color: 'orange'

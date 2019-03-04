@@ -68,7 +68,7 @@ class ExpiredEvents extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{ paddingTop: '25px', color: 'white' }}>
           <Divider />
         </Grid>
       </Grid>

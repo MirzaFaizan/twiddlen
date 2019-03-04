@@ -265,7 +265,7 @@ class CategoryView extends React.Component {
                   gutterBottom={true}
                   align="center"
                 >
-                  <strong>Happening This Week</strong>
+                  <strong>{this.props.match.params.id.toUpperCase()}</strong>
                 </Typography>
               </Grid>
 
@@ -281,6 +281,7 @@ class CategoryView extends React.Component {
                         timeAndDate={type.timeAndDate}
                         description={type.description}
                         sponsor={type.sponsor}
+                        client={this.props.client}
                       />
                     </Grid>
                   );
@@ -314,8 +315,7 @@ class CategoryView extends React.Component {
 const mapStateToProps = (state, props) => {
   // console.log(props);
   return {
-    products: state.products,
-    user: state.user
+    client: state.client
   };
 };
 

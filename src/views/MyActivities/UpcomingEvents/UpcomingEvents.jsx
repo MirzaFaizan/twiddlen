@@ -16,7 +16,7 @@ class UpcomingEvents extends React.Component {
         spacing={0}
         style={{ paddingLeft: '15%', paddingRight: '15%' }}
       >
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <Grid
             container
             spacing={0}
@@ -24,7 +24,7 @@ class UpcomingEvents extends React.Component {
             alignContent="flex-start"
             alignItems="flex-start"
           >
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6} md={6}>
               <img
                 src="http://fis-cal.com/wp-content/uploads/2013/10/EVENTS.png"
                 alt="eventimage"
@@ -32,7 +32,7 @@ class UpcomingEvents extends React.Component {
               />
             </Grid>
             <Hidden smDown>
-              <Grid item xs={12} md={6} style={{ paddingTop: '7%' }}>
+              <Grid item xs={12} sm={6} md={6} style={{ paddingTop: '7%' }}>
                 <Typography align="center" style={{ color: 'white' }}>
                   A day at the Beach!
                 </Typography>
@@ -40,7 +40,7 @@ class UpcomingEvents extends React.Component {
             </Hidden>
 
             <Hidden mdUp>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6} md={6}>
                 <Typography align="center" style={{ color: 'white' }}>
                   A day at the Beach!
                 </Typography>
@@ -49,7 +49,7 @@ class UpcomingEvents extends React.Component {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <Grid
             container
             spacing={16}
@@ -57,7 +57,7 @@ class UpcomingEvents extends React.Component {
             alignContent="flex-end"
             alignItems="flex-end"
           >
-            <Grid item xs={3} md={3}>
+            <Grid item xs={3} sm={6} md={3}>
               <Grid
                 container
                 spacing={0}
@@ -78,7 +78,7 @@ class UpcomingEvents extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={3} md={3}>
+            <Grid item xs={3} sm={6} md={3}>
               <Grid
                 container
                 spacing={0}
@@ -99,7 +99,7 @@ class UpcomingEvents extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={3} md={3}>
+            <Grid item xs={3} sm={6} md={3}>
               <Grid
                 container
                 spacing={0}
@@ -120,7 +120,7 @@ class UpcomingEvents extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={3} md={3}>
+            <Grid item xs={3} sm={6} md={3}>
               <Grid
                 container
                 spacing={0}
@@ -143,8 +143,8 @@ class UpcomingEvents extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Divider style={{ color: 'white' }} />
+        <Grid item xs={12} style={{ paddingTop: '25px' }}>
+          <Divider />
         </Grid>
       </Grid>
     );

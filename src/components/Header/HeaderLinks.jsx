@@ -36,6 +36,8 @@ import RegisterPage from 'views/RegisterPage/RegisterPage.jsx';
 import GuestSearch from '../../views/LandingPage/Sections/SearchBar.jsx';
 import UserSearch from '../../views/EventsView/Sections/SearchBar.jsx';
 
+import Settings from '@material-ui/icons/Settings';
+
 class HeaderLinks extends React.Component {
   constructor(props) {
     super(props);
@@ -45,10 +47,22 @@ class HeaderLinks extends React.Component {
     };
   }
 
+  componentWillMount() {
+    let token = localStorage.getItem('token');
+    if (token) {
+      this.props.onUpdateClient(true);
+    }
+  }
+
   displaySearch = () => {
     this.setState({
       searchDisplay: true
     });
+  };
+
+  logoutHandle = () => {
+    localStorage.removeItem('token');
+    this.props.onUpdateClient(false);
   };
 
   display = () => {
@@ -60,33 +74,53 @@ class HeaderLinks extends React.Component {
             <ListItem className={classes.listItem}>
               <UserSearch history={this.props.history} />
             </ListItem>
-            <Button
-              color="transparent"
-              simple
-              onClick={() => {
-                this.props.history.push('/my-activities');
-              }}
-            >
-              My Activities
-            </Button>
-            <Button
-              color="transparent"
-              simple
-              onClick={() => {
-                this.props.history.push('/my-settings');
-              }}
-            >
-              Settings
-            </Button>
-            <Button
-              color="transparent"
-              simple
-              onClick={() => {
-                this.props.onUpdateClient(false);
-              }}
-            >
-              Log Out
-            </Button>
+            <ListItem className={classes.listItem}>
+              <CustomDropdown
+                hoverColor="black"
+                buttonProps={{
+                  color: 'warning',
+                  simple: true,
+                  round: true,
+                  justIcon: true
+                }}
+                buttonIcon={Settings}
+                dropdownList={[
+                  <ListItem className={classes.listItem}>
+                    <Button
+                      color="transparent"
+                      simple
+                      onClick={() => {
+                        this.props.history.push('/myactivities');
+                      }}
+                    >
+                      My Activities
+                    </Button>
+                  </ListItem>,
+                  <ListItem className={classes.listItem}>
+                    <Button
+                      color="transparent"
+                      simple
+                      onClick={() => {
+                        this.props.history.push('/mysettings');
+                      }}
+                    >
+                      Settings
+                    </Button>
+                  </ListItem>,
+                  <ListItem className={classes.listItem}>
+                    <Button
+                      color="transparent"
+                      simple
+                      onClick={() => {
+                        this.logoutHandle();
+                      }}
+                    >
+                      Log Out
+                    </Button>
+                  </ListItem>
+                ]}
+              />
+            </ListItem>
           </ListItem>
         </List>
       );
@@ -96,8 +130,14 @@ class HeaderLinks extends React.Component {
           <ListItem className={classes.listItem}>
             <GuestSearch history={this.props.history} />
           </ListItem>
+          {/* <ListItem className={classes.listItem}>
+            Login button
+            <LoginPage />
+          </ListItem>
           <ListItem className={classes.listItem}>
-            {/*Login button*/}
+            <RegisterPage />
+          </ListItem> */}
+          <ListItem className={classes.listItem}>
             <LoginPage />
           </ListItem>
           <ListItem className={classes.listItem}>

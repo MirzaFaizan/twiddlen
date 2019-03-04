@@ -60,38 +60,59 @@ class ImgMediaCard extends React.Component {
   };
 
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
-      this.setState({
-        locationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.locationSub === 'grey') {
+        this.setState({
+          locationSub: 'orange',
+          subscriptionMessage: 'Location Added!'
+        });
+      } else {
+        this.setState({
+          locationSub: 'grey',
+          subscriptionMessage: 'Location Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        locationSub: 'grey'
-      });
+      console.log('Sign Up First!!');
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
-      this.setState({
-        notificationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.notificationSub === 'grey') {
+        this.setState({
+          notificationSub: 'orange',
+          subscriptionMessage: 'You Subscribed!'
+        });
+      } else {
+        this.setState({
+          notificationSub: 'grey',
+          subscriptionMessage: 'UnSubscribed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        notificationSub: 'grey'
-      });
+      console.log('Sign Up First!!!');
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
-      this.setState({
-        heartSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.heartSub === 'grey') {
+        this.setState({
+          heartSub: 'orange',
+          subscriptionMessage: 'Favorite Added!'
+        });
+      } else {
+        this.setState({
+          heartSub: 'grey',
+          subscriptionMessage: 'Favorite Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        heartSub: 'orange'
-      });
+      console.log('Sign Up First');
     }
   };
   render() {
@@ -122,7 +143,7 @@ class ImgMediaCard extends React.Component {
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={6} md={4}>
-                <div style={{ marginTop: '-10%' }}>
+                <div style={{ marginTop: '-15%' }}>
                   <Grid
                     container
                     direction="row"
@@ -204,6 +225,11 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
+              <Grid item xs={12}>
+                <Typography color="textPrimary" variant="caption">
+                  {this.props.description}
+                </Typography>
+              </Grid>
 
               <Grid item xs={12}>
                 <div>
@@ -221,6 +247,7 @@ class ImgMediaCard extends React.Component {
                     price="$700"
                     category={['category1', 'category2']}
                     sponsor={this.props.sponsor}
+                    client={this.props.client}
                   />
                 </div>
               </Grid>

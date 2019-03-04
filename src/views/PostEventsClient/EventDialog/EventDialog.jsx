@@ -33,10 +33,11 @@ class ResponsiveDialog extends React.Component {
           style={{
             color: 'white',
             backgroundColor: 'orange',
-            borderRadius: '20px'
+            borderRadius: '20px',
+            height: '50px'
           }}
         >
-          Add New Event
+          Add New Event+
         </Button>
         <Dialog
           maxWidth={'md'}

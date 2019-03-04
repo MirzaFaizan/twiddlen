@@ -1,7 +1,7 @@
 import LandingPage from 'views/LandingPage/LandingPage.jsx';
 import ProfilePage from 'views/ProfilePage/ProfilePage.jsx';
 import LoginPage from 'views/LoginPage/LoginPage.jsx';
-import AdminPage from '../views/AdminPage/AdminPage';
+import AdminPage from 'views/AdminPage/AdminPage';
 import EventsView from 'views/EventsView/EventsView.jsx';
 import CategoryView from 'views/CategroyView/CategoryView.jsx';
 import Today from 'views/Happening/Today/Today.jsx';
@@ -9,6 +9,9 @@ import Week from 'views/Happening/ThisWeek/ThisWeek.jsx';
 import Month from 'views/Happening/ThisMonth/ThisMonth.jsx';
 import MyActivities from 'views/MyActivities/MyActivities.jsx';
 import MySettings from 'views/Settings/Settings.jsx';
+
+import ARGame from 'views/ARGame/ARGame.jsx';
+
 var indexRoutes = [
   { path: '/admin-page', name: 'Admin', component: AdminPage },
   { path: '/profile-page', name: 'ProfilePage', component: ProfilePage },
@@ -24,6 +27,7 @@ var indexRoutes = [
     name: 'CategoryEventsView',
     component: CategoryView
   },
+  { path: '/my-argame', name: 'MyARGame', component: ARGame },
   { path: '/', name: 'Components', component: LandingPage }
 ];
 
