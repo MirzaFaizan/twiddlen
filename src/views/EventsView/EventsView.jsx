@@ -19,12 +19,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
 
-// import LocalVibe from './Sections/EventCard/EventCard.jsx';
+import LocalVibe from './Sections/EventCard/EventCard.jsx';
 import LocalVibe2 from './Sections/EventCard/EventCard2.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-// import { Carousel } from '3d-react-carousal';
+import { Carousel } from '3d-react-carousal';
 import Slider from 'react-slick';
 
 // import Fade from '@material-ui/core/Fade';
@@ -35,6 +35,8 @@ import axios from 'axios';
 
 import Link from '@material-ui/core/Link';
 import LoadingScreen from 'react-loading-screen';
+
+import Hidden from '@material-ui/core/Hidden';
 
 // import ArrowForward from '@material-ui/icons/ArrowForward';
 // import ArrowBack from '@material-ui/icons/ArrowBack'
@@ -397,33 +399,64 @@ class LandingPage extends React.Component {
                     </div>
                   </Typography>
                 </Grid>
-                {/* <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Grid container spacing={0} justify="center">
-                  <Grid item xs={12} sm={12} md={8} lg={5}>
-                    <Carousel
-                      slides={Object.values(vibesData).map((type, key) => {
+                <Hidden smUp>
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Grid container spacing={0} justify="center">
+                      <Grid item xs={12} sm={12} md={8} lg={5}>
+                        <Carousel
+                          slides={Object.values(vibesData).map((type, key) => {
+                            return (
+                              <LocalVibe
+                                image={
+                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                                }
+                                key={key}
+                                name={type.name}
+                                city={type.city}
+                                organizerName={'Twiddlen'}
+                                timeAndDate={type.startDate}
+                                description={type.description}
+                                sponsor={type.sponsor}
+                                category={type.category}
+                                history={this.props.history}
+                                client={this.props.client}
+                              />
+                            );
+                          })}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Hidden>
+                <Hidden xsDown>
+                  <Grid item xs={12}>
+                    <Slider {...settings}>
+                      {Object.values(this.state.eventsData).map((type, key) => {
                         return (
-                          <LocalVibe
-                            image={
-                              'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                            }
-                            key={key}
-                            name={type.name}
-                            city={type.city}
-                            organizerName={'Twiddlen'}
-                            timeAndDate={type.startDate}
-                            description={type.description}
-                            sponsor={type.sponsor}
-                            category={type.category}
-                            history={this.props.history}
-                            client={this.props.client}
-                          />
+                          <Grid container spacing={0}>
+                            <Grid item xs={12} style={{ padding: '2%' }}>
+                              <LocalVibe2
+                                image={
+                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                                }
+                                name={type.name}
+                                city={type.Address.City}
+                                organizerName={'Twiddlen'}
+                                timeAndDate={type.Date.startDate.slice(0, 10)}
+                                description={type.description}
+                                sponsor={type.sponsor}
+                                category={type.category}
+                                history={this.props.history}
+                                client={this.props.client}
+                              />
+                            </Grid>
+                            <div style={{ padding: '10%' }} />
+                          </Grid>
                         );
                       })}
-                    />
+                    </Slider>
                   </Grid>
-                </Grid>
-              </Grid> */}
+                </Hidden>
 
                 <Grid item xs={12}>
                   <Typography
@@ -452,7 +485,7 @@ class LandingPage extends React.Component {
                     {Object.values(this.state.eventsData).map((type, key) => {
                       return (
                         <Grid container spacing={0}>
-                          <Grid item xs={12} style={{ padding: '5%' }}>
+                          <Grid item xs={12} style={{ padding: '2%' }}>
                             <LocalVibe2
                               image={
                                 'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'

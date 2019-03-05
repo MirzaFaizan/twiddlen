@@ -160,7 +160,7 @@ class ImgMediaCard extends React.Component {
         <CardContent className={classes.cardContent}>
           <div>
             <Grid container spacing={8} justify="space-evenly">
-              <Grid item xs={4} sm={3} md={4}>
+              <Grid item xs={3} sm={3} md={4}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -169,7 +169,7 @@ class ImgMediaCard extends React.Component {
                   <strong>{this.props.name}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={4} sm={3} md={3}>
+              <Grid item xs={3} sm={3} md={3}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -178,7 +178,7 @@ class ImgMediaCard extends React.Component {
                   <strong>{this.props.city}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={4} sm={6} md={5}>
+              <Grid item xs={6} sm={6} md={5}>
                 <div style={{ marginTop: '-10%' }}>
                   <Grid
                     container
@@ -219,7 +219,7 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Grid item xs={5} sm={5} md={4}>
+              <Grid item xs={5} sm={6} md={4}>
                 <div style={{ marginTop: '-10%' }}>
                   <Typography
                     variant="subheading"
@@ -230,7 +230,7 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
-              <Grid item xs={7} sm={7} md={8}>
+              <Grid item xs={7} sm={6} md={8}>
                 <div style={{ marginTop: '-6.5%' }}>
                   <Typography
                     variant="subheading"
@@ -242,7 +242,7 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Grid item xs={5} sm={5} md={4}>
+              <Grid item xs={5} sm={6} md={4}>
                 <div style={{ marginTop: '-10%' }}>
                   <Typography
                     variant="body2"
@@ -253,7 +253,7 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
-              <Grid item xs={7} sm={7} md={8}>
+              <Grid item xs={7} sm={6} md={8}>
                 <div style={{ marginTop: '-5%' }}>
                   <Typography
                     variant="subheading"
