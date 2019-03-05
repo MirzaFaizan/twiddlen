@@ -27,6 +27,7 @@ import Week from 'views/Happening/ThisWeek/ThisWeek.jsx';
 // import Month from 'views/Happening/ThisMonth/ThisMonth.jsx';
 import MyActivities from 'views/MyActivities/MyActivities.jsx';
 import MySettings from 'views/Settings/Settings.jsx';
+import ARGame from 'views/ARGame/ARGame.jsx';
 
 const allReducers = combineReducers({
   products: productsReducer,
@@ -75,6 +76,7 @@ ReactDOM.render(
         <Route path="/mysettings" component={MySettings} />
         {/* <Route path="/login-page" component={LoginPage}/> */}
         <Route path="/profile-page" component={ProfilePage} />
+        <Route path="/my-argame" component={ARGame} />
         <Route path="/lv-admin" component={AdminPage} />
         {/* {indexRoutes.map((prop, key) => {
           return (
