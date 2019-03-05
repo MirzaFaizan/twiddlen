@@ -36,51 +36,65 @@ import axios from 'axios';
 import Link from '@material-ui/core/Link';
 import LoadingScreen from 'react-loading-screen';
 
+// import ArrowForward from '@material-ui/icons/ArrowForward';
+// import ArrowBack from '@material-ui/icons/ArrowBack'
+
 // let abc = []
 
 var settings = {
   dots: true,
-  //focusOnSelect: true,
-  infinite: true,
+  // className: "center",
+  centerMode: true,
   speed: 500,
   slidesToShow: 5,
   slidesToScroll: 1,
   initialSlide: 0,
   autoplaySpeed: 1500,
   adaptiveHeight: true,
-  centerPadding: '60px',
+  // nextArrow:<ArrowForward/>,
+  // prevArrow:<ArrowBack/>,
 
   responsive: [
     {
       breakpoint: 1024,
       settings: {
+        className: 'center',
+        centerMode: true,
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
         dots: true,
         focusOnSelect: true,
-        autoplaySpeed: 1500,
-        centerPadding: '60px'
+        autoplaySpeed: 1500
+        // nextArrow:<ArrowForward/>,
+        // prevArrow:<ArrowBack/>,
       }
     },
     {
       breakpoint: 600,
       settings: {
+        className: 'center',
+        centerMode: true,
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
         focusOnSelect: true,
-        dots: true,
-        centerPadding: '60px'
+        dots: true
+        // nextArrow:<ArrowForward/>,
+        // prevArrow:<ArrowBack/>,
       }
     },
     {
       breakpoint: 480,
       settings: {
+        className: 'center',
+        centerMode: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         focusOnSelect: true,
         dots: true
+        // nextArrow:<ArrowForward/>,
+        // prevArrow:<ArrowBack/>,
       }
     }
   ]
@@ -234,7 +248,7 @@ class LandingPage extends React.Component {
             eventsData: res.data.events,
             loading: false
           });
-          this.setSlides();
+          // this.setSlides();
         }
       })
       .catch(error => {
@@ -242,36 +256,36 @@ class LandingPage extends React.Component {
       });
   }
 
-  setSlides = () => {
-    console.log('running');
-    //   abc = [<EventCard
-    //     image={
-    //       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-    //     }
-    //     name={this.state.eventsData[0].name}
-    //     city={this.state.eventsData[0].Address.city}
-    //     organizerName={'Twiddlen'}
-    //     timeAndDate={this.state.eventsData[0].Date.startDate.slice(0, 10)}
-    //     description={this.state.eventsData[0].description}
-    //     sponsor={this.state.eventsData[0].sponsor}
-    //     category={this.state.eventsData[0].category}
-    //   />,
-    //   <EventCard
-    //     image={
-    //       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-    //     }
-    //     name={this.state.eventsData[0].name}
-    //     city={this.state.eventsData[0].Address.city}
-    //     organizerName={'Twiddlen'}
-    //     timeAndDate={this.state.eventsData[0].Date.startDate.slice(0, 10)}
-    //     description={this.state.eventsData[0].description}
-    //     sponsor={this.state.eventsData[0].sponsor}
-    //     category={this.state.eventsData[0].category}
-    //   />,
-    //  ]
+  // setSlides = () => {
+  //   console.log('running');
+  //   abc = [<EventCard
+  //     image={
+  //       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+  //     }
+  //     name={this.state.eventsData[0].name}
+  //     city={this.state.eventsData[0].Address.city}
+  //     organizerName={'Twiddlen'}
+  //     timeAndDate={this.state.eventsData[0].Date.startDate.slice(0, 10)}
+  //     description={this.state.eventsData[0].description}
+  //     sponsor={this.state.eventsData[0].sponsor}
+  //     category={this.state.eventsData[0].category}
+  //   />,
+  //   <EventCard
+  //     image={
+  //       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+  //     }
+  //     name={this.state.eventsData[0].name}
+  //     city={this.state.eventsData[0].Address.city}
+  //     organizerName={'Twiddlen'}
+  //     timeAndDate={this.state.eventsData[0].Date.startDate.slice(0, 10)}
+  //     description={this.state.eventsData[0].description}
+  //     sponsor={this.state.eventsData[0].sponsor}
+  //     category={this.state.eventsData[0].category}
+  //   />,
+  //  ]
 
-    //   console.log(this.state.eventsData[0].name)
-  };
+  //   console.log(this.state.eventsData[0].name)
+  // };
 
   onUpdateUser = event => {
     this.props.onUpdateUser(event.target.value);
@@ -431,48 +445,37 @@ class LandingPage extends React.Component {
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={12}>
-                  <Grid container spacing={0}>
-                    <Grid item xs={12}>
-                      <Slider {...settings}>
-                        {Object.values(this.state.eventsData).map(
-                          (type, key) => {
-                            return (
-                              // <Fade in={true} timeout={10000} key={key}>
-                              <div
-                                className={classes.container}
-                                key={key}
-                                index={key}
-                              >
-                                <LocalVibe2
-                                  image={
-                                    'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                                  }
-                                  name={type.name}
-                                  city={type.Address.City}
-                                  organizerName={'Twiddlen'}
-                                  timeAndDate={type.Date.startDate.slice(0, 10)}
-                                  description={type.description}
-                                  sponsor={type.sponsor}
-                                  category={type.category}
-                                  history={this.props.history}
-                                  client={this.props.client}
-                                />
-                                <div
-                                  style={{
-                                    paddingTop: '10%',
-                                    paddingBottom: '10%'
-                                  }}
-                                />
-                              </div>
-                              // </Fade>
-                            );
-                          }
-                        )}
-                      </Slider>
-                    </Grid>
-                  </Grid>
+                {/* <Grid item xs={12} md={12}>
+                  <Grid container spacing={40} direction="row" justify="center" alignContent="center"> */}
+                <Grid item xs={12}>
+                  <Slider {...settings}>
+                    {Object.values(this.state.eventsData).map((type, key) => {
+                      return (
+                        <Grid container spacing={0}>
+                          <Grid item xs={12} style={{ padding: '5%' }}>
+                            <LocalVibe2
+                              image={
+                                'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
+                              }
+                              name={type.name}
+                              city={type.Address.City}
+                              organizerName={'Twiddlen'}
+                              timeAndDate={type.Date.startDate.slice(0, 10)}
+                              description={type.description}
+                              sponsor={type.sponsor}
+                              category={type.category}
+                              history={this.props.history}
+                              client={this.props.client}
+                            />
+                          </Grid>
+                          <div style={{ padding: '10%' }} />
+                        </Grid>
+                      );
+                    })}
+                  </Slider>
                 </Grid>
+                {/* </Grid>
+                </Grid> */}
 
                 {/* <Grid item xs={12}>
                 <Typography
@@ -539,7 +542,7 @@ class LandingPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log(props);
+  console.log(state.vibesData);
   return {
     client: state.client,
     facts: state.facts

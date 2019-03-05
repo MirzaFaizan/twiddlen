@@ -14,6 +14,7 @@ import productsReducer from './reducers/productsReducer.js';
 import usersReducer from './reducers/usersReducer.js';
 import adminReducer from './reducers/adminReducer.js';
 import clientReducer from './reducers/clientReducer.js';
+import vibesReducer from './reducers/vibesReducer.js';
 import factsReducer from './reducers/factsReducer.js';
 
 import LandingPage from 'views/LandingPage/LandingPage.jsx';
@@ -34,7 +35,8 @@ const allReducers = combineReducers({
   user: usersReducer,
   admin: adminReducer,
   client: clientReducer,
-  facts: factsReducer
+  facts: factsReducer,
+  vibesData: vibesReducer
 });
 
 const store = createStore(

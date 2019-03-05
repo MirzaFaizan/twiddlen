@@ -63,6 +63,18 @@ class ImgMediaCard extends React.Component {
     });
   };
 
+  openSubscriptionAlert = () => {
+    this.setState({
+      subscriptionAlert: true
+    });
+  };
+
+  closeSubscriptionAlert = () => {
+    this.setState({
+      subscriptionAlert: false
+    });
+  };
+
   locationSub = () => {
     if (this.props.client) {
       if (this.state.locationSub === 'grey') {
