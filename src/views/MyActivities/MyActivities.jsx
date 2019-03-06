@@ -13,7 +13,7 @@ import MyEvents from './MyEvents/MyEvents.jsx';
 import ExpiredEvents from './ExpiredEvents/ExpiredEvents.jsx';
 import Favorites from './Favorites/Favorites.jsx';
 
-// import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Header from 'components/Header/Header.jsx';
 
 function TabContainer(props) {
@@ -137,7 +137,7 @@ class NavTabs extends React.Component {
           color="transparent"
           routes={dashboardRoutes}
           brand="1"
-          // rightLinks={<HeaderLinks history={this.props.history} />}
+          rightLinks={<HeaderLinks history={this.props.history} />}
           fixed
           changeColorOnScroll={{
             height: 400,

@@ -26,6 +26,7 @@ import {
   ChildButton
 } from 'react-floating-button-menu';
 
+import SignUpAlert from '../../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
 import Hidden from '@material-ui/core/Hidden';
 
 const styles = {
@@ -43,7 +44,12 @@ const styles = {
 class ResponsiveDialog extends React.Component {
   state = {
     open: this.props.open,
-    isOpen: false
+    isOpen: false,
+    openAlert: false,
+    notificationBgcolor: 'orange',
+    notificationColor: 'white',
+    bookmarkBgcolor: 'orange',
+    bookmarkColor: 'white'
   };
 
   handleClickOpen = () => {
@@ -54,33 +60,72 @@ class ResponsiveDialog extends React.Component {
     this.props.closeCard();
   };
 
+  handleClickOpenAlert = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleCloseAlert = () => {
+    this.setState({
+      openAlert: false
+    });
+  };
+
   handleNotification = () => {
     if (this.props.client) {
-      console.log('Notifications On');
+      if (
+        this.state.notificationBgcolor === 'orange' &&
+        this.state.notificationColor === 'white'
+      ) {
+        this.setState({
+          notificationBgcolor: 'white',
+          notificationColor: 'orange'
+        });
+      } else {
+        this.setState({
+          notificationBgcolor: 'orange',
+          notificationColor: 'white'
+        });
+      }
     } else {
-      console.log('Sign Up First! ');
+      this.handleClickOpenAlert();
     }
   };
   handleFacebookShare = () => {
     if (this.props.client) {
       console.log('Facebook Share');
     } else {
-      console.log('Sign Up First!');
+      this.handleClickOpenAlert();
     }
   };
   handleTwitterShare = () => {
     if (this.props.client) {
       console.log('Twitter Share');
     } else {
-      console.log('Sign Up First!');
+      this.handleClickOpenAlert();
     }
   };
 
   handleBookmark = () => {
     if (this.props.client) {
+      if (
+        this.state.bookmarkBgcolor === 'orange' &&
+        this.state.bookmarkColor === 'white'
+      ) {
+        this.setState({
+          bookmarkBgcolor: 'white',
+          bookmarkColor: 'orange'
+        });
+      } else {
+        this.setState({
+          bookmarkBgcolor: 'orange',
+          bookmarkColor: 'white'
+        });
+      }
       console.log('Bookmark');
     } else {
-      console.log('Sign Up First!');
+      this.handleClickOpenAlert();
     }
   };
 
@@ -88,7 +133,7 @@ class ResponsiveDialog extends React.Component {
     if (this.props.client) {
       console.log('Comment');
     } else {
-      console.log('Sign Up First!');
+      this.handleClickOpenAlert();
     }
   };
   render() {
@@ -161,7 +206,7 @@ class ResponsiveDialog extends React.Component {
                         <Grid item xs={3} md={3}>
                           <IconButton
                             style={{
-                              backgroundColor: 'orange',
+                              backgroundColor: this.state.notificationBgcolor,
                               width: '30px',
                               height: '30px'
                             }}
@@ -170,7 +215,7 @@ class ResponsiveDialog extends React.Component {
                             <Hidden only={'xs'}>
                               <Notification
                                 style={{
-                                  color: 'white',
+                                  color: this.state.notificationColor,
                                   width: '20px'
                                 }}
                               />
@@ -178,7 +223,7 @@ class ResponsiveDialog extends React.Component {
                             <Hidden smUp>
                               <Notification
                                 style={{
-                                  color: 'white',
+                                  color: this.state.notificationColor,
                                   width: '20px',
                                   marginTop: '-10px'
                                 }}
@@ -260,7 +305,7 @@ class ResponsiveDialog extends React.Component {
                         <Grid item xs={3} md={3}>
                           <IconButton
                             style={{
-                              backgroundColor: 'orange',
+                              backgroundColor: this.state.bookmarkBgcolor,
                               width: '30px',
                               height: '30px'
                             }}
@@ -269,7 +314,7 @@ class ResponsiveDialog extends React.Component {
                             <Hidden only={'xs'}>
                               <Bookmark
                                 style={{
-                                  color: 'white',
+                                  color: this.state.bookmarkColor,
                                   width: '20px'
                                 }}
                               />
@@ -277,7 +322,7 @@ class ResponsiveDialog extends React.Component {
                             <Hidden smUp>
                               <Bookmark
                                 style={{
-                                  color: 'white',
+                                  color: this.state.bookmarkColor,
                                   width: '20px',
                                   marginTop: '-10px'
                                 }}
@@ -423,6 +468,11 @@ class ResponsiveDialog extends React.Component {
               </Grid>
             </Grid>
           </Card>
+          <SignUpAlert
+            open={this.state.openAlert}
+            handleClickOpen={() => this.handleClickOpenAlert()}
+            handleClose={() => this.handleCloseAlert()}
+          />
         </Dialog>
       </div>
     );

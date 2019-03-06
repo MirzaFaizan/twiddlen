@@ -78,10 +78,18 @@ class CustomizedDialogDemo extends React.Component {
           open={this.props.open}
         >
           <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-            You Need to Sign Up First
+            <img
+              src="https://www.onlygfx.com/wp-content/uploads/2017/12/warning-stamp-2-1024x677.png"
+              alt="warning"
+              style={{
+                width: '250px',
+                height: 'auto',
+                textAlign: 'center'
+              }}
+            />
           </DialogTitle>
           <DialogContent>
-            <Typography gutterBottom>
+            <Typography variant="subheading" align="center">
               To Use all features you need to sign in or sign up first!
             </Typography>
             {/* <Typography gutterBottom>
@@ -95,8 +103,8 @@ class CustomizedDialogDemo extends React.Component {
             </Typography> */}
           </DialogContent>
           <DialogActions>
-            <Login />
-            <Register />
+            <Login variant="contained" />
+            <Register variant="contained" />
             {/* <Button onClick={this.handleClose} color="primary">
               Save changes
             </Button> */}

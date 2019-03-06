@@ -18,6 +18,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 
 import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
+import SignUpAlert from '../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
 
 const styles = {
   card: {
@@ -43,7 +44,8 @@ class ImgMediaCard extends React.Component {
       locationSub: 'grey',
       notificationSub: 'grey',
       heartSub: 'grey',
-      openExpandedCardstate: false
+      openExpandedCardstate: false,
+      openAlert: false
     };
   }
 
@@ -72,9 +74,8 @@ class ImgMediaCard extends React.Component {
           subscriptionMessage: 'Location Removed!'
         });
       }
-      this.openSubscriptionAlert();
     } else {
-      console.log('Sign Up First!!');
+      this.handleClickOpen();
     }
   };
 
@@ -91,9 +92,8 @@ class ImgMediaCard extends React.Component {
           subscriptionMessage: 'UnSubscribed!'
         });
       }
-      this.openSubscriptionAlert();
     } else {
-      console.log('Sign Up First!!!');
+      this.handleClickOpen();
     }
   };
 
@@ -110,10 +110,21 @@ class ImgMediaCard extends React.Component {
           subscriptionMessage: 'Favorite Removed!'
         });
       }
-      this.openSubscriptionAlert();
     } else {
-      console.log('Sign Up First');
+      this.handleClickOpen();
     }
+  };
+
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
   };
   render() {
     const { classes } = this.props;
@@ -265,6 +276,11 @@ class ImgMediaCard extends React.Component {
             </Grid>
           </div>
         </CardContent>
+        <SignUpAlert
+          open={this.state.openAlert}
+          handleClickOpen={() => this.handleClickOpen()}
+          handleClose={() => this.handleClose()}
+        />
       </Card>
     );
   }

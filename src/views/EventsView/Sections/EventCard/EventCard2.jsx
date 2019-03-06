@@ -281,6 +281,7 @@ class ImgMediaCard extends React.Component {
                     category={[this.props.category]}
                     sponsor={this.props.sponsor}
                     history={this.props.history}
+                    client={this.props.client}
                   />
                 </div>
               </Grid>

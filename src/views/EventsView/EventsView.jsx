@@ -47,7 +47,7 @@ var settings = {
   dots: true,
   // className: "center",
   centerMode: true,
-  speed: 500,
+  speed: 700,
   slidesToShow: 5,
   slidesToScroll: 1,
   initialSlide: 0,
