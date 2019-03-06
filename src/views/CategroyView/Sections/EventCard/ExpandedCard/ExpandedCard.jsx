@@ -324,7 +324,7 @@ class ResponsiveDialog extends React.Component {
                             <Hidden smUp>
                               <Bookmark
                                 style={{
-                                  color: 'white',
+                                  color: this.state.bookmarkColor,
                                   width: '20px',
                                   marginTop: '-10px'
                                 }}
