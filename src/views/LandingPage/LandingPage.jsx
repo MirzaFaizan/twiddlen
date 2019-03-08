@@ -119,7 +119,7 @@ class LandingPage extends React.Component {
                     <Typography
                       align="center"
                       color="inherit"
-                      variant="subtitle"
+                      variant="subtitle2"
                     >
                       Organizing a VIBE? Spread the Word, Reach more People
                       right now
@@ -139,7 +139,6 @@ class LandingPage extends React.Component {
               <ProductSection history={this.props.history} />
             </div>
           </div>
-          <div />
         </LoadingScreen>
       </div>
     );

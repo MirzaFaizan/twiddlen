@@ -34,7 +34,7 @@ class ProductSection extends React.Component {
           <GridContainer>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() =>
@@ -52,7 +52,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() =>
@@ -70,7 +70,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() =>
@@ -88,7 +88,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() => this.props.history.push('/category-page/music')}
@@ -104,7 +104,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() =>
@@ -122,7 +122,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() => this.props.history.push('/category-page/sports')}
@@ -138,7 +138,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() => this.props.history.push('/category-page/games')}
@@ -154,7 +154,7 @@ class ProductSection extends React.Component {
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
               <Link
-                color="default"
+                color="textPrimary"
                 component="button"
                 variant="display1"
                 onClick={() =>

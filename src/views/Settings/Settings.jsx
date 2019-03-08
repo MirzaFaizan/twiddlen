@@ -12,7 +12,7 @@ import UserProfile from './UserProfile/UserProfile.jsx';
 import Notifications from './Notifications/Notifications.jsx';
 import SocialMediaConnections from './SocialMediaConnections/SocialMediaConnections.jsx';
 
-// import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Header from 'components/Header/Header.jsx';
 
 const styles = theme => ({
@@ -106,7 +106,7 @@ class ControlledExpansionPanels extends React.Component {
           color="transparent"
           routes={dashboardRoutes}
           brand="1"
-          // rightLinks={<HeaderLinks history={this.props.history} />}
+          rightLinks={<HeaderLinks history={this.props.history} />}
           fixed
           changeColorOnScroll={{
             height: 400,

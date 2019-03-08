@@ -4,28 +4,212 @@ import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
 
-const currencies = [
+const categories = [
   {
-    value: 'USD',
-    label: '$'
+    value: 'indoor',
+    label: 'Indoor'
   },
   {
-    value: 'EUR',
-    label: '€'
+    value: 'outdoor',
+    label: 'Outdoor'
   },
   {
-    value: 'BTC',
-    label: '฿'
+    value: 'familyfun',
+    label: 'Family Fun'
   },
   {
-    value: 'JPY',
-    label: '¥'
+    value: 'shows',
+    label: 'Shows'
+  },
+  {
+    value: 'music',
+    label: 'Music'
+  },
+  {
+    value: 'car',
+    label: 'Car'
+  },
+  {
+    value: 'airplane',
+    label: 'Airplane'
+  },
+  {
+    value: 'motorcycles',
+    label: 'Motorcycles'
+  },
+  {
+    value: 'realestate',
+    label: 'Real Estate'
+  },
+  {
+    value: 'garagesales',
+    label: 'Garage Sales'
+  },
+  {
+    value: 'cityvibes',
+    label: 'City Vibes'
+  },
+  {
+    value: 'nonprofit',
+    label: 'Non Profit'
+  },
+  {
+    value: 'education',
+    label: 'Education'
+  },
+  {
+    value: 'school',
+    label: 'School'
+  },
+  {
+    value: 'gradeschool',
+    label: 'Grade School'
+  },
+  {
+    value: 'middleschool',
+    label: 'Middle School'
+  },
+  {
+    value: 'highschool',
+    label: 'High School'
+  },
+  {
+    value: 'sports',
+    label: 'Sports'
+  },
+  {
+    value: 'biking',
+    label: 'Biking'
+  },
+  {
+    value: 'rowing',
+    label: 'Rowing'
+  },
+  {
+    value: 'hiking',
+    label: 'Hiking'
+  },
+  {
+    value: 'bowling',
+    label: 'Bowling'
+  },
+  {
+    value: 'pool',
+    label: 'Pool'
+  },
+  {
+    value: 'airsoft',
+    label: 'Airsoft'
+  },
+  {
+    value: 'paintball',
+    label: 'PaintBall'
+  },
+  {
+    value: 'hockey',
+    label: 'Hockey'
+  },
+  {
+    value: 'soccer',
+    label: 'Soccer'
+  },
+  {
+    value: 'parks',
+    label: 'Parks'
+  },
+  {
+    value: 'water',
+    label: 'Water'
+  },
+  {
+    value: 'recreation',
+    label: 'Recreation'
+  },
+  {
+    value: 'amusement',
+    label: 'Amusement'
+  },
+  {
+    value: 'stateparks',
+    label: 'State Parks'
+  },
+  {
+    value: 'kidscalender',
+    label: 'Kids Calender'
+  },
+  {
+    value: 'Library',
+    label: 'Library'
+  },
+  {
+    value: 'meetup',
+    label: 'Meet Up'
+  },
+  {
+    value: 'lowincome',
+    label: 'Low Income'
+  },
+  {
+    value: 'assistance',
+    label: 'Assistance'
+  },
+  {
+    value: 'church',
+    label: 'Church'
+  },
+  {
+    value: 'salesvibes',
+    label: 'Sales Vibes'
+  },
+  {
+    value: 'mallvibes',
+    label: 'Malls Vibes'
+  },
+  {
+    value: 'specialvibes',
+    label: 'Special Vibes'
+  },
+  {
+    value: 'senior',
+    label: 'Senior'
+  },
+  {
+    value: 'music',
+    label: 'Music'
+  },
+  {
+    value: 'movie',
+    label: 'Movie'
+  },
+  {
+    value: 'businesseducation',
+    label: 'Business Education'
+  },
+  {
+    value: 'business',
+    label: 'Business'
+  },
+  {
+    value: 'nonprofit',
+    label: 'Non-Profit'
+  },
+  {
+    value: 'habitatsforhumanity',
+    label: 'Habitats for Humanity'
+  },
+  {
+    value: 'streetfairs',
+    label: 'Street Fairs'
+  },
+  {
+    value: 'facebookvibes',
+    label: 'Facebook Vibes'
   }
 ];
 
 class LongMenu extends React.Component {
   state = {
-    currency: 'EUR'
+    category: 'indoor'
   };
   handleChange = name => event => {
     this.setState({
@@ -40,8 +224,8 @@ class LongMenu extends React.Component {
           id="outlined-select-currency-native"
           select
           label="Choose a Category"
-          value={this.state.currency}
-          onChange={this.handleChange('currency')}
+          value={this.state.category}
+          onChange={this.handleChange('category')}
           SelectProps={{
             native: true
           }}
@@ -50,7 +234,7 @@ class LongMenu extends React.Component {
           variant="outlined"
           fullWidth={true}
         >
-          {currencies.map(option => (
+          {categories.map(option => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>

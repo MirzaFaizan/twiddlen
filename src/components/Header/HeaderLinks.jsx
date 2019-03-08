@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 // react components for routing our app without refresh
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -38,12 +38,18 @@ import UserSearch from '../../views/EventsView/Sections/SearchBar.jsx';
 
 import Settings from '@material-ui/icons/Settings';
 
+import SignUpAlert from '../../views/SignUpFirstAlert/SignUpFirstAlert.jsx';
+
+import Hidden from '@material-ui/core/Hidden';
+import Link from '@material-ui/core/Link';
+
 class HeaderLinks extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchDisplay: false
+      searchDisplay: false,
+      openAlert: false
     };
   }
 
@@ -65,16 +71,29 @@ class HeaderLinks extends React.Component {
     this.props.onUpdateClient(false);
   };
 
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
+  };
+
   display = () => {
     const { classes } = this.props;
     if (this.props.client) {
       return (
         <List className={classes.list}>
+          {/* <ListItem className={classes.listItem}> */}
           <ListItem className={classes.listItem}>
-            <ListItem className={classes.listItem}>
-              <UserSearch history={this.props.history} />
-            </ListItem>
-            <ListItem className={classes.listItem}>
+            <UserSearch history={this.props.history} />
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <Hidden smDown>
               <CustomDropdown
                 hoverColor="black"
                 buttonProps={{
@@ -85,43 +104,94 @@ class HeaderLinks extends React.Component {
                 }}
                 buttonIcon={Settings}
                 dropdownList={[
-                  <ListItem className={classes.listItem}>
-                    <Button
-                      color="transparent"
-                      simple
-                      onClick={() => {
-                        this.props.history.push('/myactivities');
-                      }}
-                    >
-                      My Activities
-                    </Button>
-                  </ListItem>,
-                  <ListItem className={classes.listItem}>
-                    <Button
-                      color="transparent"
-                      simple
-                      onClick={() => {
-                        this.props.history.push('/mysettings');
-                      }}
-                    >
-                      Settings
-                    </Button>
-                  </ListItem>,
-                  <ListItem className={classes.listItem}>
-                    <Button
-                      color="transparent"
-                      simple
-                      onClick={() => {
-                        this.logoutHandle();
-                      }}
-                    >
-                      Log Out
-                    </Button>
-                  </ListItem>
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.props.history.push('/myactivities');
+                    }}
+                  >
+                    My Activities
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.props.history.push('/mysettings');
+                    }}
+                  >
+                    Settings
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.props.history.push('/home-page');
+                    }}
+                  >
+                    Home
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.logoutHandle();
+                    }}
+                  >
+                    Log Out
+                  </Button>
                 ]}
               />
-            </ListItem>
+            </Hidden>
+            <Hidden mdUp>
+              <ListItem className={classes.listItem}>
+                <Button
+                  // component="button"
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.props.history.push('/myactivities');
+                  }}
+                >
+                  My Activities
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.props.history.push('/mysettings');
+                  }}
+                >
+                  Settings
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.props.history.push('/home-page');
+                  }}
+                >
+                  Home
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.logoutHandle();
+                  }}
+                >
+                  Log Out
+                </Button>
+              </ListItem>
+            </Hidden>
           </ListItem>
+          {/* </ListItem> */}
         </List>
       );
     } else {
@@ -130,19 +200,91 @@ class HeaderLinks extends React.Component {
           <ListItem className={classes.listItem}>
             <GuestSearch history={this.props.history} />
           </ListItem>
-          {/* <ListItem className={classes.listItem}>
-            Login button
-            <LoginPage />
-          </ListItem>
           <ListItem className={classes.listItem}>
-            <RegisterPage />
-          </ListItem> */}
-          <ListItem className={classes.listItem}>
-            <LoginPage />
+            <Hidden mdUp>
+              <ListItem className={classes.listItem}>
+                <LoginPage />
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <RegisterPage />
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.handleClickOpen();
+                  }}
+                  style={{ position: 'relative' }}
+                >
+                  My Activities
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.handleClickOpen();
+                  }}
+                  style={{ position: 'relative' }}
+                >
+                  Settings
+                </Button>
+              </ListItem>
+            </Hidden>
+            <Hidden smDown>
+              <CustomDropdown
+                hoverColor="black"
+                buttonProps={{
+                  color: 'warning',
+                  simple: true,
+                  round: true,
+                  justIcon: true
+                }}
+                buttonIcon={Settings}
+                dropdownList={[
+                  <LoginPage />,
+                  <RegisterPage />,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.handleClickOpen();
+                    }}
+                    style={{ position: 'relative' }}
+                  >
+                    My Activities
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.handleClickOpen();
+                    }}
+                    style={{ position: 'relative' }}
+                  >
+                    Settings
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
+                      this.props.history.push('/home-page');
+                    }}
+                    style={{ position: 'relative' }}
+                  >
+                    Home
+                  </Button>
+                ]}
+              />
+            </Hidden>
           </ListItem>
-          <ListItem className={classes.listItem}>
-            <RegisterPage />
-          </ListItem>
+          <SignUpAlert
+            open={this.state.openAlert}
+            handleClickOpen={() => this.handleClickOpen()}
+            handleClose={() => this.handleClose()}
+          />
         </List>
       );
     }

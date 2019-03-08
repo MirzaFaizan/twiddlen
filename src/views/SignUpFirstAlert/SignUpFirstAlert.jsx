@@ -103,8 +103,11 @@ class CustomizedDialogDemo extends React.Component {
             </Typography> */}
           </DialogContent>
           <DialogActions>
-            <Login variant="contained" />
-            <Register variant="contained" />
+            <Login variant="contained" handleClose={() => this.handleClose()} />
+            <Register
+              variant="contained"
+              handleClose={() => this.handleClose()}
+            />
             {/* <Button onClick={this.handleClose} color="primary">
               Save changes
             </Button> */}

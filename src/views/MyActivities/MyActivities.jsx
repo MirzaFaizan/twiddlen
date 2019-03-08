@@ -176,7 +176,7 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="Upcoming Events"
+                  label="Upcoming VIBES"
                 />
                 <Tab
                   disableRipple
@@ -184,7 +184,7 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="Expired Events"
+                  label="Expired VIBES"
                 />
                 <Tab
                   disableRipple
@@ -192,7 +192,7 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="My Events"
+                  label="My VIBES"
                 />
                 <Tab
                   disableRipple
@@ -200,7 +200,7 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="Favorites"
+                  label="Favorite VIBES"
                 />
               </Tabs>
 

@@ -16,9 +16,9 @@ import { IconButton } from '@material-ui/core';
 import Notification from '@material-ui/icons/Notifications';
 import Bookmark from '@material-ui/icons/Bookmark';
 import Share from '@material-ui/icons/Share';
-import Comment from '@material-ui/icons/Comment';
-
+// import Comment from '@material-ui/icons/Comment';
 import Chip from '@material-ui/core/Chip';
+import AddComment from './AddComment/AddComment.jsx';
 
 import {
   FloatingMenu,
@@ -334,7 +334,14 @@ class ResponsiveDialog extends React.Component {
                           </Hidden>
                         </Grid>
                         <Grid item xs={3} md={3}>
-                          <IconButton
+                          <AddComment
+                            handleComment={() => this.handleComment()}
+                            client={this.props.client}
+                            handleClickOpenAlert={() =>
+                              this.handleClickOpenAlert()
+                            }
+                          />
+                          {/* <IconButton
                             style={{
                               backgroundColor: 'orange',
                               width: '30px',
@@ -359,7 +366,7 @@ class ResponsiveDialog extends React.Component {
                                 }}
                               />
                             </Hidden>
-                          </IconButton>
+                          </IconButton> */}
                           <Hidden only={'xs'}>
                             <small>Add</small>
                           </Hidden>

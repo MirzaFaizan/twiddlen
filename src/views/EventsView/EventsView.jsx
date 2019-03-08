@@ -394,7 +394,7 @@ class LandingPage extends React.Component {
                         }
                         color="inherit"
                       >
-                        <strong>Vibes Happening Today</strong>
+                        <strong>Happening Today</strong>
                       </Link>
                     </div>
                   </Typography>
@@ -433,7 +433,7 @@ class LandingPage extends React.Component {
                     <Slider {...settings}>
                       {Object.values(this.state.eventsData).map((type, key) => {
                         return (
-                          <Grid container spacing={0}>
+                          <Grid container spacing={0} key={key}>
                             <Grid item xs={12} style={{ padding: '2%' }}>
                               <LocalVibe2
                                 image={
@@ -469,7 +469,9 @@ class LandingPage extends React.Component {
                       component="button"
                       variant="display1"
                       onClick={() =>
-                        this.props.history.push('/happeningthisweek')
+                        this.props.history.push(
+                          '/category-page/happeningthisweek'
+                        )
                       }
                       color="inherit"
                     >
@@ -484,7 +486,7 @@ class LandingPage extends React.Component {
                   <Slider {...settings}>
                     {Object.values(this.state.eventsData).map((type, key) => {
                       return (
-                        <Grid container spacing={0}>
+                        <Grid container spacing={0} key={key}>
                           <Grid item xs={12} style={{ padding: '2%' }}>
                             <LocalVibe2
                               image={
@@ -565,6 +567,205 @@ class LandingPage extends React.Component {
                   </Grid>
                 </Grid>
               </Grid> */}
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/familyfun')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Family Fun</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/shopping')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Shopping</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/kidvibes')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Kid Vibes</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/realestate')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Real Estate</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/cityvibes')
+                      }
+                      color="inherit"
+                    >
+                      <strong>City Vibes</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/specialvibes')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Special Vibes</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/streetfairs')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Street Fairs</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/garagesales')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Garage Sales</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('//category-page/art')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Art</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h4"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <Link
+                      component="button"
+                      variant="display1"
+                      onClick={() =>
+                        this.props.history.push('/category-page/charity')
+                      }
+                      color="inherit"
+                    >
+                      <strong>Charity/Non Profit</strong>
+                    </Link>
+                  </Typography>
+                </Grid>
               </Grid>
             </div>
           </div>

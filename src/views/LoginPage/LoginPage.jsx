@@ -152,6 +152,10 @@ class LoginPage extends React.Component {
           localStorage.setItem('token', res.data.token);
           this.props.onUpdateClient(true);
           this.handleClose('modal');
+          if (this.props.handleClose) {
+            console.log(this.props.handleClose);
+            this.props.handleClose();
+          }
         }
       })
       .catch(error => {
