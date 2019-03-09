@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
-
 import indexRoutes from 'routes/index.jsx';
 
 import 'assets/scss/material-kit-react.css?v=1.3.0';
@@ -14,7 +13,6 @@ import productsReducer from './reducers/productsReducer.js';
 import usersReducer from './reducers/usersReducer.js';
 import adminReducer from './reducers/adminReducer.js';
 import clientReducer from './reducers/clientReducer.js';
-
 const allReducers = combineReducers({
   products: productsReducer,
   user: usersReducer,

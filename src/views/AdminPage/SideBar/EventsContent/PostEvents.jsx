@@ -12,7 +12,6 @@ import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import { Button } from '@material-ui/core';
 // import {DropzoneArea} from 'material-ui-dropzone'
-import ImageUploader from 'react-images-upload';
 import axios from 'axios';
 
 export default class ApprovedEvents extends React.Component {
@@ -422,21 +421,6 @@ export default class ApprovedEvents extends React.Component {
                     <h4>Event Images</h4>
                     <Divider />
                   </Grid>
-                  {/* <Button variant="outlined" size="large" color="secondary" type="image">Upload Image</Button> */}
-                  <ImageUploader
-                    withIcon={true}
-                    buttonText="Choose images"
-                    onChange={e => {
-                      this.onDrop(e);
-                    }}
-                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                    maxFileSize={5242880}
-                  />
-                  {/* <DropzoneArea 
-                                onChange={this.handleChange.bind(this)}
-                                showPreviews={true}
-                                showAlerts
-                                /> */}
                 </Grid>
                 <Grid item xs={12}>
                   <Button

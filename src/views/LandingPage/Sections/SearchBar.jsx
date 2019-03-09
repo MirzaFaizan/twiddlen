@@ -4,11 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
-// import GpsFixed from '@material-ui/icons/GpsFixed';
-// import Geolocation from 'react-geolocation';
-// import Hidden from '@material-ui/core/Hidden';
+import GpsFixed from '@material-ui/icons/GpsFixed';
+import Geolocation from 'react-geolocation';
+import Hidden from '@material-ui/core/Hidden';
 import axios from 'axios';
-import AlertDialog from './AlertDialog.jsx';
 
 const styles = {
   root: {
@@ -44,18 +43,9 @@ class CustomizedInputBase extends React.Component {
     super(props);
 
     this.state = {
-      searchValue: '',
-      open: false
+      searchValue: ''
     };
   }
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
 
   searchValueChange = e => {
     this.setState({
@@ -64,29 +54,7 @@ class CustomizedInputBase extends React.Component {
     // const a = this.state.searchValue.toString();
     // console.log(a.search('64555'));
   };
-  getLocationfromIP = () => {
-    axios
-      .get(
-        'http://ip-api.com/json'
-        //, { headers: {"Authorization" : `Bearer ${token}`} }
-      )
-      .then(res => {
-        JSON.stringify(res);
-        //Check if response reture suceess: true or false
-        console.log(res);
-        //   if (res.data.success === false) {
-        //     alert(res.data.message);
-        //   } else {
-        //     // this.props.history.push('/home-page');
-        //     console.log(res.data.location);
-        //     alert(res.data.message);
-        //   }
-        // })
-        // .catch(error => {
-        //   alert('Internal Server error, Server Resopnded with "' + error + '"');
-      });
-    this.handleClose();
-  };
+
   gotoHome = () => {
     let data = {
       zipcode: this.state.searchValue
@@ -119,27 +87,29 @@ class CustomizedInputBase extends React.Component {
     let data = {
       zipcode: temp
     };
-    axios
-      .post(
-        'https://twiddlen-api.herokuapp.com/user/zipAddress',
-        data
-        //, { headers: {"Authorization" : `Bearer ${token}`} }
-      )
-      .then(res => {
-        JSON.stringify(res);
-        //Check if response reture suceess: true or false
-        console.log(res.data);
-        if (res.data.success === false) {
-          alert(res.data.message);
-        } else {
-          this.props.history.push('/home-page');
-          console.log(res.data.location);
-          alert(res.data.message);
-        }
-      })
-      .catch(error => {
-        alert('Internal Server error, Server Resopnded with "' + error + '"');
-      });
+    // axios.post(
+    //     'https://twiddlen-api.herokuapp.com/user/zipAddress',
+    //     data
+    //     //, { headers: {"Authorization" : `Bearer ${token}`} }
+    //   )
+    //   .then(res => {
+    //     JSON.stringify(res);
+    //     //Check if response reture suceess: true or false
+    //     console.log(res.data);
+    //     if (res.data.success === false)
+    //     {
+    //       alert(res.data.message);
+    //     }
+    //      else
+    //      {
+    //       this.props.history.push('/home-page');
+    //       console.log(res.data.location);
+    //       alert(res.data.message);
+    //      }
+    //   })
+    //   .catch(error => {
+    //     alert('Internal Server error, Server Resopnded with "' + error + '"');
+    //   });
   };
 
   render() {
@@ -152,7 +122,7 @@ class CustomizedInputBase extends React.Component {
           placeholder="ZIP / LOCATION ADDRESS "
           onChange={e => this.searchValueChange(e)}
         />
-        {/* <Geolocation
+        <Geolocation
           lazy
           render={({
             getCurrentPosition,
@@ -169,24 +139,18 @@ class CustomizedInputBase extends React.Component {
                 {fetchingPosition === false ? (
                   <Hidden xlDown>{this.fetchZip(latitude, longitude)}</Hidden>
                 ) : (
-                  <Hidden xlDown>abc</Hidden>
+                  <Hidden xlDown>a</Hidden>
                 )}
               </IconButton>
             </div>
-          )}/> */}
-        <div>
-          <AlertDialog
-            open={this.state.open}
-            // handleClickOpen={() => this.handleClickOpen()}
-            // handleClose={() => this.handleClose()}
-            // getLocationfromIP={() => this.getLocationfromIP()}
-          />
-        </div>
+          )}
+        />
         <IconButton
           className={classes.iconButton2}
           aria-label="Search"
           onClick={() => this.gotoHome()}
         >
+          {' '}
           GO
         </IconButton>
       </Paper>
