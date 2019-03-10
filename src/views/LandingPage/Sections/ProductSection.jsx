@@ -18,6 +18,8 @@ import InfoArea from 'components/InfoArea/InfoArea.jsx';
 
 import productStyle from 'assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx';
 
+import Link from '@material-ui/core/Link';
+
 class ProductSection extends React.Component {
   render() {
     const { classes } = this.props;
@@ -25,13 +27,16 @@ class ProductSection extends React.Component {
       <div className={classes.section}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
-            <h2 className={classes.title}>Explore the Events in your Area</h2>
+            <h2 className={classes.title}>Explore VIBES in your Area</h2>
           </GridItem>
         </GridContainer>
         <div>
           <GridContainer>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() =>
                   this.props.history.push('/category-page/conference&seminar')
                 }
@@ -43,10 +48,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() =>
                   this.props.history.push('/category-page/socialgatherings')
                 }
@@ -58,10 +66,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() =>
                   this.props.history.push('/category-page/realstate')
                 }
@@ -73,10 +84,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() => this.props.history.push('/category-page/music')}
               >
                 <InfoArea
@@ -86,10 +100,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() =>
                   this.props.history.push('/category-page/art&culture')
                 }
@@ -101,10 +118,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() => this.props.history.push('/category-page/sports')}
               >
                 <InfoArea
@@ -114,10 +134,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() => this.props.history.push('/category-page/games')}
               >
                 <InfoArea
@@ -127,10 +150,13 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
             <GridItem xs={12} sm={12} md={3}>
-              <div
+              <Link
+                color="textPrimary"
+                component="button"
+                variant="display1"
                 onClick={() =>
                   this.props.history.push('/category-page/education')
                 }
@@ -142,7 +168,7 @@ class ProductSection extends React.Component {
                   iconColor="gray"
                   vertical
                 />
-              </div>
+              </Link>
             </GridItem>
           </GridContainer>
         </div>

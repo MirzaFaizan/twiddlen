@@ -11,8 +11,9 @@ import Paper from '@material-ui/core/Paper';
 import UpcomingEvents from './UpcomingEvents/UpcomingEvents';
 import MyEvents from './MyEvents/MyEvents.jsx';
 import ExpiredEvents from './ExpiredEvents/ExpiredEvents.jsx';
+import Favorites from './Favorites/Favorites.jsx';
 
-// import HeaderLinks from 'components/Header/HeaderLinks.jsx';
+import HeaderLinks from 'components/Header/HeaderLinks.jsx';
 import Header from 'components/Header/Header.jsx';
 
 function TabContainer(props) {
@@ -136,7 +137,7 @@ class NavTabs extends React.Component {
           color="transparent"
           routes={dashboardRoutes}
           brand="1"
-          // rightLinks={<HeaderLinks history={this.props.history} />}
+          rightLinks={<HeaderLinks history={this.props.history} />}
           fixed
           changeColorOnScroll={{
             height: 400,
@@ -175,7 +176,7 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="Upcoming Events"
+                  label="Upcoming VIBES"
                 />
                 <Tab
                   disableRipple
@@ -183,7 +184,7 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="Expired Events"
+                  label="Expired VIBES"
                 />
                 <Tab
                   disableRipple
@@ -191,9 +192,18 @@ class NavTabs extends React.Component {
                     root: classes.tabRoot,
                     selected: classes.tabSelected
                   }}
-                  label="My Events"
+                  label="My VIBES"
+                />
+                <Tab
+                  disableRipple
+                  classes={{
+                    root: classes.tabRoot,
+                    selected: classes.tabSelected
+                  }}
+                  label="Favorite VIBES"
                 />
               </Tabs>
+
               {/* </AppBar> */}
               {value === 0 && (
                 <TabContainer>
@@ -208,6 +218,11 @@ class NavTabs extends React.Component {
               {value === 2 && (
                 <TabContainer>
                   <MyEvents />
+                </TabContainer>
+              )}
+              {value === 3 && (
+                <TabContainer>
+                  <Favorites />
                 </TabContainer>
               )}
             </div>

@@ -19,6 +19,8 @@ import IconButton from '@material-ui/core/IconButton';
 
 import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
 
+import SignUpAlert from '../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
+
 const styles = {
   card: {
     maxWidth: 'auto',
@@ -44,7 +46,8 @@ class ImgMediaCard extends React.Component {
       locationSub: 'grey',
       notificationSub: 'grey',
       heartSub: 'grey',
-      openExpandedCardstate: false
+      openExpandedCardstate: false,
+      openAlert: false
     };
   }
 
@@ -60,42 +63,86 @@ class ImgMediaCard extends React.Component {
     });
   };
 
+  openSubscriptionAlert = () => {
+    this.setState({
+      subscriptionAlert: true
+    });
+  };
+
+  closeSubscriptionAlert = () => {
+    this.setState({
+      subscriptionAlert: false
+    });
+  };
+
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
-      this.setState({
-        locationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.locationSub === 'grey') {
+        this.setState({
+          locationSub: 'orange',
+          subscriptionMessage: 'Location Added!'
+        });
+      } else {
+        this.setState({
+          locationSub: 'grey',
+          subscriptionMessage: 'Location Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        locationSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
-      this.setState({
-        notificationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.notificationSub === 'grey') {
+        this.setState({
+          notificationSub: 'orange',
+          subscriptionMessage: 'You Subscribed!'
+        });
+      } else {
+        this.setState({
+          notificationSub: 'grey',
+          subscriptionMessage: 'UnSubscribed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        notificationSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
-      this.setState({
-        heartSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.heartSub === 'grey') {
+        this.setState({
+          heartSub: 'orange',
+          subscriptionMessage: 'Favorite Added!'
+        });
+      } else {
+        this.setState({
+          heartSub: 'grey',
+          subscriptionMessage: 'Favorite Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        heartSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -113,7 +160,7 @@ class ImgMediaCard extends React.Component {
         <CardContent className={classes.cardContent}>
           <div>
             <Grid container spacing={8} justify="space-evenly">
-              <Grid item xs={4} sm={3} md={4}>
+              <Grid item xs={3} sm={3} md={4}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -122,7 +169,7 @@ class ImgMediaCard extends React.Component {
                   <strong>{this.props.name}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={4} sm={3} md={3}>
+              <Grid item xs={3} sm={3} md={3}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -131,7 +178,7 @@ class ImgMediaCard extends React.Component {
                   <strong>{this.props.city}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={4} sm={6} md={5}>
+              <Grid item xs={6} sm={6} md={5}>
                 <div style={{ marginTop: '-10%' }}>
                   <Grid
                     container
@@ -172,7 +219,7 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Grid item xs={5} sm={5} md={4}>
+              <Grid item xs={5} sm={6} md={4}>
                 <div style={{ marginTop: '-10%' }}>
                   <Typography
                     variant="subheading"
@@ -183,7 +230,7 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
-              <Grid item xs={7} sm={7} md={8}>
+              <Grid item xs={7} sm={6} md={8}>
                 <div style={{ marginTop: '-6.5%' }}>
                   <Typography
                     variant="subheading"
@@ -195,7 +242,7 @@ class ImgMediaCard extends React.Component {
                 </div>
               </Grid>
 
-              <Grid item xs={5} sm={5} md={4}>
+              <Grid item xs={5} sm={6} md={4}>
                 <div style={{ marginTop: '-10%' }}>
                   <Typography
                     variant="body2"
@@ -206,7 +253,7 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
-              <Grid item xs={7} sm={7} md={8}>
+              <Grid item xs={7} sm={6} md={8}>
                 <div style={{ marginTop: '-5%' }}>
                   <Typography
                     variant="subheading"
@@ -233,6 +280,8 @@ class ImgMediaCard extends React.Component {
                     price="$700"
                     category={[this.props.category]}
                     sponsor={this.props.sponsor}
+                    history={this.props.history}
+                    client={this.props.client}
                   />
                 </div>
               </Grid>
@@ -256,6 +305,11 @@ class ImgMediaCard extends React.Component {
             </Grid>
           </div>
         </CardContent>
+        <SignUpAlert
+          open={this.state.openAlert}
+          handleClickOpen={() => this.handleClickOpen()}
+          handleClose={() => this.handleClose()}
+        />
       </Card>
     );
   }

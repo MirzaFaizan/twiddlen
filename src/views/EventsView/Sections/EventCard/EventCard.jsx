@@ -21,6 +21,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
 import Snackbar from './SnackbarAlert/SnackBarAlert.jsx';
 
+import SignUpAlert from '../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
+
 const styles = {
   card: {
     maxWidth: 'auto',
@@ -48,7 +50,8 @@ class ImgMediaCard extends React.Component {
       heartSub: 'grey',
       openExpandedCardstate: false,
       subscriptionAlert: false,
-      subscriptionMessage: 'You Subscribed!'
+      subscriptionMessage: 'You Subscribed!',
+      openAlert: false
     };
   }
 
@@ -77,48 +80,72 @@ class ImgMediaCard extends React.Component {
   };
 
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
-      this.setState({
-        locationSub: 'orange',
-        subscriptionMessage: 'Location Added!'
-      });
+    if (this.props.client) {
+      if (this.state.locationSub === 'grey') {
+        this.setState({
+          locationSub: 'orange',
+          subscriptionMessage: 'Location Added!'
+        });
+      } else {
+        this.setState({
+          locationSub: 'grey',
+          subscriptionMessage: 'Location Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        locationSub: 'grey',
-        subscriptionMessage: 'Location Removed!'
-      });
+      this.handleClickOpen();
     }
-    this.openSubscriptionAlert();
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
-      this.setState({
-        notificationSub: 'orange',
-        subscriptionMessage: 'You Subscribed!'
-      });
+    if (this.props.client) {
+      if (this.state.notificationSub === 'grey') {
+        this.setState({
+          notificationSub: 'orange',
+          subscriptionMessage: 'You Subscribed!'
+        });
+      } else {
+        this.setState({
+          notificationSub: 'grey',
+          subscriptionMessage: 'UnSubscribed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        notificationSub: 'grey',
-        subscriptionMessage: 'UnSubscribed!'
-      });
+      this.handleClickOpen();
     }
-    this.openSubscriptionAlert();
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
-      this.setState({
-        heartSub: 'orange',
-        subscriptionMessage: 'Favorite Added!'
-      });
+    if (this.props.client) {
+      if (this.state.heartSub === 'grey') {
+        this.setState({
+          heartSub: 'orange',
+          subscriptionMessage: 'Favorite Added!'
+        });
+      } else {
+        this.setState({
+          heartSub: 'grey',
+          subscriptionMessage: 'Favorite Removed!'
+        });
+      }
+      this.openSubscriptionAlert();
     } else {
-      this.setState({
-        heartSub: 'grey',
-        subscriptionMessage: 'Favorite Removed!'
-      });
+      this.handleClickOpen();
     }
-    this.openSubscriptionAlert();
+  };
+
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
   };
   render() {
     const { classes } = this.props;
@@ -281,8 +308,10 @@ class ImgMediaCard extends React.Component {
                       description={this.props.description}
                       seating="300"
                       price="$700"
-                      category={['category1', 'category2']}
+                      category={['sports']}
                       sponsor={this.props.sponsor}
+                      history={this.props.history}
+                      client={this.props.client}
                     />
                   </div>
                 </Grid>
@@ -295,6 +324,11 @@ class ImgMediaCard extends React.Component {
           openSnackbar={() => this.openSubscriptionAlert()}
           closeSnackbar={() => this.closeSubscriptionAlert()}
           message={this.state.subscriptionMessage}
+        />
+        <SignUpAlert
+          open={this.state.openAlert}
+          handleClickOpen={() => this.handleClickOpen()}
+          handleClose={() => this.handleClose()}
         />
       </div>
     );

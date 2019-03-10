@@ -37,6 +37,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateClient } from '../../actions/client-action.js';
 
+import Typography from '@material-ui/core/Typography';
+
 function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
@@ -88,6 +90,7 @@ class LoginPage extends React.Component {
         } else {
           //redirect to login component
           alert('Succesfully Logged in');
+          localStorage.setItem('token', res.data.token);
           this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
@@ -144,10 +147,15 @@ class LoginPage extends React.Component {
           alert(res.data.message);
         } else {
           //redirect to login component
-          //console.log(res.data);
+          console.log(res.data);
           alert('Succesfully Logged in');
+          localStorage.setItem('token', res.data.token);
           this.props.onUpdateClient(true);
           this.handleClose('modal');
+          if (this.props.handleClose) {
+            console.log(this.props.handleClose);
+            this.props.handleClose();
+          }
         }
       })
       .catch(error => {
@@ -180,6 +188,7 @@ class LoginPage extends React.Component {
           //redirect to login component
           console.log(res.data);
           alert('Succesfully Logged in');
+          localStorage.setItem('token', res.data.token);
           this.props.onUpdateClient(true);
           this.handleClose('modal');
         }
@@ -217,11 +226,13 @@ class LoginPage extends React.Component {
     return (
       <div>
         <Button
-          color="transparent"
+          color="warning"
           simple
           onClick={() => this.handleClickOpen('modal')}
         >
-          Log IN
+          <Typography color="inherit" align="center">
+            Log IN
+          </Typography>
         </Button>
         <Dialog
           // classes={{

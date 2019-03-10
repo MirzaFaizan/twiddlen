@@ -29,6 +29,8 @@ import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
 // import DialogContent from '@material-ui/core/DialogContent';
 
+import Typography from '@material-ui/core/Typography';
+
 function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
@@ -105,6 +107,10 @@ class LoginPage extends React.Component {
           //redirect to login component
           alert('Succesfully registered');
           this.handleClose('modal');
+          if (this.props.handleClose) {
+            console.log(this.props.handleClose);
+            this.props.handleClose();
+          }
         }
       })
       .catch(error => {
@@ -133,6 +139,10 @@ class LoginPage extends React.Component {
       // const token = r.headers.get('x-auth-token');
       r.json().then(response => {
         console.log(response);
+        if (this.props.handleClose) {
+          console.log(this.props.handleClose);
+          this.props.handleClose();
+        }
       });
     });
   };
@@ -169,11 +179,13 @@ class LoginPage extends React.Component {
         //   }}
         >
           <Button
-            color="transparent"
             simple
             onClick={() => this.handleClickOpen('modal')}
+            color="warning"
           >
-            Register
+            <Typography color="inherit" align="center">
+              Register
+            </Typography>
           </Button>
           <Dialog
             classes={{

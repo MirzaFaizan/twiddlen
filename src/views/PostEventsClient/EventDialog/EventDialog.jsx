@@ -14,9 +14,10 @@ import Map from './Map';
 
 import Geocode from 'react-geocode';
 import { DropzoneArea } from 'material-ui-dropzone';
-Geocode.setApiKey('AIzaSyBbkFYYbFE0SFAZUlrFIdSMp9sezkg__X0 ');
+Geocode.setApiKey(
+  process.env.REACT_APP_GOOGLEAPI || 'AIzaSyBbkFYYbFE0SFAZUlrFIdSMp9sezkg__X0'
+);
 Geocode.enableDebug();
-
 class ResponsiveDialog extends React.Component {
   state = {
     open: false,
@@ -90,7 +91,7 @@ class ResponsiveDialog extends React.Component {
   }
 
   onMarkerDragEnd = event => {
-    console.log(process.env.REACT_APP_Google_API);
+    console.log(process.env.REACT_APP_GOOGLEAPI);
     const newLat = event.latLng.lat(),
       newLng = event.latLng.lng();
     // const self= this;
@@ -272,6 +273,8 @@ class ResponsiveDialog extends React.Component {
       'Street Fairs',
       'Facebook Events'
     ];
+    // const { fullScreen } = this.props;
+
     return (
       <div>
         <Button
@@ -279,13 +282,16 @@ class ResponsiveDialog extends React.Component {
           style={{
             color: 'white',
             backgroundColor: 'orange',
-            borderRadius: '20px'
+            borderRadius: '20px',
+            height: '50px'
           }}
         >
-          Add New Event
+          Add New Event+
         </Button>
         <Dialog
-          fullScreen={fullScreen}
+          maxWidth={'md'}
+          fullWidth={true}
+          // fullScreen={true}
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title"

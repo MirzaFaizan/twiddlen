@@ -18,6 +18,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 
 import ExpandedCard from './ExpandedCard/ExpandedCard.jsx';
+import SignUpAlert from '../../../SignUpFirstAlert/SignUpFirstAlert.jsx';
 
 const styles = {
   card: {
@@ -43,7 +44,8 @@ class ImgMediaCard extends React.Component {
       locationSub: 'grey',
       notificationSub: 'grey',
       heartSub: 'grey',
-      openExpandedCardstate: false
+      openExpandedCardstate: false,
+      openAlert: false
     };
   }
 
@@ -60,39 +62,69 @@ class ImgMediaCard extends React.Component {
   };
 
   locationSub = () => {
-    if (this.state.locationSub === 'grey') {
-      this.setState({
-        locationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.locationSub === 'grey') {
+        this.setState({
+          locationSub: 'orange',
+          subscriptionMessage: 'Location Added!'
+        });
+      } else {
+        this.setState({
+          locationSub: 'grey',
+          subscriptionMessage: 'Location Removed!'
+        });
+      }
     } else {
-      this.setState({
-        locationSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
   notificationSub = () => {
-    if (this.state.notificationSub === 'grey') {
-      this.setState({
-        notificationSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.notificationSub === 'grey') {
+        this.setState({
+          notificationSub: 'orange',
+          subscriptionMessage: 'You Subscribed!'
+        });
+      } else {
+        this.setState({
+          notificationSub: 'grey',
+          subscriptionMessage: 'UnSubscribed!'
+        });
+      }
     } else {
-      this.setState({
-        notificationSub: 'grey'
-      });
+      this.handleClickOpen();
     }
   };
 
   heartSub = () => {
-    if (this.state.heartSub === 'grey') {
-      this.setState({
-        heartSub: 'orange'
-      });
+    if (this.props.client) {
+      if (this.state.heartSub === 'grey') {
+        this.setState({
+          heartSub: 'orange',
+          subscriptionMessage: 'Favorite Added!'
+        });
+      } else {
+        this.setState({
+          heartSub: 'grey',
+          subscriptionMessage: 'Favorite Removed!'
+        });
+      }
     } else {
-      this.setState({
-        heartSub: 'orange'
-      });
+      this.handleClickOpen();
     }
+  };
+
+  handleClickOpen = () => {
+    this.setState({
+      openAlert: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openAlert: false
+    });
   };
   render() {
     const { classes } = this.props;
@@ -122,7 +154,7 @@ class ImgMediaCard extends React.Component {
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={6} md={4}>
-                <div style={{ marginTop: '-10%' }}>
+                <div style={{ marginTop: '-15%' }}>
                   <Grid
                     container
                     direction="row"
@@ -204,6 +236,11 @@ class ImgMediaCard extends React.Component {
                   </Typography>
                 </div>
               </Grid>
+              <Grid item xs={12}>
+                <Typography color="textPrimary" variant="caption">
+                  {this.props.description}
+                </Typography>
+              </Grid>
 
               <Grid item xs={12}>
                 <div>
@@ -221,6 +258,7 @@ class ImgMediaCard extends React.Component {
                     price="$700"
                     category={['category1', 'category2']}
                     sponsor={this.props.sponsor}
+                    client={this.props.client}
                   />
                 </div>
               </Grid>
@@ -238,6 +276,11 @@ class ImgMediaCard extends React.Component {
             </Grid>
           </div>
         </CardContent>
+        <SignUpAlert
+          open={this.state.openAlert}
+          handleClickOpen={() => this.handleClickOpen()}
+          handleClose={() => this.handleClose()}
+        />
       </Card>
     );
   }
