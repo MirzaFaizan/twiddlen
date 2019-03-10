@@ -196,7 +196,7 @@ class ResponsiveDialog extends React.Component {
     }
     console.log('we are still here');
     axios
-      .post('https://twiddlen-api.herokuapp.com/admin/postEvent', formdata, {
+      .post('https://twiddlen-api.herokuapp.com/user/postEvent', formdata, {
         headers: {
           //"Authorization" : `Bearer ${token}`
           'content-Type': 'multipart/form-data'
