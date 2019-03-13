@@ -7,7 +7,7 @@ import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
-
+import _ from 'lodash';
 import axios from 'axios';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Map from './Map';
@@ -28,6 +28,7 @@ class ResponsiveDialog extends React.Component {
     contact: '',
     description: '',
     Address: '',
+    city: '',
     zip: '',
     spaces: '',
     latitude: 38.3667,
@@ -91,22 +92,32 @@ class ResponsiveDialog extends React.Component {
   }
 
   onMarkerDragEnd = event => {
-    console.log(process.env.REACT_APP_GOOGLEAPI);
+    //console.log(process.env.REACT_APP_GOOGLEAPI);
     const newLat = event.latLng.lat(),
       newLng = event.latLng.lng();
     // const self= this;
     Geocode.fromLatLng(newLat, newLng).then(
       response => {
-        console.log(response);
+        // console.log(response);
         const address = response.results[0].formatted_address;
         const address2 = response.results[0].address_components;
         const zipcode = address2[address2.length - 1].long_name;
-        console.log(zipcode);
+        //const City= ;
+        var result = _.find(response.results[0].address_components, function(
+          obj
+        ) {
+          return obj.types[0] === 'locality' && obj.types[1] === 'political';
+        });
+        const City =
+          result.long_name ||
+          response.results[0].address_components[3].long_name ||
+          response.results[0].address_components[2].long_name;
         this.setState({
           latitude: newLat,
           longitude: newLng,
           Address: address,
-          zip: zipcode
+          zip: zipcode,
+          city: City
         });
       },
       error => {
@@ -120,7 +131,6 @@ class ResponsiveDialog extends React.Component {
       cover: file
     });
   }
-
   handleDelCoverChange() {
     this.setState({
       cover: null
@@ -172,6 +182,7 @@ class ResponsiveDialog extends React.Component {
   };
   submitClick = () => {
     this.setState({ submit: false });
+    const token = localStorage.getItem('token');
     let formdata = new FormData();
     formdata.append('title', this.state.title);
     formdata.append('category', this.state.category);
@@ -182,6 +193,7 @@ class ResponsiveDialog extends React.Component {
     formdata.append('spaces', this.state.spaces);
     formdata.append('zip', this.state.zip);
     formdata.append('Address', this.state.Address);
+    formdata.append('city', this.state.city);
     formdata.append('latitude', this.state.latitude);
     formdata.append('longitude', this.state.longitude);
     formdata.append('approval', 0);
@@ -198,7 +210,7 @@ class ResponsiveDialog extends React.Component {
     axios
       .post('https://twiddlen-api.herokuapp.com/user/postEvent', formdata, {
         headers: {
-          //"Authorization" : `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
           'content-Type': 'multipart/form-data'
         }
       })
@@ -219,7 +231,7 @@ class ResponsiveDialog extends React.Component {
       });
   };
   render() {
-    const { fullScreen } = this.props;
+    //const {fullScreen} = this.props;
     const categories = [
       'Indoor',
       'Outdoor',
@@ -484,7 +496,6 @@ class ResponsiveDialog extends React.Component {
                       <h4>Vibe's Images/Media</h4>
                       <Divider />
                     </Grid>
-
                     <Grid item xs={12} sm={4} md={4}>
                       <DropzoneArea
                         acceptedFiles={['image/*']}

@@ -21,7 +21,6 @@ import ProductSection from './Sections/ProductSection.jsx';
 //import WorkSection from "./Sections/WorkSection.jsx";
 import SearchBar from './Sections/SearchBar.jsx';
 //import EventsSection from "./Sections/EventsSection.jsx";
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
@@ -100,6 +99,7 @@ class LandingPage extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
+
         <div style={{ backgroundColor: 'lightgrey' }}>
           <div className={classes.container}>
             <ProductSection />
