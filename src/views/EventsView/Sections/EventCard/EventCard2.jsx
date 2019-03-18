@@ -169,7 +169,7 @@ class ImgMediaCard extends React.Component {
                   <strong>{this.props.name}</strong>
                 </Typography>
               </Grid>
-              <Grid item xs={3} sm={3} md={3}>
+              {/* <Grid item xs={3} sm={3} md={3}>
                 <Typography
                   variant="caption"
                   component="h2"
@@ -177,7 +177,7 @@ class ImgMediaCard extends React.Component {
                 >
                   <strong>{this.props.city}</strong>
                 </Typography>
-              </Grid>
+              </Grid> */}
               <Grid item xs={6} sm={6} md={5}>
                 <div style={{ marginTop: '-10%' }}>
                   <Grid
@@ -272,7 +272,7 @@ class ImgMediaCard extends React.Component {
                     closeCard={() => this.closeExpandedCard()}
                     image={this.props.image}
                     name={this.props.name}
-                    city={this.props.city}
+                    // city={this.props.city}
                     organizerName={this.props.organizerName}
                     timeAndDate={this.props.timeAndDate}
                     description={this.props.description}

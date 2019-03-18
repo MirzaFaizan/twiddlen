@@ -403,14 +403,14 @@ class ResponsiveDialog extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                       <Grid container spacing={8} direction="row">
-                        <Grid item xs={4} sm={4} md={4}>
+                        {/* <Grid item xs={4} sm={4} md={4}>
                           <Typography variant="subheading">
                             <small>
                               {' '}
                               <strong>{this.props.city}</strong>{' '}
                             </small>
                           </Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={4} sm={4} md={4}>
                           <Typography variant="subheading">
                             <small>

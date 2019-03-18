@@ -225,9 +225,7 @@ const vibesData = {
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);
-
     this.onUpdateUser = this.onUpdateUser.bind(this);
-
     this.state = {
       eventsData: '',
       loading: true
@@ -241,15 +239,15 @@ class LandingPage extends React.Component {
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
       .then(res => {
-        if (res.data.success === false) {
-          alert(res.data.message);
-        } else {
-          //console.log(dat);
-          console.log(res.data);
+        if (res.data.success === true) {
+          console.log(res.data.events);
           this.setState({
             eventsData: res.data.events,
             loading: false
           });
+        } else {
+          //console.log(dat);
+          alert(res.data.message);
           // this.setSlides();
         }
       })
@@ -390,7 +388,9 @@ class LandingPage extends React.Component {
                         component="button"
                         variant="display1"
                         onClick={() =>
-                          this.props.history.push('/happeningtoday')
+                          this.props.history.push(
+                            '/category-page/happeningtoday'
+                          )
                         }
                         color="inherit"
                       >
@@ -440,9 +440,9 @@ class LandingPage extends React.Component {
                                   'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
                                 }
                                 name={type.name}
-                                city={type.Address.City}
+                                // city={type.Address.City}
                                 organizerName={'Twiddlen'}
-                                timeAndDate={type.Date.startDate.slice(0, 10)}
+                                timeAndDate={type.startDate.slice(0, 10)}
                                 description={type.description}
                                 sponsor={type.sponsor}
                                 category={type.category}
@@ -493,9 +493,9 @@ class LandingPage extends React.Component {
                                 'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
                               }
                               name={type.name}
-                              city={type.Address.City}
+                              // city={type.Address.City}
                               organizerName={'Twiddlen'}
-                              timeAndDate={type.Date.startDate.slice(0, 10)}
+                              timeAndDate={type.startDate.slice(0, 10)}
                               description={type.description}
                               sponsor={type.sponsor}
                               category={type.category}
@@ -738,7 +738,7 @@ class LandingPage extends React.Component {
                       component="button"
                       variant="display1"
                       onClick={() =>
-                        this.props.history.push('//category-page/art')
+                        this.props.history.push('/category-page/art')
                       }
                       color="inherit"
                     >

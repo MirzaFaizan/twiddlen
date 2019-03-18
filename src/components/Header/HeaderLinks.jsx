@@ -17,8 +17,8 @@ import ListItem from '@material-ui/core/ListItem';
 // import IconButton from '@material-ui/core/IconButton';
 
 // @material-ui/icons
-import Close from '@material-ui/icons/Close';
-import { Apps, CloudDownload } from '@material-ui/icons';
+// import Close from '@material-ui/icons/Close';
+// import { Apps, CloudDownload } from '@material-ui/icons';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ import { updateClient } from '../../actions/client-action.js';
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
 
-import modalStyle from 'assets/jss/material-kit-react/modalStyle.jsx';
+// import modalStyle from 'assets/jss/material-kit-react/modalStyle.jsx';
 import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLinksStyle.jsx';
 import LoginPage from 'views/LoginPage/LoginPage.jsx';
 import RegisterPage from 'views/RegisterPage/RegisterPage.jsx';
@@ -41,7 +41,7 @@ import Settings from '@material-ui/icons/Settings';
 import SignUpAlert from '../../views/SignUpFirstAlert/SignUpFirstAlert.jsx';
 
 import Hidden from '@material-ui/core/Hidden';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 
 class HeaderLinks extends React.Component {
   constructor(props) {

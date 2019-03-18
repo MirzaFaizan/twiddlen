@@ -22,6 +22,7 @@ var indexRoutes = [
   { path: '/happening-thismonth', name: 'HappeningMonth', component: Month },
   { path: '/my-activities', name: 'MyActivities', component: MyActivities },
   { path: '/my-settings', name: 'MySettings', component: MySettings },
+  { path: '/privacy', name: 'Privacy', component: MySettings },
   {
     path: '/category-page/:id',
     name: 'CategoryEventsView',
