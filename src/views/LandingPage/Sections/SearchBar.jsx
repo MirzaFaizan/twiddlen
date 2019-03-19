@@ -50,14 +50,6 @@ class CustomizedInputBase extends React.Component {
     };
   }
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   searchValueChange = e => {
     this.setState({
       searchValue: e.target.value
@@ -70,29 +62,29 @@ class CustomizedInputBase extends React.Component {
       locationGot: true
     });
   };
-  getLocationfromIP = () => {
-    axios
-      .get(
-        'http://ip-api.com/json'
-        //, { headers: {"Authorization" : `Bearer ${token}`} }
-      )
-      .then(res => {
-        JSON.stringify(res);
-        //Check if response reture suceess: true or false
-        console.log(res);
-        //   if (res.data.success === false) {
-        //     alert(res.data.message);
-        //   } else {
-        //     // this.props.history.push('/home-page');
-        //     console.log(res.data.location);
-        //     alert(res.data.message);
-        //   }
-        // })
-        // .catch(error => {
-        //   alert('Internal Server error, Server Resopnded with "' + error + '"');
-      });
-    this.handleClose();
-  };
+  // getLocationfromIP = () => {
+  //   axios
+  //     .get(
+  //       'http://ip-api.com/json'
+  //       //, { headers: {"Authorization" : `Bearer ${token}`} }
+  //     )
+  //     .then(res => {
+  //       JSON.stringify(res);
+  //       //Check if response reture suceess: true or false
+  //       console.log(res);
+  //       //   if (res.data.success === false) {
+  //       //     alert(res.data.message);
+  //       //   } else {
+  //       //     // this.props.history.push('/home-page');
+  //       //     console.log(res.data.location);
+  //       //     alert(res.data.message);
+  //       //   }
+  //       // })
+  //       // .catch(error => {
+  //       //   alert('Internal Server error, Server Resopnded with "' + error + '"');
+  //     });
+  //   this.handleClose();
+  // };
   gotoHome = () => {
     let data = {
       zipcode: this.state.searchValue
@@ -120,40 +112,69 @@ class CustomizedInputBase extends React.Component {
       });
   };
 
-  getPositionagain = (latitude, longitude) => {
-    if (latitude !== undefined && longitude !== undefined) {
-      var temp = latitude + ',' + longitude;
-      let data = {
-        zipcode: temp
-      };
-      axios
-        .post(
-          'https://twiddlen-api.herokuapp.com/user/zipAddress',
-          data
-          //, { headers: {"Authorization" : `Bearer ${token}`} }
-        )
-        .then(res => {
-          JSON.stringify(res);
-          //Check if response reture suceess: true or false
-          console.log(res.data);
-          if (res.data.success === false) {
-            alert(res.data.message);
-          } else {
-            this.props.history.push('/home-page');
-            console.log(res.data.location);
-            alert(res.data.message);
-            // this.props.locationGotFunc();
-          }
-        })
-        .catch(error => {
-          alert('Internal Server error, Server Resopnded with "' + error + '"');
-        });
-    }
-  };
+  // getPositionagain = (latitude, longitude) => {
+  //   if (latitude !== undefined && longitude !== undefined) {
+  //     var temp = latitude + ',' + longitude;
+  //     let data = {
+  //       zipcode: temp
+  //     };
+  //     axios
+  //       .post(
+  //         'https://twiddlen-api.herokuapp.com/user/zipAddress',
+  //         data
+  //         //, { headers: {"Authorization" : `Bearer ${token}`} }
+  //       )
+  //       .then(res => {
+  //         JSON.stringify(res);
+  //         //Check if response reture suceess: true or false
+  //         console.log(res.data);
+  //         if (res.data.success === false) {
+  //           alert(res.data.message);
+  //         } else {
+  //           this.props.history.push('/home-page');
+  //           console.log(res.data.location);
+  //           alert(res.data.message);
+  //           // this.props.locationGotFunc();
+  //         }
+  //       })
+  //       .catch(error => {
+  //         alert('Internal Server error, Server Resopnded with "' + error + '"');
+  //       });
+  //   }
+  // };
 
   getPosition = (getCurrentPosition, latitude, longitude) => {
     getCurrentPosition();
-    this.getPositionagain(latitude, longitude);
+    // if (latitude !== undefined && longitude !== undefined)
+    //  {
+    var temp = latitude + ',' + longitude;
+    let data = {
+      zipcode: temp
+    };
+    axios
+      .post(
+        'https://twiddlen-api.herokuapp.com/user/zipAddress',
+        data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        JSON.stringify(res);
+        //Check if response reture suceess: true or false
+        console.log(res.data);
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          this.props.history.push('/home-page');
+          console.log(res.data.location);
+          alert(res.data.message);
+          // this.props.locationGotFunc();
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
+    // }
+    // this.getPositionagain(latitude, longitude);
     // console.log(latitude,longitude)
   };
 
@@ -203,6 +224,7 @@ class CustomizedInputBase extends React.Component {
           aria-label="Search"
           onClick={() => this.gotoHome()}
         >
+          {' '}
           GO
         </IconButton>
       </Paper>

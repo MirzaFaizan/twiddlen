@@ -71,6 +71,12 @@ class LoginPage extends React.Component {
   };
 
   loginHandleClick = () => {
+    //   if(this.state.email==='dmt' && this.state.password ==='123'){
+    //     localStorage.setItem('token', "audasccxjhasu1282bxhcshxb8qjzxjcjx8qwkssssssssssssssssssssssssssskcmmmmcmkskskkkkkkkkkk");
+    //     this.props.onUpdateClient(true)s;
+    //     this.handleClose('modal');
+    //     return;
+    //   }
     const data = {
       email: this.state.email,
       password: this.state.password

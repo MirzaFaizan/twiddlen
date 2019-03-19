@@ -377,7 +377,7 @@ class ResponsiveDialog extends React.Component {
                       <Grid container spacing={0} direction="row">
                         <Grid item xs={5} sm={7} md={7}>
                           <Typography variant="body1">
-                            <strong>{this.props.organizerName}</strong>
+                            <strong>{this.props.address}</strong>
                           </Typography>
                         </Grid>
                         <Grid item xs={7} sm={5} md={5}>
@@ -411,7 +411,7 @@ class ResponsiveDialog extends React.Component {
                             <small>
                               <strong>
                                 {this.props.seating}
-                                Seatings
+                                :Spaces
                               </strong>
                             </small>
                           </Typography>
@@ -419,7 +419,7 @@ class ResponsiveDialog extends React.Component {
                         <Grid item xs={4} sm={4} md={4}>
                           <Typography variant="subheading" align="center">
                             <small>
-                              <strong>2019-02-28</strong>
+                              <strong>{this.props.timeAndDate}</strong>
                             </small>
                           </Typography>
                         </Grid>
@@ -429,8 +429,8 @@ class ResponsiveDialog extends React.Component {
                   <Hidden xsDown>
                     <Typography component="p">
                       {this.props.description}
-                      {this.props.description}
-                      {this.props.description}
+                      {/* {this.props.description}
+                      {this.props.description} */}
                     </Typography>
                   </Hidden>
                   <Grid container spacing={16}>

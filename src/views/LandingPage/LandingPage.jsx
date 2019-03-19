@@ -90,7 +90,7 @@ class LandingPage extends React.Component {
           <Parallax filter image={dynamicImage}>
             <div className={classes.container}>
               <div style={{ position: 'absolute', right: 2, bottom: 30 }}>
-                <AddEvent />
+                <AddEvent client={this.props.client} />
               </div>
               <GridContainer
                 justify="center"

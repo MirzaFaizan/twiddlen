@@ -24,6 +24,7 @@ import LocalVibe2 from './Sections/EventCard/EventCard2.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import AddEvent from '../PostEventsClient/PostEventsClient.jsx';
 import { Carousel } from '3d-react-carousal';
 import Slider from 'react-slick';
 
@@ -103,125 +104,125 @@ var settings = {
 };
 
 const dashboardRoutes = [];
-const vibesData = {
-  vibe1: {
-    image:
-      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
-    name: 'Vibe 1',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Chevrolet_logo.svg/1200px-Chevrolet_logo.svg.png',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe2: {
-    image:
-      'https://assets.simpleviewcms.com/simpleview/image/upload/c_fill,h_600,q_50,w_1400/v1/clients/virginiabeachva/144_3_1707_jpeg_55eee7dc-c6ef-41f7-b7b4-23bf044e565a.jpg',
-    name: 'Vibe 2',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://di-uploads-pod4.dealerinspire.com/rivercityhyundai/uploads/2017/05/HyundaiLogoStacked_4cblk-1024x659.gif',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe3: {
-    image:
-      'https://www.gevme.com/blog/wp-content/uploads/2016/12/wsi-imageoptim-event-photographer-reportage-documentary-photography-westfest-2012_21-1.jpg',
-    name: 'Vibe 3',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://cdn.thingiverse.com/renders/08/c8/e7/c0/45/5d54f02a5fb2246c3058171b3dd19f1b_preview_featured.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe4: {
-    image:
-      'http://www.bvidestinationmanagement.com/wp-content/uploads/2018/03/Event-Management.jpeg',
-    name: 'Vibe 4',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://www.businessinsider.com/image/53d29d5c6bb3f7a80617ada8-1200-924/nike-logo.png',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe5: {
-    image: 'http://orientindia.com/admin//130/evt_photo/3_event_management.jpg',
-    name: 'Vibe 5',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://www.logodesignlove.com/images/evolution/7up-logo-old-01.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe6: {
-    image:
-      'https://www.popsci.com/sites/popsci.com/files/styles/1000_1x_/public/images/2018/02/00-event-table.jpg?itok=-nkXo5O-&fc=50,50',
-    name: 'Vibe 6',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://vignette.wikia.nocookie.net/logopedia/images/6/63/Pizza_Hut_2012_logo.png/revision/latest?cb=20140507122847',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe7: {
-    image:
-      'http://marketing4startups.co.uk/ImageEvents/wp-content/uploads/2016/02/event-management-placeholder.jpg',
-    name: 'Vibe 7',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor: 'https://fontmeme.com/images/McDonald%E2%80%99s-Logo.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe8: {
-    image:
-      'https://images.yourstory.com/2015/03/yourstory_AppFriday_EventsHigh.jpg',
-    name: 'Vibe 8',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://upload.wikimedia.org/wikipedia/commons/0/0f/Pepsi_logo_2014.svg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe9: {
-    image:
-      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
-    name: 'Vibe 9',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://brandongaille.com/wp-content/uploads/2013/08/Adidas-Company-Logo.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  },
-  vibe10: {
-    image: 'http://361degreeevents.com/wp-content/uploads/2016/04/event3.jpg',
-    name: 'Vibe 10',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLZs6BAPfLl4cmxCrU0QnItdBOLmFoux-fOt43Xa7ktbtXmvZ',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
-  }
-};
+// const vibesData = {
+//   vibe1: {
+//     image:
+//       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+//     name: 'Vibe 1',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Chevrolet_logo.svg/1200px-Chevrolet_logo.svg.png',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe2: {
+//     image:
+//       'https://assets.simpleviewcms.com/simpleview/image/upload/c_fill,h_600,q_50,w_1400/v1/clients/virginiabeachva/144_3_1707_jpeg_55eee7dc-c6ef-41f7-b7b4-23bf044e565a.jpg',
+//     name: 'Vibe 2',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://di-uploads-pod4.dealerinspire.com/rivercityhyundai/uploads/2017/05/HyundaiLogoStacked_4cblk-1024x659.gif',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe3: {
+//     image:
+//       'https://www.gevme.com/blog/wp-content/uploads/2016/12/wsi-imageoptim-event-photographer-reportage-documentary-photography-westfest-2012_21-1.jpg',
+//     name: 'Vibe 3',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://cdn.thingiverse.com/renders/08/c8/e7/c0/45/5d54f02a5fb2246c3058171b3dd19f1b_preview_featured.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe4: {
+//     image:
+//       'http://www.bvidestinationmanagement.com/wp-content/uploads/2018/03/Event-Management.jpeg',
+//     name: 'Vibe 4',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://www.businessinsider.com/image/53d29d5c6bb3f7a80617ada8-1200-924/nike-logo.png',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe5: {
+//     image: 'http://orientindia.com/admin//130/evt_photo/3_event_management.jpg',
+//     name: 'Vibe 5',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://www.logodesignlove.com/images/evolution/7up-logo-old-01.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe6: {
+//     image:
+//       'https://www.popsci.com/sites/popsci.com/files/styles/1000_1x_/public/images/2018/02/00-event-table.jpg?itok=-nkXo5O-&fc=50,50',
+//     name: 'Vibe 6',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://vignette.wikia.nocookie.net/logopedia/images/6/63/Pizza_Hut_2012_logo.png/revision/latest?cb=20140507122847',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe7: {
+//     image:
+//       'http://marketing4startups.co.uk/ImageEvents/wp-content/uploads/2016/02/event-management-placeholder.jpg',
+//     name: 'Vibe 7',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor: 'https://fontmeme.com/images/McDonald%E2%80%99s-Logo.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe8: {
+//     image:
+//       'https://images.yourstory.com/2015/03/yourstory_AppFriday_EventsHigh.jpg',
+//     name: 'Vibe 8',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://upload.wikimedia.org/wikipedia/commons/0/0f/Pepsi_logo_2014.svg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe9: {
+//     image:
+//       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+//     name: 'Vibe 9',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://brandongaille.com/wp-content/uploads/2013/08/Adidas-Company-Logo.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   },
+//   vibe10: {
+//     image: 'http://361degreeevents.com/wp-content/uploads/2016/04/event3.jpg',
+//     name: 'Vibe 10',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLZs6BAPfLl4cmxCrU0QnItdBOLmFoux-fOt43Xa7ktbtXmvZ',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an"
+//   }
+// };
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);
@@ -235,20 +236,22 @@ class LandingPage extends React.Component {
   componentWillMount() {
     axios
       .get(
-        'https://twiddlen-api.herokuapp.com/admin/approvedEvents'
+        'https://twiddlen-api.herokuapp.com/user/weeklyEvents'
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
       .then(res => {
-        if (res.data.success === true) {
-          console.log(res.data.events);
+        if (res.data.success === false) {
+          alert(res.data.message);
           this.setState({
-            eventsData: res.data.events,
             loading: false
           });
         } else {
           //console.log(dat);
-          alert(res.data.message);
-          // this.setSlides();
+          console.log('here data is', res.data);
+          this.setState({
+            eventsData: res.data.events,
+            loading: false
+          });
         }
       })
       .catch(error => {
@@ -298,7 +301,7 @@ class LandingPage extends React.Component {
     var max = 10;
     let images = [];
 
-    Object.values(vibesData).map((type, key) => {
+    Object.values(this.state.eventsData).map((type, key) => {
       images.push(type.image);
       max = key;
       return null;
@@ -330,9 +333,9 @@ class LandingPage extends React.Component {
       <div>
         <LoadingScreen
           loading={this.state.loading}
-          bgColor="black"
-          spinnerColor="orange"
-          textColor="white"
+          bgColor="white"
+          spinnerColor="yellow"
+          textColor="black"
           logoSrc="https://clearlens.org/wp-content/uploads/2018/05/Facts.jpg"
           text={choosenFact}
         >
@@ -397,6 +400,9 @@ class LandingPage extends React.Component {
                         <strong>Happening Today</strong>
                       </Link>
                     </div>
+                    <div style={{ position: 'absolute', right: 2, bottom: 30 }}>
+                      <AddEvent client={this.props.client} />
+                    </div>
                   </Typography>
                 </Grid>
                 <Hidden smUp>
@@ -404,25 +410,25 @@ class LandingPage extends React.Component {
                     <Grid container spacing={0} justify="center">
                       <Grid item xs={12} sm={12} md={8} lg={5}>
                         <Carousel
-                          slides={Object.values(vibesData).map((type, key) => {
-                            return (
-                              <LocalVibe
-                                image={
-                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                                }
-                                key={key}
-                                name={type.name}
-                                city={type.city}
-                                organizerName={'Twiddlen'}
-                                timeAndDate={type.startDate}
-                                description={type.description}
-                                sponsor={type.sponsor}
-                                category={type.category}
-                                history={this.props.history}
-                                client={this.props.client}
-                              />
-                            );
-                          })}
+                          slides={Object.values(this.state.eventsData).map(
+                            (type, key) => {
+                              return (
+                                <LocalVibe
+                                  image={type.cover}
+                                  key={key}
+                                  name={type.name}
+                                  city={type.Address}
+                                  organizerName={'Twiddlen'}
+                                  timeAndDate={type.startDate}
+                                  description={type.description}
+                                  //sponsor={type.sponsor}
+                                  category={type.category}
+                                  history={this.props.history}
+                                  client={this.props.client}
+                                />
+                              );
+                            }
+                          )}
                         />
                       </Grid>
                     </Grid>
@@ -436,15 +442,13 @@ class LandingPage extends React.Component {
                           <Grid container spacing={0} key={key}>
                             <Grid item xs={12} style={{ padding: '2%' }}>
                               <LocalVibe2
-                                image={
-                                  'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                                }
-                                name={type.name}
-                                // city={type.Address.City}
+                                image={type.cover}
+                                name={type.title}
+                                city={type.Address}
                                 organizerName={'Twiddlen'}
                                 timeAndDate={type.startDate.slice(0, 10)}
                                 description={type.description}
-                                sponsor={type.sponsor}
+                                //sponsor={type.sponsor}
                                 category={type.category}
                                 history={this.props.history}
                                 client={this.props.client}
@@ -489,15 +493,13 @@ class LandingPage extends React.Component {
                         <Grid container spacing={0} key={key}>
                           <Grid item xs={12} style={{ padding: '2%' }}>
                             <LocalVibe2
-                              image={
-                                'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
-                              }
+                              image={type.cover}
                               name={type.name}
-                              // city={type.Address.City}
+                              city={type.Address}
                               organizerName={'Twiddlen'}
                               timeAndDate={type.startDate.slice(0, 10)}
                               description={type.description}
-                              sponsor={type.sponsor}
+                              //sponsor={type.sponsor}
                               category={type.category}
                               history={this.props.history}
                               client={this.props.client}
@@ -509,6 +511,7 @@ class LandingPage extends React.Component {
                     })}
                   </Slider>
                 </Grid>
+
                 {/* </Grid>
                 </Grid> */}
 

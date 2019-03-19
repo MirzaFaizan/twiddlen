@@ -37,9 +37,7 @@ class ProductSection extends React.Component {
                 color="textPrimary"
                 component="button"
                 variant="display1"
-                onClick={() =>
-                  this.props.history.push('/category-page/conference&seminar')
-                }
+                onClick={() => this.props.history.push('/category-page/soccer')}
               >
                 <InfoArea
                   title="Conferene & Seminars"

@@ -135,6 +135,15 @@ class HeaderLinks extends React.Component {
                     color="transparent"
                     simple
                     onClick={() => {
+                      this.props.history.push('/privacy');
+                    }}
+                  >
+                    Privacy
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
                       this.logoutHandle();
                     }}
                   >
@@ -176,6 +185,17 @@ class HeaderLinks extends React.Component {
                   }}
                 >
                   Home
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  color="warning"
+                  simple
+                  onClick={() => {
+                    this.props.history.push('/privacy');
+                  }}
+                >
+                  Privacy
                 </Button>
               </ListItem>
               <ListItem className={classes.listItem}>
@@ -270,6 +290,16 @@ class HeaderLinks extends React.Component {
                     color="transparent"
                     simple
                     onClick={() => {
+                      this.handleClickOpen();
+                    }}
+                    style={{ position: 'relative' }}
+                  >
+                    Privacy
+                  </Button>,
+                  <Button
+                    color="transparent"
+                    simple
+                    onClick={() => {
                       this.props.history.push('/home-page');
                     }}
                     style={{ position: 'relative' }}
@@ -296,9 +326,10 @@ class HeaderLinks extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log(props);
+  console.log(props);
   return {
-    client: state.client
+    client: state.client,
+    history: props.history
   };
 };
 

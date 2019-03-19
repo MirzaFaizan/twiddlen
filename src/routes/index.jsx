@@ -8,7 +8,7 @@ import Today from 'views/Happening/Today/Today.jsx';
 import Week from 'views/Happening/ThisWeek/ThisWeek.jsx';
 import Month from 'views/Happening/ThisMonth/ThisMonth.jsx';
 import MyActivities from 'views/MyActivities/MyActivities.jsx';
-import MySettings from 'views/Settings/Settings.jsx';
+import Privacy from 'views/Privacy/Privacy.jsx';
 
 import ARGame from 'views/ARGame/ARGame.jsx';
 
@@ -22,7 +22,7 @@ var indexRoutes = [
   { path: '/happening-thismonth', name: 'HappeningMonth', component: Month },
   { path: '/my-activities', name: 'MyActivities', component: MyActivities },
   { path: '/my-settings', name: 'MySettings', component: MySettings },
-  { path: '/privacy', name: 'Privacy', component: MySettings },
+  { path: '/privacy', name: 'Privacy', component: Privacy },
   {
     path: '/category-page/:id',
     name: 'CategoryEventsView',

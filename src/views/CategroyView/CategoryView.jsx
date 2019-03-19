@@ -17,6 +17,8 @@ import landingPageStyle from 'assets/jss/material-kit-react/views/landingPage.js
 
 // import SearchBar from './Sections/SearchBar.jsx';
 
+import axios from 'axios';
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/users-action.js';
@@ -25,169 +27,204 @@ import EventCard from './Sections/EventCard/EventCard.jsx';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import LoadingScreen from 'react-loading-screen';
+
 // import FloatingMenu from '../FloatingMenu/FloatingMenu.jsx';
 
 const dashboardRoutes = [];
-const eventsData = {
-  event1: {
-    image:
-      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
-    name: 'Event 1',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLZs6BAPfLl4cmxCrU0QnItdBOLmFoux-fOt43Xa7ktbtXmvZ',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event2: {
-    image:
-      'https://assets.simpleviewcms.com/simpleview/image/upload/c_fill,h_600,q_50,w_1400/v1/clients/virginiabeachva/144_3_1707_jpeg_55eee7dc-c6ef-41f7-b7b4-23bf044e565a.jpg',
-    name: 'Event 2',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://brandongaille.com/wp-content/uploads/2013/08/Adidas-Company-Logo.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event3: {
-    image:
-      'https://www.gevme.com/blog/wp-content/uploads/2016/12/wsi-imageoptim-event-photographer-reportage-documentary-photography-westfest-2012_21-1.jpg',
-    name: 'Event 3',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://upload.wikimedia.org/wikipedia/commons/0/0f/Pepsi_logo_2014.svg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event4: {
-    image:
-      'http://www.bvidestinationmanagement.com/wp-content/uploads/2018/03/Event-Management.jpeg',
-    name: 'Event 4',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor: 'https://fontmeme.com/images/McDonald%E2%80%99s-Logo.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event5: {
-    image: 'http://orientindia.com/admin//130/evt_photo/3_event_management.jpg',
-    name: 'Event 5',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://vignette.wikia.nocookie.net/logopedia/images/6/63/Pizza_Hut_2012_logo.png/revision/latest?cb=20140507122847',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event6: {
-    image:
-      'https://www.popsci.com/sites/popsci.com/files/styles/1000_1x_/public/images/2018/02/00-event-table.jpg?itok=-nkXo5O-&fc=50,50',
-    name: 'Event 6',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://www.logodesignlove.com/images/evolution/7up-logo-old-01.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event7: {
-    image:
-      'http://marketing4startups.co.uk/ImageEvents/wp-content/uploads/2016/02/event-management-placeholder.jpg',
-    name: 'Event 7',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://www.businessinsider.com/image/53d29d5c6bb3f7a80617ada8-1200-924/nike-logo.png',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event8: {
-    image:
-      'https://images.yourstory.com/2015/03/yourstory_AppFriday_EventsHigh.jpg',
-    name: 'Event 8',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://cdn.thingiverse.com/renders/08/c8/e7/c0/45/5d54f02a5fb2246c3058171b3dd19f1b_preview_featured.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event9: {
-    image:
-      'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
-    name: 'Event 9',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://di-uploads-pod4.dealerinspire.com/rivercityhyundai/uploads/2017/05/HyundaiLogoStacked_4cblk-1024x659.gif',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event10: {
-    image: 'http://361degreeevents.com/wp-content/uploads/2016/04/event3.jpg',
-    name: 'Event 10',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Chevrolet_logo.svg/1200px-Chevrolet_logo.svg.png',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'sports'
-  },
-  event11: {
-    image:
-      'https://www.sydneyoperahouse.com/content/dam/soh/visit-us/cross-sells/generic-what%27s-on/_CH_NEW_CROSS_SELL_1600x1067.jpg',
-    name: 'Event 11',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://www.logodesignlove.com/images/evolution/7up-logo-old-01.jpg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'music'
-  },
-  event12: {
-    image:
-      'https://www.universalorlando.com/webdata/k2/en/us/files/Images/universal-rock-the-universe-music-notes-c.jpg',
-    name: 'Event 12',
-    city: 'Kanses City',
-    organizerName: 'Big John McCarty.',
-    timeAndDate: '9AM, 20 July 2020',
-    sponsor:
-      'https://upload.wikimedia.org/wikipedia/commons/0/0f/Pepsi_logo_2014.svg',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
-    categoryName: 'music'
-  }
-};
+// const eventsData = {
+//   event1: {
+//     image:
+//       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+//     name: 'Event 1',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLZs6BAPfLl4cmxCrU0QnItdBOLmFoux-fOt43Xa7ktbtXmvZ',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event2: {
+//     image:
+//       'https://assets.simpleviewcms.com/simpleview/image/upload/c_fill,h_600,q_50,w_1400/v1/clients/virginiabeachva/144_3_1707_jpeg_55eee7dc-c6ef-41f7-b7b4-23bf044e565a.jpg',
+//     name: 'Event 2',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://brandongaille.com/wp-content/uploads/2013/08/Adidas-Company-Logo.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event3: {
+//     image:
+//       'https://www.gevme.com/blog/wp-content/uploads/2016/12/wsi-imageoptim-event-photographer-reportage-documentary-photography-westfest-2012_21-1.jpg',
+//     name: 'Event 3',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://upload.wikimedia.org/wikipedia/commons/0/0f/Pepsi_logo_2014.svg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event4: {
+//     image:
+//       'http://www.bvidestinationmanagement.com/wp-content/uploads/2018/03/Event-Management.jpeg',
+//     name: 'Event 4',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor: 'https://fontmeme.com/images/McDonald%E2%80%99s-Logo.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event5: {
+//     image: 'http://orientindia.com/admin//130/evt_photo/3_event_management.jpg',
+//     name: 'Event 5',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://vignette.wikia.nocookie.net/logopedia/images/6/63/Pizza_Hut_2012_logo.png/revision/latest?cb=20140507122847',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event6: {
+//     image:
+//       'https://www.popsci.com/sites/popsci.com/files/styles/1000_1x_/public/images/2018/02/00-event-table.jpg?itok=-nkXo5O-&fc=50,50',
+//     name: 'Event 6',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://www.logodesignlove.com/images/evolution/7up-logo-old-01.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event7: {
+//     image:
+//       'http://marketing4startups.co.uk/ImageEvents/wp-content/uploads/2016/02/event-management-placeholder.jpg',
+//     name: 'Event 7',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://www.businessinsider.com/image/53d29d5c6bb3f7a80617ada8-1200-924/nike-logo.png',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event8: {
+//     image:
+//       'https://images.yourstory.com/2015/03/yourstory_AppFriday_EventsHigh.jpg',
+//     name: 'Event 8',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://cdn.thingiverse.com/renders/08/c8/e7/c0/45/5d54f02a5fb2246c3058171b3dd19f1b_preview_featured.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event9: {
+//     image:
+//       'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV',
+//     name: 'Event 9',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://di-uploads-pod4.dealerinspire.com/rivercityhyundai/uploads/2017/05/HyundaiLogoStacked_4cblk-1024x659.gif',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event10: {
+//     image: 'http://361degreeevents.com/wp-content/uploads/2016/04/event3.jpg',
+//     name: 'Event 10',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Chevrolet_logo.svg/1200px-Chevrolet_logo.svg.png',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'sports'
+//   },
+//   event11: {
+//     image:
+//       'https://www.sydneyoperahouse.com/content/dam/soh/visit-us/cross-sells/generic-what%27s-on/_CH_NEW_CROSS_SELL_1600x1067.jpg',
+//     name: 'Event 11',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://www.logodesignlove.com/images/evolution/7up-logo-old-01.jpg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'music'
+//   },
+//   event12: {
+//     image:
+//       'https://www.universalorlando.com/webdata/k2/en/us/files/Images/universal-rock-the-universe-music-notes-c.jpg',
+//     name: 'Event 12',
+//     city: 'Kanses City',
+//     organizerName: 'Big John McCarty.',
+//     timeAndDate: '9AM, 20 July 2020',
+//     sponsor:
+//       'https://upload.wikimedia.org/wikipedia/commons/0/0f/Pepsi_logo_2014.svg',
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industr  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an",
+//     categoryName: 'music'
+//   }
+// };
 class CategoryView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      eventsData: '',
+      loading: true,
+      categoryName: 'Not Available'
+    };
+
     this.onUpdateUser = this.onUpdateUser.bind(this);
+  }
+
+  componentWillMount() {
+    axios
+      .get(
+        'https://twiddlen-api.herokuapp.com/user/weeklyEvents'
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        if (res.data.success === false) {
+          alert(res.data.message);
+          this.setState({
+            loading: false
+          });
+        } else {
+          //console.log(dat);
+          console.log('here data is', res.data);
+          this.setState({
+            eventsData: res.data.events,
+            categoryName: res.data.events[0].category,
+            loading: false
+          });
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
   }
 
   onUpdateUser = event => {
@@ -201,8 +238,8 @@ class CategoryView extends React.Component {
     var max = 10;
     let images = [];
 
-    Object.values(eventsData).map((type, key) => {
-      images.push(type.image);
+    Object.values(this.state.eventsData).map((type, key) => {
+      images.push(type.cover);
       max = key;
       return null;
     });
@@ -210,6 +247,7 @@ class CategoryView extends React.Component {
     var rand = min + Math.floor(Math.random() * (max - min));
 
     let choosenImage = images[rand];
+    let choosenFact = this.props.facts[rand];
 
     const divBackground = {
       backgroundImage: `url(${choosenImage})`,
@@ -230,83 +268,97 @@ class CategoryView extends React.Component {
 
     return (
       <div>
-        <Header
-          color="transparent"
-          routes={dashboardRoutes}
-          brand="1"
-          rightLinks={<HeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: 'dark',
-            brand: '2'
-          }}
-          {...rest}
-        />
+        <LoadingScreen
+          loading={this.state.loading}
+          bgColor="white"
+          spinnerColor="yellow"
+          textColor="black"
+          logoSrc="https://clearlens.org/wp-content/uploads/2018/05/Facts.jpg"
+          text={choosenFact}
+        >
+          <Header
+            color="transparent"
+            routes={dashboardRoutes}
+            brand="1"
+            rightLinks={<HeaderLinks />}
+            fixed
+            changeColorOnScroll={{
+              height: 400,
+              color: 'dark',
+              brand: '2'
+            }}
+            {...rest}
+          />
 
-        <div style={divBackground}>
-          <GridContainer
-            style={divText}
-            spacing={8}
-            className={classes.container}
-          >
-            {/* <GridItem style={divText} xs={12} sm={12} md={6}>
+          <div style={divBackground}>
+            <GridContainer
+              style={divText}
+              spacing={8}
+              className={classes.container}
+            >
+              {/* <GridItem style={divText} xs={12} sm={12} md={6}>
               <SearchBar />
             </GridItem> */}
-          </GridContainer>
-        </div>
-        <div>
-          <div style={{ backgroundColor: 'lightgrey', padding: 20 }}>
-            <Grid container spacing={40}>
-              <Grid item xs={12}>
-                <Typography
-                  variant="display1"
-                  component="h3"
-                  gutterBottom={true}
-                  align="center"
-                >
-                  <strong>{this.props.match.params.id.toUpperCase()}</strong>
-                </Typography>
-              </Grid>
+            </GridContainer>
+          </div>
+          <div>
+            <div style={{ backgroundColor: 'lightgrey', padding: 20 }}>
+              <Grid container spacing={40}>
+                <Grid item xs={12}>
+                  <Typography
+                    variant="display1"
+                    component="h3"
+                    gutterBottom={true}
+                    align="center"
+                  >
+                    <strong>{this.state.categoryName.toUpperCase()}</strong>
+                  </Typography>
+                </Grid>
 
-              {Object.values(eventsData).map((type, key) => {
-                if (type.categoryName === this.props.match.params.id) {
-                  return (
-                    <Grid item xs={12} sm={4} md={3} key={key}>
-                      <EventCard
-                        image={type.image}
-                        name={type.name}
-                        city={type.city}
-                        organizerName={type.organizerName}
-                        timeAndDate={type.timeAndDate}
-                        description={type.description}
-                        sponsor={type.sponsor}
-                        client={this.props.client}
-                      />
-                    </Grid>
-                  );
-                } else {
-                  return null;
-                }
-              })}
+                {Object.values(this.state.eventsData).map((type, key) => {
+                  if (
+                    type.category.toLowerCase() ===
+                    this.props.match.params.id.toLowerCase()
+                  ) {
+                    return (
+                      <Grid item xs={12} sm={4} md={3} key={key}>
+                        <EventCard
+                          image={type.cover}
+                          name={type.title}
+                          city={type.city}
+                          organizerName={type.author}
+                          timeAndDate={type.startDate.slice(0, 10)}
+                          description={type.description}
+                          sponsor={type.sponsor}
+                          client={this.props.client}
+                          spaces={type.spaces}
+                          address={type.Address}
+                        />
+                      </Grid>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
 
-              <Grid item xs={12}>
-                <Grid
-                  container
-                  spacing={0}
-                  direction="column"
-                  justify="flex-end"
-                  alignContent="flex-end"
-                  alignItems="flex-end"
-                >
-                  {/* <Grid item xs={12}>
+                <Grid item xs={12}>
+                  <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    justify="flex-end"
+                    alignContent="flex-end"
+                    alignItems="flex-end"
+                  >
+                    {/* <Grid item xs={12}>
                     <FloatingMenu style={{ styles }} />
                   </Grid> */}
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
+            </div>
           </div>
-        </div>
+        </LoadingScreen>
       </div>
     );
   }
@@ -315,7 +367,8 @@ class CategoryView extends React.Component {
 const mapStateToProps = (state, props) => {
   // console.log(props);
   return {
-    client: state.client
+    client: state.client,
+    facts: state.facts
   };
 };
 
