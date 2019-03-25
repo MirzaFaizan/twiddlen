@@ -71,6 +71,9 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1
+  },
+  expandIcon: {
+    color: 'orange'
   }
 });
 
@@ -170,7 +173,11 @@ class ResponsiveDrawer extends React.Component {
               <InboxIcon />
             </ListItemIcon>
             <ListItemText inset primary="Events" />
-            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+            {this.state.open ? (
+              <ExpandLess style={{ color: 'black' }} />
+            ) : (
+              <ExpandMore style={{ color: 'black' }} />
+            )}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
