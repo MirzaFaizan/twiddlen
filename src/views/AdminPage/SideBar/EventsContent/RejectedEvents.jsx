@@ -8,6 +8,7 @@ import CardHeader from 'components/Card/CardHeader.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import axios from 'axios';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
 export default class RejectedEvents extends React.Component {
   componentDidMount() {
     axios
@@ -21,7 +22,8 @@ export default class RejectedEvents extends React.Component {
         } else {
           //console.log(dat);
           this.setState({
-            data: res.data.events
+            data: res.data.events,
+            loading: false
           });
         }
       })
@@ -33,13 +35,18 @@ export default class RejectedEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      loading: true
       //t:this.props.token,
     };
   }
 
   render() {
-    return (
+    return this.state.loading ? (
+      <div style={{ paddingTop: '25%', paddingLeft: '50%' }}>
+        <CircularProgress color="secondary" />
+      </div>
+    ) : (
       <div>
         <Grid container spacing={0} style={{ paddingTop: '5%' }}>
           <Grid item xs={8} sm={8} md={12}>
