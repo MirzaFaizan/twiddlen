@@ -25,6 +25,7 @@ export default class RejectedEvents extends React.Component {
             data: res.data.events,
             loading: false
           });
+          console.log(this.state.data);
         }
       })
       .catch(error => {
@@ -60,22 +61,30 @@ export default class RejectedEvents extends React.Component {
                   tableHead={[
                     'Name',
                     'Description',
-                    'start-Date',
-                    'end-Date',
+                    'Category',
+                    'Spaces',
+                    'Start-Date',
+                    'End-Date',
                     'Location',
+                    'Zip',
                     'City',
-                    'streetAddress'
+                    'Address',
+                    'Contact'
                   ]}
                   tableData={this.state.data.map(type => {
                     //console.log(type);
                     return [
-                      type.name,
+                      type.title.toUpperCase(),
                       type.description,
-                      // type.Date.startDate,
-                      // type.Date.endDate,
-                      type.Address.locationAddress,
-                      type.Address.City,
-                      type.Address.streetAddress
+                      type.category,
+                      type.spaces,
+                      type.startDate,
+                      type.endDate,
+                      type.Lat + ',' + type.Lng,
+                      type.Zip.toString(),
+                      type.city,
+                      type.Address,
+                      type.contact
                     ];
                   })}
                 />
