@@ -48,7 +48,7 @@ class AdminLogin extends React.Component {
       )
       .then(res => {
         JSON.stringify(res);
-        console.log(res.data);
+        // console.log(res.data);
         //Check if response reture suceess: true or false
         if (res.data.success === false) {
           alert(res.data.message);
@@ -84,8 +84,15 @@ class AdminLogin extends React.Component {
         container
         alignItems="center"
         justify="center"
-        direction="column-reverse"
+        direction="column"
       >
+        <Grid item xs={12}>
+          <img
+            src={require(`assets/img/twiddlen-logo1.png`)}
+            style={{ width: '200px', height: 'auto' }}
+            alt="Local Vibes"
+          />
+        </Grid>
         <Grid item xs={12} sm={12} md={12}>
           <Card style={cardStyle}>
             <CardContent>
@@ -138,7 +145,7 @@ const mapStatetoProps = state => {
 };
 
 const mapActionsToProps = (dispatch, props) => {
-  console.log(props);
+  // console.log(props);
   return bindActionCreators(
     {
       onUpdateAdmin: updateAdmin

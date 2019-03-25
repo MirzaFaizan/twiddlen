@@ -14,7 +14,7 @@ class AdminPage extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props.loggedIn);
+    // console.log(this.props.loggedIn);
   }
   loggedIN = () => {
     if (this.props.loggedIn) {
@@ -29,12 +29,12 @@ class AdminPage extends Component {
 }
 
 const mapStatetoProps = state => {
-  console.log(state.admin);
+  // console.log(state.admin);
   return { loggedIn: state.admin };
 };
 
 const mapActionsToProps = (dispatch, props) => {
-  console.log(props);
+  // console.log(props);
   return bindActionCreators(
     {
       onUpdateAdmin: updateAdmin

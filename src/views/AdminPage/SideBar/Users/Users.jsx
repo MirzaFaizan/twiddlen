@@ -9,11 +9,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import axios from 'axios';
 
-export default class ApprovedEvents extends React.Component {
+export default class Users extends React.Component {
   componentDidMount() {
     axios
       .get(
-        'https://twiddlen-api.herokuapp.com/admin/approvedEvents'
+        'https://twiddlen-api.herokuapp.com/admin/viewUsers'
         //, { headers: {"Authorization" : `Bearer ${token}`} }
       )
       .then(res => {
@@ -21,11 +21,12 @@ export default class ApprovedEvents extends React.Component {
           alert(res.data.message);
         } else {
           //console.log(dat);
+          //   console.log(res.data.users)
           this.setState({
-            data: res.data.events,
+            data: res.data.users,
             loading: false
           });
-          // console.log(this.state.data);
+          //   console.log(this.state.data);
         }
       })
       .catch(error => {
@@ -53,38 +54,18 @@ export default class ApprovedEvents extends React.Component {
           <Grid item xs={8} sm={8} md={12}>
             <Card>
               <CardHeader color="warning">
-                <h4>Approved Events</h4>
+                <h4>All Users</h4>
               </CardHeader>
               <CardBody>
                 <Table
                   tableHeaderColor="info"
-                  tableHead={[
-                    'Name',
-                    'Description',
-                    'Category',
-                    'Spaces',
-                    'Start-Date',
-                    'End-Date',
-                    'Location',
-                    'Zip',
-                    'City',
-                    'Address',
-                    'Contact'
-                  ]}
+                  tableHead={['Id', 'Email', 'Join Time', 'Username']}
                   tableData={this.state.data.map(type => {
-                    //console.log(type);
                     return [
-                      type.title.toUpperCase(),
-                      type.description,
-                      type.category,
-                      type.spaces,
-                      type.startDate,
-                      type.endDate,
-                      type.Lat + ',' + type.Lng,
-                      type.Zip.toString(),
-                      type.city,
-                      type.Address,
-                      type.contact
+                      type._id,
+                      type.email,
+                      type.join_time,
+                      type.username
                     ];
                   })}
                 />

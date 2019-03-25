@@ -85,7 +85,7 @@ class Header extends React.Component {
       >
         <img
           src={require(`assets/img/twiddlen-logo${brand}.png`)}
-          alt="Twiddlen"
+          alt="Local Vibe"
           style={imgStyle}
         />
       </Button>

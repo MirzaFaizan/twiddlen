@@ -17,8 +17,8 @@ import axios from 'axios';
 export default class ApprovedEvents extends React.Component {
   state = {
     name: '',
-    startDate: '',
-    endDate: '',
+    startDate: new Date(),
+    endDate: new Date(),
     eventType: '',
     description: '',
     locationType: '',
@@ -187,7 +187,7 @@ export default class ApprovedEvents extends React.Component {
     return (
       <div>
         <Grid container spacing={0} style={{ paddingTop: '5%' }}>
-          <Grid iitem xs={12} sm={12} md={12}>
+          <Grid item xs={12} sm={12} md={12}>
             <Card>
               <CardHeader color="primary">
                 <h4>Post Events</h4>
@@ -218,7 +218,7 @@ export default class ApprovedEvents extends React.Component {
                         id="date"
                         label="Start Date"
                         type="date"
-                        defaultValue={new Date()}
+                        // value={this.state.startDate}
                         onChange={e => {
                           this.handlestartDateChange(e);
                         }}
@@ -237,7 +237,7 @@ export default class ApprovedEvents extends React.Component {
                         id="date"
                         label="End Date"
                         type="date"
-                        defaultValue={new Date()}
+                        // value={this.state.endDate}
                         onChange={e => {
                           this.handleendDateChange(e);
                         }}
