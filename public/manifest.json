@@ -1,15 +1,15 @@
 {
-  "short_name": "Twiddlen",
-  "name": "Twiddlen - find events near you",
+  "short_name": "LocalVibe",
+  "name": "Local Vibe - find cool vibes near you",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicomatic/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#FF4500",
+  "background_color": "#696969"
 }
