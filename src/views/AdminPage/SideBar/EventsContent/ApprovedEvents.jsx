@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from 'components/Card/Card.jsx';
 import CardHeader from 'components/Card/CardHeader.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import axios from 'axios';
 
@@ -21,8 +22,10 @@ export default class ApprovedEvents extends React.Component {
         } else {
           //console.log(dat);
           this.setState({
-            data: res.data.events
+            data: res.data.events,
+            loading: false
           });
+          console.log(this.state.data);
         }
       })
       .catch(error => {
@@ -33,13 +36,18 @@ export default class ApprovedEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      loading: true
       //t:this.props.token,
     };
   }
 
   render() {
-    return (
+    return this.state.loading ? (
+      <div style={{ paddingTop: '25%', paddingLeft: '50%' }}>
+        <CircularProgress color="secondary" />
+      </div>
+    ) : (
       <div>
         <Grid container spacing={0} style={{ paddingTop: '5%' }}>
           <Grid item xs={8} sm={8} md={12}>
@@ -53,22 +61,30 @@ export default class ApprovedEvents extends React.Component {
                   tableHead={[
                     'Name',
                     'Description',
-                    'start-Date',
-                    'end-Date',
+                    'Category',
+                    'Spaces',
+                    'Start-Date',
+                    'End-Date',
                     'Location',
+                    'Zip',
                     'City',
-                    'streetAddress'
+                    'Address',
+                    'Contact'
                   ]}
                   tableData={this.state.data.map(type => {
                     //console.log(type);
                     return [
-                      type.name,
+                      type.title.toUpperCase(),
                       type.description,
-                      // type.Date.startDate,
-                      // type.Date.endDate,
-                      type.Address.locationAddress,
-                      type.Address.City,
-                      type.Address.streetAddress
+                      type.category,
+                      type.spaces,
+                      type.startDate,
+                      type.endDate,
+                      type.Lat + ',' + type.Lng,
+                      type.Zip.toString(),
+                      type.city,
+                      type.Address,
+                      type.contact
                     ];
                   })}
                 />
