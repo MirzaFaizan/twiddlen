@@ -65,7 +65,7 @@ export default class PendingEvents extends React.Component {
   render() {
     return (
       <div>
-        <Grid container spacing={0}>
+        <Grid container spacing={0} style={{ paddingTop: '5%' }}>
           <Grid item xs={8} sm={8} md={12}>
             <Card>
               <CardHeader color="warning">
@@ -89,8 +89,8 @@ export default class PendingEvents extends React.Component {
                     return [
                       type.name,
                       type.description,
-                      type.Date.startDate,
-                      type.Date.endDate,
+                      // type.Date.startDate,
+                      // type.Date.endDate,
                       type.Address.locationAddress,
                       type.Address.City,
                       type.Address.streetAddress,

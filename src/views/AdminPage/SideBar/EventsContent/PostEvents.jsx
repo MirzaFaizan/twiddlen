@@ -186,7 +186,7 @@ export default class ApprovedEvents extends React.Component {
   render() {
     return (
       <div>
-        <Grid container spacing={0}>
+        <Grid container spacing={0} style={{ paddingTop: '5%' }}>
           <Grid iitem xs={12} sm={12} md={12}>
             <Card>
               <CardHeader color="primary">

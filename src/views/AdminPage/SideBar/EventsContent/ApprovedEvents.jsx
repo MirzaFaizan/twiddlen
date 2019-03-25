@@ -41,8 +41,8 @@ export default class ApprovedEvents extends React.Component {
   render() {
     return (
       <div>
-        <Grid container spacing={0}>
-          <Grid iitem xs={8} sm={8} md={12}>
+        <Grid container spacing={0} style={{ paddingTop: '5%' }}>
+          <Grid item xs={8} sm={8} md={12}>
             <Card>
               <CardHeader color="warning">
                 <h4>Approved Events</h4>
@@ -64,8 +64,8 @@ export default class ApprovedEvents extends React.Component {
                     return [
                       type.name,
                       type.description,
-                      type.Date.startDate,
-                      type.Date.endDate,
+                      // type.Date.startDate,
+                      // type.Date.endDate,
                       type.Address.locationAddress,
                       type.Address.City,
                       type.Address.streetAddress
