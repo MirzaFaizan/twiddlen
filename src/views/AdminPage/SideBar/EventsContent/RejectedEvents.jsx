@@ -8,6 +8,8 @@ import CardHeader from 'components/Card/CardHeader.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import axios from 'axios';
 
+import Button from '@material-ui/core/Button';
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 export default class RejectedEvents extends React.Component {
   componentDidMount() {
@@ -25,13 +27,37 @@ export default class RejectedEvents extends React.Component {
             data: res.data.events,
             loading: false
           });
-          console.log(this.state.data);
+          // console.log(this.state.data);
         }
       })
       .catch(error => {
         alert('Internal Server error, Server Resopnded with "' + error + '"');
       });
   }
+
+  changeStatus = (id, flag) => {
+    var data = {
+      id: id,
+      approval: flag
+    };
+    axios
+      .post(
+        'https://twiddlen-api.herokuapp.com/admin/approveEvent',
+        data
+        //, { headers: {"Authorization" : `Bearer ${token}`} }
+      )
+      .then(res => {
+        if (res.data.success === false) {
+          alert(res.data.message);
+        } else {
+          // alert(res.data.message);
+          this.componentDidMount();
+        }
+      })
+      .catch(error => {
+        alert('Internal Server error, Server Resopnded with "' + error + '"');
+      });
+  };
 
   constructor(props) {
     super(props);
@@ -69,7 +95,9 @@ export default class RejectedEvents extends React.Component {
                     'Zip',
                     'City',
                     'Address',
-                    'Contact'
+                    'Contact',
+                    'Approve',
+                    'Reject'
                   ]}
                   tableData={this.state.data.map(type => {
                     //console.log(type);
@@ -84,7 +112,27 @@ export default class RejectedEvents extends React.Component {
                       type.Zip.toString(),
                       type.city,
                       type.Address,
-                      type.contact
+                      type.contact,
+                      <Button
+                        variant="contained"
+                        size="small"
+                        color="primary"
+                        onClick={() => {
+                          this.changeStatus(type._id, 1);
+                        }}
+                      >
+                        Approve
+                      </Button>,
+                      <Button
+                        variant="contained"
+                        size="small"
+                        color="secondary"
+                        onClick={() => {
+                          this.changeStatus(type._id, -1);
+                        }}
+                      >
+                        Reject
+                      </Button>
                     ];
                   })}
                 />

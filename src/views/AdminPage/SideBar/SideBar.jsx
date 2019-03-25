@@ -25,11 +25,14 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 import Notification from '@material-ui/icons/NotificationsNone';
+import UsersIcon from '@material-ui/icons/AccountBox';
 
 import ApprovedEvents from '../SideBar/EventsContent/ApprovedEvents.jsx';
 import PendingEvents from '../SideBar/EventsContent/PendingEvents.jsx';
 import RejectedEvents from '../SideBar/EventsContent/RejectedEvents.jsx';
 import PostEvents from '../SideBar/EventsContent/PostEvents';
+import Users from '../SideBar/Users/Users.jsx';
+
 import NotificationsSender from '../SideBar/NotificationsContent/NotificationsSender.jsx';
 
 import { bindActionCreators } from 'redux';
@@ -97,7 +100,7 @@ class ResponsiveDrawer extends React.Component {
   };
 
   DashBoardHandleClick = () => {
-    console.log(this.props.loggedIn);
+    // console.log(this.props.loggedIn);
     this.setState({
       centreContent: <DashboardContent />,
       selectedIndex: 0
@@ -137,6 +140,13 @@ class ResponsiveDrawer extends React.Component {
     });
   };
 
+  UsersHandleClick = () => {
+    this.setState({
+      centreContent: <Users />,
+      selectedIndex: 7
+    });
+  };
+
   handleListItemClick = (event, index) => {
     this.setState({
       selectedIndex: index,
@@ -147,7 +157,6 @@ class ResponsiveDrawer extends React.Component {
   logoutHandleClick = () => {
     localStorage.removeItem('adminToken');
     this.props.onUpdateAdmin(false);
-    console.log('logout');
   };
 
   render() {
@@ -237,6 +246,17 @@ class ResponsiveDrawer extends React.Component {
             </ListItemIcon>
             <ListItemText inset primary="Notifications Sender" />
           </ListItem>
+
+          <ListItem
+            button
+            selected={this.state.selectedIndex === 7}
+            onClick={() => this.UsersHandleClick()}
+          >
+            <ListItemIcon>
+              <UsersIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Users" />
+          </ListItem>
         </List>
       </div>
     );
@@ -313,7 +333,7 @@ ResponsiveDrawer.propTypes = {
 };
 
 const mapActionsToProps = (dispatch, props) => {
-  console.log(props);
+  // console.log(props);
   return bindActionCreators(
     {
       onUpdateAdmin: updateAdmin

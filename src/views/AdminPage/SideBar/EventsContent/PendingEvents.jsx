@@ -28,7 +28,7 @@ export default class PendingEvents extends React.Component {
             data: res.data.events,
             loading: false
           });
-          console.log(this.state.data);
+          // console.log(this.state.data);
         }
       })
       .catch(error => {
@@ -88,12 +88,12 @@ export default class PendingEvents extends React.Component {
                     'Description',
                     'Category',
                     'Spaces',
-                    'start-Date',
-                    'end-Date',
+                    'Start-Date',
+                    'End-Date',
                     'Location',
                     'Zip',
                     'City',
-                    'streetAddress',
+                    'Street Address',
                     'Contact',
                     'Approve',
                     'Reject'
