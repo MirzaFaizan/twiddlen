@@ -82,16 +82,6 @@ ReactDOM.render(
         <Route path="/my-argame" component={ARGame} />
         <Route path="/lv-admin" component={AdminPage} />
         <Route path="/privacy" component={Privacy} />
-        {/* {indexRoutes.map((prop, key) => {
-          return (
-            <Route
-              path={prop.path}
-              key={key}
-              component={prop.component}
-              randomProps="randomProps"
-            />
-          );
-        })} */}
       </Switch>
     </Router>
   </Provider>,
