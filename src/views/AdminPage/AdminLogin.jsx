@@ -54,8 +54,9 @@ class AdminLogin extends React.Component {
           alert(res.data.message);
           this.setState({ error: true });
         } else {
+          localStorage.setItem('adminToken', res.data.token);
           //redirect to login component
-          alert('Succesfully Logged in');
+          // alert('Succesfully Logged in');
           this.props.onUpdateAdmin(true);
           this.setState({
             error: false
@@ -118,7 +119,6 @@ class AdminLogin extends React.Component {
             </CardContent>
             <CardActions>
               <Button
-                outlined
                 size="small"
                 color="primary"
                 onClick={() => this.buttonClick()}

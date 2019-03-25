@@ -15,11 +15,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import {Dashboard} from '@material-ui/icons';
-
+import { Dashboard } from '@material-ui/icons';
+import Button from '@material-ui/core/Button';
 //import './AdminCss/SideBar.css';
 import DashboardContent from '../../AdminPage/SideBar/DashboardContent/DashboardContent';
-
 
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -30,54 +29,60 @@ import Notification from '@material-ui/icons/NotificationsNone';
 import ApprovedEvents from '../SideBar/EventsContent/ApprovedEvents.jsx';
 import PendingEvents from '../SideBar/EventsContent/PendingEvents.jsx';
 import RejectedEvents from '../SideBar/EventsContent/RejectedEvents.jsx';
-import PostEvents from '../SideBar/EventsContent/PostEvents'
+import PostEvents from '../SideBar/EventsContent/PostEvents';
 import NotificationsSender from '../SideBar/NotificationsContent/NotificationsSender.jsx';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateAdmin } from '../../../actions/admin-action.js';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
-      flexShrink: 0,
-    },
+      flexShrink: 0
+    }
   },
   appBar: {
     marginLeft: drawerWidth,
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
+      width: `calc(100% - ${drawerWidth}px)`
     },
-    backgroundColor:'grey',
+    backgroundColor: 'grey'
   },
   menuButton: {
     marginRight: 20,
     [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
+      display: 'none'
+    }
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
   },
+  grow: {
+    flexGrow: 1
+  }
 });
 
-const dropdownStyle ={
-  paddingLeft:'25%'
-}
+const dropdownStyle = {
+  paddingLeft: '25%'
+};
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
-    open:false,
-    centreContent:<DashboardContent/>,
-    selectedIndex: 1,
+    open: false,
+    centreContent: <DashboardContent />,
+    selectedIndex: 1
   };
 
   handleDrawerToggle = () => {
@@ -89,50 +94,57 @@ class ResponsiveDrawer extends React.Component {
   };
 
   DashBoardHandleClick = () => {
-    console.log(this.props.loggedIn)
+    console.log(this.props.loggedIn);
     this.setState({
-      centreContent:<DashboardContent/>,
-      selectedIndex:0,
-    })
-  }
+      centreContent: <DashboardContent />,
+      selectedIndex: 0
+    });
+  };
 
   PendingHandleClick = () => {
     this.setState({
-      centreContent:<PendingEvents/>,
-      selectedIndex:2,
-    })
-  }
+      centreContent: <PendingEvents />,
+      selectedIndex: 2
+    });
+  };
   ApprovedHandleClick = () => {
     this.setState({
-      centreContent:<ApprovedEvents/>,
-      selectedIndex:3,
-    })
-  }
+      centreContent: <ApprovedEvents />,
+      selectedIndex: 3
+    });
+  };
   RejectedHandleClick = () => {
     this.setState({
-      centreContent:<RejectedEvents/>,
-      selectedIndex:4,
-    })
-  }
+      centreContent: <RejectedEvents />,
+      selectedIndex: 4
+    });
+  };
 
   EventPostingHandleClick = () => {
     this.setState({
-      centreContent:<PostEvents/>,
-      selectedIndex:5,
-    })
-  }
-
+      centreContent: <PostEvents />,
+      selectedIndex: 5
+    });
+  };
 
   NotifcationsHandleClick = () => {
     this.setState({
-      centreContent:<NotificationsSender/>,
-      selectedIndex:6,
-    })
-  }
+      centreContent: <NotificationsSender />,
+      selectedIndex: 6
+    });
+  };
 
   handleListItemClick = (event, index) => {
-    this.setState({ selectedIndex: index,
-                    centreContent:<event/> });
+    this.setState({
+      selectedIndex: index,
+      centreContent: <event />
+    });
+  };
+
+  logoutHandleClick = () => {
+    localStorage.removeItem('adminToken');
+    this.props.onUpdateAdmin(false);
+    console.log('logout');
   };
 
   render() {
@@ -143,51 +155,81 @@ class ResponsiveDrawer extends React.Component {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-         <ListItem button selected={this.state.selectedIndex === 0} onClick={()=>this.DashBoardHandleClick()}>
-             <ListItemIcon ><Dashboard/></ListItemIcon>
-             <ListItemText primary="Dashboard"/>
-         </ListItem>
-         <ListItem button  onClick={() => this.handleClick()}>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText inset primary="Events" />
-          {this.state.open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button selected={this.state.selectedIndex === 2} onClick={() => this.PendingHandleClick()} style={dropdownStyle}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText inset primary="Pending" />
-            </ListItem>
-          <ListItem button selected={this.state.selectedIndex === 3} onClick={()=>this.ApprovedHandleClick()} style={dropdownStyle}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText inset primary="Approved" />
-            </ListItem>
-            <ListItem button selected={this.state.selectedIndex === 4} onClick={()=>this.RejectedHandleClick()} style={dropdownStyle}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText inset primary="Rejected" />
-            </ListItem>
-            <ListItem button selected={this.state.selectedIndex === 5} onClick={()=>this.EventPostingHandleClick()} style={dropdownStyle}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText inset primary="Event Posting" />
-            </ListItem>
-          </List>
-        </Collapse>
-        <ListItem button selected={this.state.selectedIndex === 6} onClick={()=>this.NotifcationsHandleClick()}>
-              <ListItemIcon>
-                <Notification />
-              </ListItemIcon>
-              <ListItemText inset primary="Notifications Sender" />
-        </ListItem>
+          <ListItem
+            button
+            selected={this.state.selectedIndex === 0}
+            onClick={() => this.DashBoardHandleClick()}
+          >
+            <ListItemIcon>
+              <Dashboard />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+          <ListItem button onClick={() => this.handleClick()}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Events" />
+            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem
+                button
+                selected={this.state.selectedIndex === 2}
+                onClick={() => this.PendingHandleClick()}
+                style={dropdownStyle}
+              >
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText inset primary="Pending" />
+              </ListItem>
+              <ListItem
+                button
+                selected={this.state.selectedIndex === 3}
+                onClick={() => this.ApprovedHandleClick()}
+                style={dropdownStyle}
+              >
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText inset primary="Approved" />
+              </ListItem>
+              <ListItem
+                button
+                selected={this.state.selectedIndex === 4}
+                onClick={() => this.RejectedHandleClick()}
+                style={dropdownStyle}
+              >
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText inset primary="Rejected" />
+              </ListItem>
+              <ListItem
+                button
+                selected={this.state.selectedIndex === 5}
+                onClick={() => this.EventPostingHandleClick()}
+                style={dropdownStyle}
+              >
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText inset primary="Event Posting" />
+              </ListItem>
+            </List>
+          </Collapse>
+          <ListItem
+            button
+            selected={this.state.selectedIndex === 6}
+            onClick={() => this.NotifcationsHandleClick()}
+          >
+            <ListItemIcon>
+              <Notification />
+            </ListItemIcon>
+            <ListItemText inset primary="Notifications Sender" />
+          </ListItem>
         </List>
       </div>
     );
@@ -205,9 +247,17 @@ class ResponsiveDrawer extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.grow}
+            >
               Twiddlen Dashboard
             </Typography>
+            <Button color="inherit" onClick={() => this.logoutHandleClick()}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
@@ -220,7 +270,7 @@ class ResponsiveDrawer extends React.Component {
               open={this.state.mobileOpen}
               onClose={this.handleDrawerToggle}
               classes={{
-                paper: classes.drawerPaper,
+                paper: classes.drawerPaper
               }}
             >
               {drawer}
@@ -229,7 +279,7 @@ class ResponsiveDrawer extends React.Component {
           <Hidden xsDown implementation="css">
             <Drawer
               classes={{
-                paper: classes.drawerPaper,
+                paper: classes.drawerPaper
               }}
               variant="permanent"
               open
@@ -252,9 +302,20 @@ ResponsiveDrawer.propTypes = {
   // Injected by the documentation to work in an iframe.
   // You won't need it on your project.
   container: PropTypes.object,
-  theme: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
+const mapActionsToProps = (dispatch, props) => {
+  console.log(props);
+  return bindActionCreators(
+    {
+      onUpdateAdmin: updateAdmin
+    },
+    dispatch
+  );
+};
 
-
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+export default connect(
+  null,
+  mapActionsToProps
+)(withStyles(styles, { withTheme: true })(ResponsiveDrawer));
